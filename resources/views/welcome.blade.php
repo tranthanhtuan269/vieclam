@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
+        <link rel="stylesheet" href="{{ url('/') }}/css/app.css">
         <style>
             html, body {
                 background-color: #fff;
@@ -77,9 +78,11 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="row content">
                 <h3>Welcome to <h1>chovieclam.com!</h1></h3>
             </div>
         </div>
+            <div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div>
+        <script src="{{ url('/') }}/js/app.js"></script>
     </body>
 </html>

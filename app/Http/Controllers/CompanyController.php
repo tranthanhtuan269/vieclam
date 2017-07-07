@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Company;
+use App\Job;
+
 
 class CompanyController extends Controller
 {
@@ -13,7 +16,15 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        // load company info
+
+
+        // load job of company
+
+        // load comment of company
+
+        // render view
+        return view('company.index');
     }
 
     /**
@@ -45,7 +56,17 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        // load company info
+        $company = Company::find($id);
+        if($company){
+            // load job of company
+            $jobs = Job::where('company_id', $id)->paginate(5);
+
+            // load comment of company
+
+            return view('company.index', array('company'=>$company, 'jobs' => $jobs));
+        }
+        return view('errors.404');
     }
 
     /**

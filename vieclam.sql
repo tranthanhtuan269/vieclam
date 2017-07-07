@@ -52,6 +52,7 @@ CREATE TABLE `company` (
   `tax_number` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sologan` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL,
   `size` int(11) DEFAULT NULL,
+  `hotline` varchar(15) CHARACTER SET utf8 NOT NULL,
   `job_type` int(11) DEFAULT NULL,
   `city_id` int(11) DEFAULT NULL,
   `district_id` int(11) DEFAULT NULL,
@@ -60,7 +61,7 @@ CREATE TABLE `company` (
   `logo` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL,
   `banner` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL,
   `images` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `company_type` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `company_type` int(11) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
@@ -75,6 +76,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
+INSERT INTO `company` VALUES (1,'aaa','aaa','aaa','aaa',1,'0973.619.398',1,1,1,'aaa','aaa','bigLogo.png','slide.png','aaa',1,1,'2017-07-07 00:00:00',1,'2017-07-07 00:00:00');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,7 +152,7 @@ DROP TABLE IF EXISTS `job`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `job` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(225) COLLATE utf8_unicode_ci DEFAULT NULL,
   `number` int(11) DEFAULT NULL,
   `expiration_date` datetime DEFAULT NULL,
@@ -169,8 +171,12 @@ CREATE TABLE `job` (
   `gender` int(11) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `company_id` int(11) DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_by` int(11) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -179,6 +185,7 @@ CREATE TABLE `job` (
 
 LOCK TABLES `job` WRITE;
 /*!40000 ALTER TABLE `job` DISABLE KEYS */;
+INSERT INTO `job` VALUES (1,'Nhân viên ship pizza tại nhà',5,'2017-07-31 00:00:00','8h-17h',1,'aaa','aaa','aa',1,1,8,0,1,1,1,1,1,1,0,0,'2017-07-07 14:32:04','2017-07-07 14:32:04'),(2,'Nhân viên bán hàng tại quầy',5,'2017-07-31 00:00:00','8h-17h',1,'aaa','aaa','aa',1,1,8,0,1,1,1,1,1,1,0,0,'2017-07-07 14:32:04','2017-07-07 14:32:04'),(3,'Nhân viên kinh doanh online',5,'2017-07-31 00:00:00','8h-17h',1,'aaa','aaa','aa',1,1,8,0,1,1,1,1,1,1,0,0,'2017-07-07 14:32:04','2017-07-07 14:32:04'),(4,'Nhân viên trông xe tại cửa hàng',5,'2017-07-31 00:00:00','8h-17h',1,'aaa','aaa','aa',1,1,8,0,1,1,1,1,1,1,0,0,'2017-07-07 14:32:04','2017-07-07 14:32:04'),(5,'Nhân viên quản lý',5,'2017-07-31 00:00:00','8h-17h',1,'aaa','aaa','aa',1,1,8,0,1,1,1,1,1,1,0,0,'2017-07-07 14:32:04','2017-07-07 14:32:04'),(6,'Nhân viên thu ngân',5,'2017-07-31 00:00:00','8h-17h',1,'aaa','aaa','aa',1,1,8,0,1,1,1,1,1,1,0,0,'2017-07-07 14:32:04','2017-07-07 14:32:04');
 /*!40000 ALTER TABLE `job` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -271,4 +278,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-04 16:50:43
+-- Dump completed on 2017-07-07 17:10:52
