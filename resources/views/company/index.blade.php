@@ -29,7 +29,7 @@
 			<div class="row">
 				<div class="hot-new"><span style="color:#f99f3c">Tin nóng: </span><a href="">Khai trương nhà hàng tại 156 Cầu Giấy
 				<span class="hot-new-img"></span></a>
-				<button  type="button" class="bt-rate btn btn-primary"><i></i>Thêm đánh giá</button>
+				<button  type="button" class="bt-rate btn btn-primary" data-toggle="modal" data-target="#add-comment"><i></i>Thêm đánh giá</button>
 			</div>
 			</div>
 			@foreach($jobs as $job)
@@ -215,6 +215,56 @@
 		</div>
 	</div>
 </footer>
+
+<!-- Modal -->
+<div class="modal fade" id="add-comment" tabindex="-1" role="dialog" aria-labelledby="addComment">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Đánh giá nhà tuyển dụng</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+		  <div class="form-group">
+		    <label for="inputTitle" class="col-sm-3 control-label">Tiêu đề</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="inputTitle" placeholder="Tiêu đề">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="inputDescription" class="col-sm-3 control-label">Mô tả chi tiết</label>
+		    <div class="col-sm-9">
+		      <textarea class="form-control" rows="5" id="inputDescription"></textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		  	<label for="inputScore" class="col-sm-3 control-label">Số sao</label>
+		  	<div class="col-sm-9">
+		      	<p class="star-vote" id="star-vote">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-1">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-2">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-3">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-4">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-5">
+				</p>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-3 col-sm-9">
+		      <button type="submit" class="btn btn-default">Gửi đánh giá</button>
+		    </div>
+		  </div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 	window.onload = function()
 	{
@@ -267,6 +317,10 @@
 		 }
 		 else{isR=false;action=setTimeout(function(){onNext(false);},2000);}
 	}
+
+	$('#star-vote>img').click(function(){
+		alert($(this).attr('id'));
+	});
 </script>
 
 @endsection

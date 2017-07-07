@@ -82,7 +82,5 @@
                 <h3>Welcome to <h1>chovieclam.com!</h1></h3>
             </div>
         </div>
-            <div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div><div class="row">aaaa</div>
-        <script src="{{ url('/') }}/js/app.js"></script>
     </body>
 </html>
