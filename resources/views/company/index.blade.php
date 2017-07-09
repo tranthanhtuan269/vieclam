@@ -4,14 +4,14 @@
 <div class="header">
 	<div class="container">
 		<div class="row">
+			<input type="hidden" name="company-id" value="{{ $company->id }}">
 			<div class="logo"><a href=""><img src="{{ url('/') }}/img/{{ $company->logo }}" alt="">{{ $company->name }}</a></div>
 			<div class="hotline visible-xs" role="button" data-toggle="collapse" data-target="#hotline"><img src="{{ url('/') }}/img/{{ $company->logo }}" alt="" >
-				<span id="hotline" class="collapse">hotline: 1900 1080</span>
+				<span id="hotline" class="collapse">hotline: {{ $company->hotline }}</span>
 			</div>
 			<div class="hotline hidden-xs"><img src="{{ url('/') }}/img/hotline.png" alt="">
 				<span class="">hotline: {{ $company->hotline }}</span>
 			</div>
-			
 		</div>
 	</div>
 </div>
@@ -21,7 +21,8 @@
 		<p class="menu">
 			<a href="#">Thông Tin</a>
 			<a href="#" class="active">Tuyển Dụng</a>
-			<button type="button" class="btn btn-primary"><i></i>Đang theo dõi</button>
+			<button type="button" class="btn btn-primary" id="follow-btn" @if($followed) style="display: none;" @else style="display: block;" @endif><i></i>Theo dõi</button>
+			<button type="button" class="btn btn-danger" id="unfollow-btn" @if($followed) style="display: block;" @else style="display: none;" @endif><i></i>Bỏ theo dõi</button>
 		</p>
 	</div>
 	<div class="main-content row">
@@ -59,46 +60,26 @@
 			<div class="pn-rating pn-left row">
 				<h5>Đánh giá chung</h5>
 				<p class="star-vote">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
+					<img src="{{ url('/') }}/img/star.png" alt="" class="vote">
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($votes > 1) class="vote" @else class="no-vote" @endif>
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($votes > 2) class="vote" @else class="no-vote" @endif>
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($votes > 3) class="vote" @else class="no-vote" @endif>
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($votes > 4) class="vote" @else class="no-vote" @endif>
 				</p>
-				<div class="percent-vote">
-					<div class="img"><img src="{{ url('/') }}/img/tuyendung.png" alt=""><span class="percent">75%</span></div>
-					<p class="tx">Đánh giá khuyến khích việc làm tại đây.</p>
-				</div>
 			</div>
 			<div class="pn-left pn-hightlight row">
 				<h5>Mọi người nói về chúng tôi</h5>
+				@foreach($comments as $comment)
 				<p class="content">
-					<span>Nơi khởi đầu tốt</span>
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<span>abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd</span>
+					<span>{{ $comment->title }}</span>
+					<img src="{{ url('/') }}/img/star.png" alt="" class="vote">
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($comment->star > 1) class="vote" @else class="no-vote" @endif>
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($comment->star > 2) class="vote" @else class="no-vote" @endif>
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($comment->star > 3) class="vote" @else class="no-vote" @endif>
+					<img src="{{ url('/') }}/img/star.png" alt="" @if($comment->star > 4) class="vote" @else class="no-vote" @endif>
+					<span>{{ $comment->description }}</span>
 				</p>
-				<p class="content">
-					<span>Nơi khởi đầu tốt</span>
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<span>abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd</span>
-				</p>
-				<p class="content" style="border:none">
-					<span>Nơi khởi đầu tốt</span>
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" class="active" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<img src="{{ url('/') }}/img/star.png" alt="">
-					<span>abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd</span>
-				</p>
+				@endforeach
 				<div class="bot"><span class="active"></span>
 				<span class="active"></span>
 				<span></span>
@@ -226,6 +207,7 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal">
+        	<input type="hidden" name="company" value="{{ $company->id }}">
 		  <div class="form-group">
 		    <label for="inputTitle" class="col-sm-3 control-label">Tiêu đề</label>
 		    <div class="col-sm-9">
@@ -239,27 +221,22 @@
 		    </div>
 		  </div>
 		  <div class="form-group">
-		  	<label for="inputScore" class="col-sm-3 control-label">Số sao</label>
+		  	<label for="inputScore" class="col-sm-3 control-label">Đánh giá</label>
 		  	<div class="col-sm-9">
 		      	<p class="star-vote" id="star-vote">
-					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-1">
-					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-2">
-					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-3">
-					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-4">
-					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-5">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-1" class="vote">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-2" class="vote">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-3" class="vote">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-4" class="vote">
+					<img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-5" class="vote">
 				</p>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <div class="col-sm-offset-3 col-sm-9">
-		      <button type="submit" class="btn btn-default">Gửi đánh giá</button>
 		    </div>
 		  </div>
 		</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng lại</button>
+        <button type="button" class="btn btn-primary" id="send-comment">Gửi đánh giá</button>
       </div>
     </div>
   </div>
@@ -319,7 +296,138 @@
 	}
 
 	$('#star-vote>img').click(function(){
-		alert($(this).attr('id'));
+		switch($(this).attr('id')){
+			case 'star-vote-1':
+				$('#star-vote-1').removeClass('no-vote').addClass('vote');
+				$('#star-vote-2').removeClass('vote').addClass('no-vote');
+				$('#star-vote-3').removeClass('vote').addClass('no-vote');
+				$('#star-vote-4').removeClass('vote').addClass('no-vote');
+				$('#star-vote-5').removeClass('vote').addClass('no-vote');
+				break;
+			case 'star-vote-2':
+				$('#star-vote-1').removeClass('no-vote').addClass('vote');
+				$('#star-vote-2').removeClass('no-vote').addClass('vote');
+				$('#star-vote-3').removeClass('vote').addClass('no-vote');
+				$('#star-vote-4').removeClass('vote').addClass('no-vote');
+				$('#star-vote-5').removeClass('vote').addClass('no-vote');
+				break;
+			case 'star-vote-3':
+				$('#star-vote-1').removeClass('no-vote').addClass('vote');
+				$('#star-vote-2').removeClass('no-vote').addClass('vote');
+				$('#star-vote-3').removeClass('no-vote').addClass('vote');
+				$('#star-vote-4').removeClass('vote').addClass('no-vote');
+				$('#star-vote-5').removeClass('vote').addClass('no-vote');
+				break;
+			case 'star-vote-4':
+				$('#star-vote-1').removeClass('no-vote').addClass('vote');
+				$('#star-vote-2').removeClass('no-vote').addClass('vote');
+				$('#star-vote-3').removeClass('no-vote').addClass('vote');
+				$('#star-vote-4').removeClass('no-vote').addClass('vote');
+				$('#star-vote-5').removeClass('vote').addClass('no-vote');
+				break;
+			case 'star-vote-5':
+				$('#star-vote-1').removeClass('no-vote').addClass('vote');
+				$('#star-vote-2').removeClass('no-vote').addClass('vote');
+				$('#star-vote-3').removeClass('no-vote').addClass('vote');
+				$('#star-vote-4').removeClass('no-vote').addClass('vote');
+				$('#star-vote-5').removeClass('no-vote').addClass('vote');
+				break;
+			default:
+				break;
+		}
+	});
+
+	$('#send-comment').click(function(){
+		var countStar = $('#add-comment>.vote').length;
+		var title = $('#inputTitle').val();
+		var description = $('#inputDescription').val();
+		var company = $('input[name=company]').val()
+		var request = $.ajax({
+			headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    },
+		  url: "{{ url('/') }}/send-comment",
+		  method: "POST",
+		  data: { 
+		  	'company' : company,
+		  	'title' : title,
+		  	'description' : description,
+		  	'countStar' : countStar,
+		  },
+		  dataType: "json"
+		});
+		 
+		request.done(function( msg ) {
+		  if(msg.code == 200){
+		  	$('#add-comment').modal('toggle');
+		  	swal("Thông báo", "Thêm đánh giá thành công!", "success");
+		  }else{
+		  	$('#add-comment').modal('toggle');
+		  	swal("Cảnh báo", msg.message , "error");
+		  }
+		});
+		 
+		request.fail(function( jqXHR, textStatus ) {
+		  alert( "Request failed: " + textStatus );
+		});
+	});
+
+	$('#follow-btn').click(function(){
+		var company = $('input[name=company-id]').val();
+		var request = $.ajax({
+			headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    },
+		  url: "{{ url('/') }}/follow-company",
+		  method: "POST",
+		  data: { 
+		  	'company' : company
+		  },
+		  dataType: "json"
+		});
+		 
+		request.done(function( msg ) {
+		  if(msg.code == 200){
+		  	// thong bao khi follow thanh cong
+		  	$('#follow-btn').hide();
+		  	$('#unfollow-btn').show();
+		  }else{
+		  	swal("Cảnh báo", "Đã có lỗi khi thêm đánh giá!", "error");
+		  }
+		});
+		 
+		request.fail(function( jqXHR, textStatus ) {
+		  alert( "Request failed: " + textStatus );
+		});
+	});
+
+	$('#unfollow-btn').click(function(){
+		var company = $('input[name=company-id]').val();
+		var request = $.ajax({
+			headers: {
+		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		    },
+		  url: "{{ url('/') }}/unfollow-company",
+		  method: "POST",
+		  data: { 
+		  	'company' : company
+		  },
+		  dataType: "json"
+		});
+		 
+		request.done(function( msg ) {
+		  if(msg.code == 200){
+		  	// thong bao khi unfollow thanh cong
+		  	$('#follow-btn').show();
+		  	$('#unfollow-btn').hide();
+		  }else{
+		  	swal("Cảnh báo", "Đã có lỗi khi thêm đánh giá!", "error");
+		  }
+		});
+		 
+		request.fail(function( jqXHR, textStatus ) {
+		  alert( "Request failed: " + textStatus );
+		});
 	});
 </script>
 

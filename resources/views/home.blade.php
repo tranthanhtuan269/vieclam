@@ -10,6 +10,7 @@
                 <div class="panel-body">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#create_cv">Create CV</button>
                     <button class="btn btn-primary">Find Job</button>
+                    <a href="{{ url('/') }}/companies/1" class="btn btn-primary">Companies</a>
                 </div>
             </div>
 

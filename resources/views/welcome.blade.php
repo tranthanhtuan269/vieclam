@@ -79,7 +79,7 @@
             @endif
 
             <div class="row content">
-                <h3>Welcome to <h1>chovieclam.com!</h1></h3>
+                <h3>Welcome to <h1>gmon.vn!</h1></h3>
             </div>
         </div>
     </body>

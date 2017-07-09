@@ -19,5 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('send-comment', 'CompanyController@sendcomment');
+Route::post('follow-company', 'CompanyController@follow');
+Route::post('unfollow-company', 'CompanyController@unfollow');
 Route::resource('companies', 'CompanyController');
 Route::resource('jobs', 'JobController');
