@@ -124,8 +124,8 @@ a{text-decoration: none !important;}
 .item-work .location i{background-position:-20px -60px}
 .item-work .salary i{background-position:0 -60px}
 .item-work .salary,.location{height: 33px;background: #2a70b8;padding: 0px 20px;line-height: 33px;color:white;text-overflow:ellipsis;white-space: nowrap;}
-.item-work .location{margin-bottom: 1px;}
-.item-work .salary{margin-top: 1px}
+.item-work .location{margin-bottom: 1px;font-size: 11px;}
+.item-work .salary{margin-top: 1px;font-size: 11px;}
 
 .work-img{border-top:2px solid #2a70b8;height: 120px;text-align: center;position: relative;background: white;margin: 0;}
 .work-img-border{border:2px solid #2a70b8;}

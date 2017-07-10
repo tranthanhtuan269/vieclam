@@ -7,6 +7,7 @@ use App\Company;
 use App\Job;
 use App\Comment;
 use App\Follow;
+use App\CurriculumVitae;
 
 
 class CompanyController extends Controller
@@ -67,7 +68,18 @@ class CompanyController extends Controller
             else $followed = 0;
 
             // check user info
-            var_dump(\Auth::user());die;
+            $curriculumVitae = CurriculumVitae::where('user_id', $current_id)->first();
+            if($curriculumVitae){
+                $jobs_suggest = \DB::table('job')
+                        ->leftjoin('company', 'company.id', '=', 'job.company_id')
+                        ->leftjoin('district', 'district.id', '=', 'job.district_id')
+                        ->leftjoin('city', 'city.id', '=', 'job.city_id')
+                        ->leftjoin('salary', 'salary.id', '=', 'job.salary')
+                        ->select('company.logo', 'job.name', 'salary.name as salary', 'city.name as city', 'district.name as district')
+                        ->get();
+            }else{
+                $jobs_suggest = [];
+            }
         }else{
             $followed = 0;
         }
@@ -85,7 +97,49 @@ class CompanyController extends Controller
             }
             $star = intval($totalStar / count($comments));
 
-            return view('company.index', array('company'=>$company, 'jobs' => $jobs, 'followed' => $followed, 'comments' => $comments, 'votes' => $star));
+            return view('company.index', array('company'=>$company, 'jobs' => $jobs, 'followed' => $followed, 'comments' => $comments, 'votes' => $star, 'jobs_suggest' => $jobs_suggest));
+        }
+        return view('errors.404');
+    }
+
+    public function info($id)
+    {
+        if (\Auth::check()) {
+            $current_id = \Auth::user()->id;
+
+            // check followed
+            $follow = Follow::where('user', $current_id)->where('company', $id)->first();
+            if($follow) $followed = 1;
+            else $followed = 0;
+
+            // check user info
+            $curriculumVitae = CurriculumVitae::where('user_id', $current_id)->first();
+            if($curriculumVitae){
+                $jobs_suggest = \DB::table('job')
+                        ->leftjoin('company', 'company.id', '=', 'job.company_id')
+                        ->leftjoin('district', 'district.id', '=', 'job.district_id')
+                        ->leftjoin('city', 'city.id', '=', 'job.city_id')
+                        ->leftjoin('salary', 'salary.id', '=', 'job.salary')
+                        ->select('company.logo', 'job.name', 'salary.name as salary', 'city.name as city', 'district.name as district')
+                        ->get();
+            }else{
+                $jobs_suggest = [];
+            }
+        }else{
+            $followed = 0;
+        }
+
+        $company = Company::find($id);
+        if($company){
+            // load comment of company
+            $comments = Comment::where('company', $id)->get();
+            $totalStar = 0;
+            foreach ($comments as $comment) {
+                $totalStar += $comment->star;
+            }
+            $star = intval($totalStar / count($comments));
+
+            return view('company.info', array('company'=>$company, 'jobs' => $jobs, 'followed' => $followed, 'comments' => $comments, 'votes' => $star, 'jobs_suggest' => $jobs_suggest));
         }
         return view('errors.404');
     }
