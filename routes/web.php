@@ -37,5 +37,4 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
 	Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
-	Route::resource('admin/city', 'City\\CityController');
 });
