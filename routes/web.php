@@ -22,10 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('send-comment', 'CompanyController@sendcomment');
 Route::post('follow-company', 'CompanyController@follow');
 Route::post('unfollow-company', 'CompanyController@unfollow');
-Route::resource('companies', 'CompanyController');
-Route::resource('jobs', 'JobController');
-
-Route::resource('admin/posts', 'Admin\\PostsController');
 
 // Check role in route middleware
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function () {
@@ -37,4 +33,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
 	Route::resource('admin/users', 'Admin\UsersController');
 	Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
 	Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
+	Route::resource('admin/city', 'CityController');
+	Route::resource('admin/district', 'DistrictController');
 });
+Route::resource('admin/town', 'TownController');
