@@ -1,5 +1,5 @@
 *{margin: 0;padding: 0;}
-body{background-color: #f5f8fa !important;}
+body{background-color: #f5f8fa !important;font-family: 'Noto Sans', sans-serif;}
 li{list-style-type: none;float: left;}
 a{text-decoration: none !important;}
 @media (min-width: 1200px) {
@@ -170,3 +170,7 @@ img.no-vote{
 /*#unfollow-btn{
   display: none;
 }*/
+
+.image-ad img{
+  margin: 0 0 10px 0;
+}

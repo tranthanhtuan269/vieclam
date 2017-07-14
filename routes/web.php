@@ -35,5 +35,10 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
 	Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
 	Route::resource('admin/city', 'CityController');
 	Route::resource('admin/district', 'DistrictController');
+	Route::resource('admin/town', 'TownController');
 });
-Route::resource('admin/town', 'TownController');
+
+// Check role in route middleware
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function () {
+   	
+});
