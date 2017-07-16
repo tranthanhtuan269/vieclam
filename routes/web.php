@@ -23,6 +23,9 @@ Route::post('send-comment', 'CompanyController@sendcomment');
 Route::post('follow-company', 'CompanyController@follow');
 Route::post('unfollow-company', 'CompanyController@unfollow');
 
+Route::get('/getDistrict/{id}', 'HomeController@getDistrict');
+Route::get('/getTown/{id}', 'HomeController@getTown');
+
 // Check role in route middleware
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function () {
    	Route::get('admin', 'Admin\AdminController@index');
@@ -36,9 +39,14 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
 	Route::resource('admin/city', 'CityController');
 	Route::resource('admin/district', 'DistrictController');
 	Route::resource('admin/town', 'TownController');
+	Route::resource('admin/curriculum-vitae', 'CurriculumVitaeController');
+	Route::resource('admin/company', 'CompanyController');
 });
 
 // Check role in route middleware
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function () {
-   	
+   	Route::get('company/create', 'CompanyController@createCompany');
+   	Route::post('company/store', 'CompanyController@storeCompany');
 });
+Route::resource('admin/job-type', 'JobTypeController');
+Route::resource('Admin/company-size', 'CompanySizeController');

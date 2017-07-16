@@ -9,6 +9,7 @@ use App\Town;
 use App\District;
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class TownController extends Controller
 {
@@ -27,7 +28,10 @@ class TownController extends Controller
 				->orWhere('district', 'LIKE', "%$keyword%")
 				->paginate($perPage);
         } else {
-            $town = Town::paginate($perPage);
+            $town = DB::table('towns')
+            ->join('districts', 'districts.id', '=', 'towns.district')
+            ->select('towns.id', 'towns.name', 'districts.name as district')
+            ->paginate($perPage);
         }
 
         return view('town.index', compact('town'));

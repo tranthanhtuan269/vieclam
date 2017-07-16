@@ -70,16 +70,16 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Trang Chủ</a>
                     @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ url('/login') }}">Đăng Nhập</a>
+                        <a href="{{ url('/register') }}">Đăng Ký</a>
                     @endif
                 </div>
             @endif
 
             <div class="row content">
-                <h3>Welcome to <h1>gmon.vn!</h1></h3>
+                <h3>Chào bạn tới với <h1>gmon.vn!</h1></h3>
             </div>
         </div>
     </body>

@@ -174,3 +174,22 @@ img.no-vote{
 .image-ad img{
   margin: 0 0 10px 0;
 }
+
+.control-label{
+  text-transform: capitalize;
+}
+
+.control-label-left{
+  padding-top: 7px;
+  margin-bottom: 0;
+  text-align: left;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.panel-default>.panel-heading {
+  text-transform: capitalize;
+}
+
+#jobs > option{
+  width: 33%;
+}

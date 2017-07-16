@@ -25,4 +25,28 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function getDistrict($id){
+        $districts = \DB::table('districts')
+                    ->where('districts.city', '=', $id)
+                    ->get();   
+        $html = "";
+        $html .= '<option value="0">-- Chọn Quận / Huyện --</option>';
+        foreach ($districts as $district) {
+            $html .= '<option value="'.$district->id.'">'.$district->name.'</option>';
+        }
+        return $html;
+    }
+
+    public function getTown($id){
+        $towns = \DB::table('towns')
+                    ->where('towns.district', '=', $id)
+                    ->get();   
+        $html = "";
+        $html .= '<option value="0">-- Chọn Phường / Xã --</option>';
+        foreach ($towns as $town) {
+            $html .= '<option value="'.$town->id.'">'.$town->name.'</option>';
+        }
+        return $html;
+    }
 }
