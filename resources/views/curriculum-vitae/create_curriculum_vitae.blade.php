@@ -95,6 +95,108 @@
                                 </div>
                                 {!! $errors->first('education', '<p class="help-block">:message</p>') !!}
                             </div>
+                            <div class="form-group {{ $errors->has('school') ? 'has-error' : ''}}">
+                                <label for="birthday" class="col-md-2 control-label">Trường học</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="school" name="school"><option value="0">--Chọn Trường học--</option><option value="1">Đại học Giáo dục</option>
+                                        <option value="2">Đại học Kinh tế Quốc dân</option>
+                                        <option value="3">Cao đẳng sư phạm trung ương</option>
+                                        <option value="4">Đại học Ngoại Thương</option>
+                                        <option value="9">Đại học lao động xã hội</option>
+                                        <option value="10">ĐH Công Nghiệp Hà Nội</option>
+                                        <option value="11">Đại học kinh tế kỹ thuật công nghiệp</option>
+                                        <option value="12">Học viện tài chính</option>
+                                        <option value="13">Cao đẳng kinh tế kỹ thuật và thưong mại</option>
+                                        <option value="83">Trường Cao Đẳng Nghề Đà Nẵng</option>
+                                        <option value="20">Đại học Kinh tế kỹ thuật công nghiệp</option>
+                                        <option value="21">Đại học Ngoại ngữ-Đại học quốc gia</option>
+                                        <option value="22">Học viện Ngoại giao</option>
+                                        <option value="23">Đại học Mở Hà Nội</option>
+                                        <option value="24">Đại học sư phạm Hà Nội</option>
+                                        <option value="26">Đại học khoa học tự nhiên</option>
+                                        <option value="27">Đại học FPT</option>
+                                        <option value="28">Đại học Bách khoa</option>
+                                        <option value="29">Đại học Y Hà Nội</option>
+                                        <option value="30">Đại học dược Hà Nội</option>
+                                        <option value="31">Đại học Luật Hà Nội</option>
+                                        <option value="32">Học viện Công nghệ Bưu chính Viễn thông</option>
+                                        <option value="33"> Đại học Thương Mại</option>
+                                        <option value="34">Học viện phụ nữ Việt Nam</option>
+                                        <option value="35">Cao Đẳng Công nghệ và thương mại Hà Nội</option>
+                                        <option value="36">ĐH Lao động xã hội</option>
+                                        <option value="37">ĐH Kinh Tế Quốc Dân</option>
+                                        <option value="38">Đại học thành đô</option>
+                                        <option value="39">Đại học Tài nguyên và môi trường Hà Nội</option>
+                                        <option value="40">Đại học Mỏ Địa chất</option>
+                                        <option value="41">Cao đẳng thương mại và du lịch</option>
+                                        <option value="42">Học viện quản lý giáo dục </option>
+                                        <option value="43">Đại học khoa học xã hội và nhân văn</option>
+                                        <option value="44">Học viện báo chí và tuyên truyền</option>
+                                        <option value="45">Đại học xây dựng</option>
+                                        <option value="46">Đại học Kinh doanh và công nghệ Hà Nội</option>
+                                        <option value="47">Đại học Thăng Long</option>
+                                        <option value="48">Đại học sân khấu điện ảnh</option>
+                                        <option value="52">Đại Học Kiến Trúc Hà Nội</option>
+                                        <option value="53">Đại học Giao thông vận tải</option>
+                                        <option value="54">Học viện kĩ thuật quân sự</option>
+                                        <option value="55">Học viện nông nghiệp</option>
+                                        <option value="56">Đại học Phương Đông</option>
+                                        <option value="57">Đại học công nghệ giao thông vận tải</option>
+                                        <option value="58">Đại học điện lực</option>
+                                        <option value="59">Đại học Kinh tế</option>
+                                        <option value="60">ĐH Công nghệ - ĐHQGHN</option>
+                                        <option value="61">Khoa Y Dược - ĐHQGHN</option>
+                                        <option value="62">Đại học công đoàn</option>
+                                        <option value="63">Học viện Hậu Cần</option>
+                                        <option value="64">Học viện Hành chính quốc gia</option>
+                                        <option value="65">Học viện Ngân hàng</option>
+                                        <option value="66">Đại học Thủy lợi</option>
+                                        <option value="67">Đại học thủ đô</option>
+                                        <option value="68">Đại học Hà Nội</option>
+                                        <option value="69">Học viện y học cổ truyền</option>
+                                        <option value="70">ĐH Giáo dục - ĐHQGHN</option>
+                                        <option value="71">Học viện chính sách và phát triển</option>
+                                        <option value="72">Đại học kinh tế - ĐHQGHN</option>
+                                        <option value="73">Cao đẳng Hải Dương</option>
+                                        <option value="74">Trường Cao Đẳng Phương Đông Đà Nẵng</option>
+                                        <option value="75">Đại Học Kinh Tế Đà Nẵng</option>
+                                        <option value="76">Đại Học Bách Khoa Đà Nẵng</option>
+                                        <option value="77">Đại Học Đông Á Đà Nẵng</option>
+                                        <option value="78">Đại Học Sư Phạm Đà Nẵng</option>
+                                        <option value="79">Đại Học Ngoại Ngữ Đà Nẵng</option>
+                                        <option value="80">Đại Học Kiến Trúc Đà Nẵng</option>
+                                        <option value="81">Đại Học Duy Tân Đà Nẵng</option>
+                                        <option value="82">Cao Đẳng Kinh Tế Kế Hoạch Đà Nẵng</option>
+                                        <option value="84">Trường Cao Đẳng Thương Mại</option>
+                                        <option value="85">Trường Cao Đẳng Nghề Đà Nẵng</option>
+                                        <option value="86">Trường Cao Đẳng Nghề Việt Úc</option>
+                                        <option value="87">Đại Học Kỹ Thuật Y Dược</option>
+                                        <option value="88">Đại Học Thể Dục Thể Thao</option>
+                                        <option value="89">Trường Cao Đẳng Công Nghệ</option>
+                                        <option value="90">Trường Cao Đẳng Giao Thông Vận Tải II</option>
+                                        <option value="91">Trường Cao Đẳng Bách Khoa</option>
+                                        <option value="92">Trường Cao Đẳng Việt Hàn</option>
+                                        <option value="93">Trường Trung Học Phổ Thông</option>
+                                        <option value="94">Trường Cao Đẳng Công Nghệ Thông Tin</option>
+                                        </select>
+                                    {!! $errors->first('school', '<p class="help-block">:message</p>') !!}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-sm-offset-2">{!! Form::radio('student_process', '0', true); !!}Đang học</label>
+                                    <label class="col-sm-offset-2">{!! Form::radio('student_process', '1'); !!}Đã tốt nghiệp</label>
+                                </div>
+                            </div>
+                            <div class="form-group {{ $errors->has('city') ? 'has-error' : ''}}">
+                                <label for="birthday" class="col-md-2 control-label">Thời gian học</label>
+                                <div class="col-md-4">
+                                    <select class="form-control" id="city" name="city"><option value="0">--Chọn Tỉnh / Thành Phố--</option><option value="1">Hà Nội</option><option value="2">Hồ Chí Minh</option><option value="3">Đà Nẵng</option><option value="4">Hải Phòng</option><option value="5">Cần Thơ</option><option value="6">An Giang</option><option value="7">Bà Rịa Vũng Tàu</option><option value="8">Bạc Liêu</option><option value="9">Bắc Cạn</option><option value="10">Bắc Giang</option><option value="11">Hải Dương</option><option value="12">Bắc Ninh</option><option value="13">Bến Tre</option><option value="14">Bình Dương</option><option value="15">Bình Định</option><option value="16">Bình Phước</option><option value="17">Bình Thuận</option><option value="18">Cà Mau</option><option value="19">Cao Bằng</option><option value="20">Đắk Lắk</option><option value="21">Đăk Nông</option><option value="22">Điện Biên</option><option value="23">Đồng Nai</option><option value="24">Đồng Tháp</option><option value="25">Gia Lai</option><option value="26">Hà Giang</option><option value="27">Hà Nam</option><option value="28">Hà Tĩnh</option><option value="29">Hậu Giang</option><option value="30">Hòa Bình</option><option value="31">Hưng Yên</option><option value="32">Khánh Hòa</option><option value="33">Kiên Giang</option><option value="34">Kon Tum</option><option value="35">Lai Châu</option><option value="36">Lâm Đồng</option><option value="37">Lạng Sơn</option><option value="38">Lào Cai</option><option value="39">Long An</option><option value="40">Nam Định</option><option value="41">Nghệ An</option><option value="42">Ninh Bình</option><option value="43">Ninh Thuận</option><option value="44">Phú Thọ</option><option value="45">Phú Yên</option><option value="46">Quảng Bình</option><option value="47">Quảng Nam</option><option value="48">Quảng Ngãi</option><option value="49">Quảng Ninh</option><option value="50">Quảng Trị</option><option value="51">Sóc Trăng</option><option value="52">Sơn La</option><option value="53">Tây Ninh</option><option value="54">Thái Bình</option><option value="55">Thái Nguyên</option><option value="56">Thanh Hóa</option><option value="57">Huế</option><option value="58">Tiền Giang</option><option value="59">Trà Vinh</option><option value="60">Tuyên Quang</option><option value="61">Vĩnh Long</option><option value="62">Vĩnh Phúc</option><option value="63">Yên Bái</option></select>
+                                    {!! $errors->first('city', '<p class="help-block">:message</p>') !!}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-sm-offset-2">{!! Form::radio('student_process', '0', true); !!}Đang học</label>
+                                    <label class="col-sm-offset-2">{!! Form::radio('student_process', '1'); !!}Đã tốt nghiệp</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group {{ $errors->has('education') ? 'has-error' : ''}}">
