@@ -46,10 +46,13 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
     Route::resource('admin/company', 'CompanyController');
     Route::resource('admin/job-type', 'JobTypeController');
     Route::resource('Admin/company-size', 'CompanySizeController');
+    Route::resource('admin/job', 'JobController');
 });
 
 // Check role in route middleware
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function () {
     Route::get('company/create', 'CompanyController@createCompany');
     Route::post('company/store', 'CompanyController@storeCompany');
+    //Route::resource('company/job', 'JobController');
+    Route::resource('admin/job', 'JobController');
 });

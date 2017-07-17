@@ -1,0 +1,40 @@
+body{background-color: #f5f8fa !important;font-family: 'Noto Sans', sans-serif;}
+
+img.vote{
+  padding: 8px;
+  background-color: blue;
+  border-radius: 6px;
+}
+
+img.no-vote{
+  padding: 8px;
+  background-color: #bbb;
+  border-radius: 6px;
+}
+
+/*#unfollow-btn{
+  display: none;
+}*/
+
+.image-ad img{
+  margin: 0 0 10px 0;
+}
+
+.control-label{
+  text-transform: capitalize;
+}
+
+.control-label-left{
+  padding-top: 7px;
+  margin-bottom: 0;
+  text-align: left;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.panel-default>.panel-heading {
+  text-transform: capitalize;
+}
+
+#jobs > option{
+  width: 33%;
+}
