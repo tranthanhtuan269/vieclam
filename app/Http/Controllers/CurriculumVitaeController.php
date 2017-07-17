@@ -144,4 +144,74 @@ class CurriculumVitaeController extends Controller
 
         return redirect('admin/curriculum-vitae');
     }
+    
+    public function createCurriculumVitae() {
+        return view('curriculum-vitae.create_curriculum_vitae');
+    }
+    
+    public function storeCurriculumVitae(Request $request) {
+        // $validator = Validator::make($request->all(), [
+        //     'tieu_de' => 'required|max:255',
+        // ]);
+        // if ($validator->fails()) {
+        //     return redirect('tinbds/create')
+        //             ->withErrors($validator)
+        //             ->withInput();
+        // }
+
+        $img_banner = '';
+        if ($request->hasFile('banner-img')) {
+            $file_banner = $request->file('banner-img');
+            $filename = $file_banner->getClientOriginalName();
+            $extension = $file_banner->getClientOriginalExtension();
+            $img_banner = date('His') . $filename;
+            $destinationPath = base_path() . '/public/images';
+            $file_banner->move($destinationPath, $img_banner);
+        }
+
+        $img_logo = '';
+        if ($request->hasFile('logo-img')) {
+            $file_logo = $request->file('logo-img');
+            $filename = $file_logo->getClientOriginalName();
+            $extension = $file_logo->getClientOriginalExtension();
+            $img_logo = date('His') . $filename;
+            $destinationPath = base_path() . '/public/images';
+            $file_logo->move($destinationPath, $img_logo);
+        }
+
+        $picture = '';
+        $allPic = '';
+        if ($request->hasFile('images-img')) {
+            $files = $request->file('images-img');
+            foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $picture = date('His') . $filename;
+                $allPic .= $picture . ';';
+                $destinationPath = base_path() . '/public/images';
+                $file->move($destinationPath, $picture);
+            }
+        }
+
+        $input = $request->all();
+        if ($input['description'] == null)
+            $input['description'] = '';
+        unset($input['banner-img']);
+        unset($input['logo-img']);
+        unset($input['images-img']);
+        $input['logo'] = $img_logo;
+        $input['banner'] = $img_banner;
+        $input['images'] = $allPic;
+        $input['user'] = \Auth::user()->id;
+        
+        $company = Company::create($input);
+
+        if ($company) {
+            return redirect()->action(
+                    'CompanyController@info', ['id' => $company->id]
+                );
+        }
+
+        return redirect()->back();
+    }
 }

@@ -56,3 +56,9 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function 
     //Route::resource('company/job', 'JobController');
     Route::resource('admin/job', 'JobController');
 });
+
+// Check role in route middleware
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'user'], function () {
+    Route::get('curriculumvitae/create', 'CurriculumVitaeController@createCurriculumVitae');
+    Route::post('curriculumvitae/store', 'CurriculumVitaeController@storeCurriculumVitae');
+});
