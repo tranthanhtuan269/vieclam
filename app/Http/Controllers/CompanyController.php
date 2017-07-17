@@ -4,41 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Session;
 
-class CompanyController extends Controller
-{
+class CompanyController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $keyword = $request->get('search');
         $perPage = 25;
 
         if (!empty($keyword)) {
             $company = Company::where('user', 'LIKE', "%$keyword%")
-				->orWhere('banner', 'LIKE', "%$keyword%")
-				->orWhere('logo', 'LIKE', "%$keyword%")
-				->orWhere('name', 'LIKE', "%$keyword%")
-				->orWhere('sub_name', 'LIKE', "%$keyword%")
-				->orWhere('tax_code', 'LIKE', "%$keyword%")
-				->orWhere('sologan', 'LIKE', "%$keyword%")
-				->orWhere('size', 'LIKE', "%$keyword%")
-				->orWhere('jobs', 'LIKE', "%$keyword%")
-				->orWhere('city', 'LIKE', "%$keyword%")
-				->orWhere('district', 'LIKE', "%$keyword%")
-				->orWhere('town', 'LIKE', "%$keyword%")
-				->orWhere('address', 'LIKE', "%$keyword%")
-				->orWhere('description', 'LIKE', "%$keyword%")
-				->orWhere('images', 'LIKE', "%$keyword%")
-				->paginate($perPage);
+                    ->orWhere('banner', 'LIKE', "%$keyword%")
+                    ->orWhere('logo', 'LIKE', "%$keyword%")
+                    ->orWhere('name', 'LIKE', "%$keyword%")
+                    ->orWhere('sub_name', 'LIKE', "%$keyword%")
+                    ->orWhere('tax_code', 'LIKE', "%$keyword%")
+                    ->orWhere('sologan', 'LIKE', "%$keyword%")
+                    ->orWhere('size', 'LIKE', "%$keyword%")
+                    ->orWhere('jobs', 'LIKE', "%$keyword%")
+                    ->orWhere('city', 'LIKE', "%$keyword%")
+                    ->orWhere('district', 'LIKE', "%$keyword%")
+                    ->orWhere('town', 'LIKE', "%$keyword%")
+                    ->orWhere('address', 'LIKE', "%$keyword%")
+                    ->orWhere('description', 'LIKE', "%$keyword%")
+                    ->orWhere('images', 'LIKE', "%$keyword%")
+                    ->paginate($perPage);
         } else {
             $company = Company::paginate($perPage);
         }
@@ -51,8 +49,7 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
-    {
+    public function create() {
         return view('company.create');
     }
 
@@ -61,20 +58,17 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function createCompany()
-    {
+    public function createCompany() {
         // $jobTypes = 
         // companysizes = 
         // cities = 
         return view('company.create_company');
     }
 
-    public function storeCompany(Request $request){
-        // var_dump($request->hasFile('images-img'));die;
+    public function storeCompany(Request $request) {
         // $validator = Validator::make($request->all(), [
         //     'tieu_de' => 'required|max:255',
         // ]);
-
         // if ($validator->fails()) {
         //     return redirect('tinbds/create')
         //             ->withErrors($validator)
@@ -86,7 +80,7 @@ class CompanyController extends Controller
             $file_banner = $request->file('banner-img');
             $filename = $file_banner->getClientOriginalName();
             $extension = $file_banner->getClientOriginalExtension();
-            $img_banner = date('His').$filename;
+            $img_banner = date('His') . $filename;
             $destinationPath = base_path() . '/public/images';
             $file_banner->move($destinationPath, $img_banner);
         }
@@ -96,7 +90,7 @@ class CompanyController extends Controller
             $file_logo = $request->file('logo-img');
             $filename = $file_logo->getClientOriginalName();
             $extension = $file_logo->getClientOriginalExtension();
-            $img_logo = date('His').$filename;
+            $img_logo = date('His') . $filename;
             $destinationPath = base_path() . '/public/images';
             $file_logo->move($destinationPath, $img_logo);
         }
@@ -105,10 +99,10 @@ class CompanyController extends Controller
         $allPic = '';
         if ($request->hasFile('images-img')) {
             $files = $request->file('images-img');
-            foreach($files as $file){
+            foreach ($files as $file) {
                 $filename = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
-                $picture = date('His').$filename;
+                $picture = date('His') . $filename;
                 var_dump($picture);
                 $allPic .= $picture . ';';
                 $destinationPath = base_path() . '/public/images';
@@ -125,8 +119,8 @@ class CompanyController extends Controller
         $input['images'] = $allPic;
         $input['sologan'] = '';
         $input['user'] = \Auth::user()->id;
-        
-        if(Company::create($input)){
+
+        if (Company::create($input)) {
             return Redirect::route('company.index');
         }
 
@@ -140,13 +134,12 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $this->validate($request, [
-			'user' => 'required'
-		]);
+            'user' => 'required'
+        ]);
         $requestData = $request->all();
-        
+
         Company::create($requestData);
 
         Session::flash('flash_message', 'Company added!');
@@ -161,8 +154,7 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
-    {
+    public function show($id) {
         $company = Company::findOrFail($id);
 
         return view('company.show', compact('company'));
@@ -175,8 +167,7 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $company = Company::findOrFail($id);
 
         return view('company.edit', compact('company'));
@@ -190,13 +181,12 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update($id, Request $request)
-    {
+    public function update($id, Request $request) {
         $this->validate($request, [
-			'user' => 'required'
-		]);
+            'user' => 'required'
+        ]);
         $requestData = $request->all();
-        
+
         $company = Company::findOrFail($id);
         $company->update($requestData);
 
@@ -212,12 +202,19 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         Company::destroy($id);
 
         Session::flash('flash_message', 'Company deleted!');
 
         return redirect('admin/company');
+    }
+    
+    public function info($id){
+        echo $id;die;
+    }
+    
+    public function jobs($id){
+        echo $id;die;
     }
 }
