@@ -106,7 +106,6 @@ class CompanyController extends Controller {
                 $filename = $file->getClientOriginalName();
                 $extension = $file->getClientOriginalExtension();
                 $picture = date('His') . $filename;
-                var_dump($picture);
                 $allPic .= $picture . ';';
                 $destinationPath = base_path() . '/public/images';
                 $file->move($destinationPath, $picture);
@@ -114,17 +113,22 @@ class CompanyController extends Controller {
         }
 
         $input = $request->all();
+        if ($input['description'] == null)
+            $input['description'] = '';
         unset($input['banner-img']);
         unset($input['logo-img']);
         unset($input['images-img']);
         $input['logo'] = $img_logo;
         $input['banner'] = $img_banner;
         $input['images'] = $allPic;
-        $input['sologan'] = '';
         $input['user'] = \Auth::user()->id;
+        
+        $company = Company::create($input);
 
-        if (Company::create($input)) {
-            return Redirect::route('company.index');
+        if ($company) {
+            return redirect()->action(
+                    'CompanyController@info', ['id' => $company->id]
+                );
         }
 
         return redirect()->back();
@@ -214,8 +218,61 @@ class CompanyController extends Controller {
     }
 
     public function info($id) {
-        echo $id;
-        die;
+        // load company info
+        if (\Auth::check()) {
+            $current_id = \Auth::user()->id;
+
+            // check followed
+            $follow = Follow::where('user', $current_id)->where('company', $id)->first();
+            if ($follow)
+                $followed = 1;
+            else
+                $followed = 0;
+        }else {
+            $followed = 0;
+        }
+
+//        $company = Company::find($id);
+        $company = \DB::table('companies')
+                ->join('cities', 'cities.id', '=', 'companies.city')
+                ->join('districts', 'districts.id', '=', 'companies.district')
+                ->join('towns', 'towns.id', '=', 'companies.town')
+                ->join('company_sizes', 'company_sizes.id', '=', 'companies.size')
+                ->select(
+                        'companies.name', 
+                        'companies.address', 
+                        'cities.name as city', 
+                        'districts.name as district', 
+                        'towns.name as town', 
+                        'companies.jobs', 
+                        'company_sizes.detail as size', 
+                        'companies.sologan', 
+                        'companies.description',
+                        'companies.images'
+                )
+                ->where('companies.id', $id)
+                ->first();
+        dd($company);
+        if ($company) {
+            $company->hotline = $company->getPhoneNumber($company->user);
+
+            // load comment of company
+            $comments = Comment::where('company', $id)->get();
+            $totalStar = 0;
+            foreach ($comments as $comment) {
+                $totalStar = $comment->star;
+            }
+
+            if (count($comments) == 0)
+                $numberComment = 1;
+            else
+                $numberComment = count($comments);
+
+            $star = intval($totalStar / $numberComment);
+
+            return view('company.jobs', array('company' => $company, 'jobs' => $jobs, 'followed' => $followed, 'comments' => $comments, 'votes' => $star));
+        }
+        return view('errors.404');
     }
 
     public function jobs($id) {
@@ -234,7 +291,7 @@ class CompanyController extends Controller {
         }
 
         $company = Company::find($id);
-        
+
         if ($company) {
             $company->hotline = $company->getPhoneNumber($company->user);
             // load job of company
@@ -246,9 +303,11 @@ class CompanyController extends Controller {
             foreach ($comments as $comment) {
                 $totalStar = $comment->star;
             }
-            
-            if(count($comments) == 0) $numberComment = 1;
-            else $numberComment = count($comments);
+
+            if (count($comments) == 0)
+                $numberComment = 1;
+            else
+                $numberComment = count($comments);
 
             $star = intval($totalStar / $numberComment);
 
@@ -256,61 +315,61 @@ class CompanyController extends Controller {
         }
         return view('errors.404');
     }
-    
-    public function sendcomment(Request $request){
+
+    public function sendcomment(Request $request) {
         $input = $request->all();
         $current_id = \Auth::user()->id;
 
         // check exist comment of user
         $commentExist = Comment::where('created_by', $current_id)->where('company', $input['company'])->first();
 
-        if($commentExist)
+        if ($commentExist)
             return \Response::json(array('code' => '404', 'message' => 'Bạn chỉ được gửi đánh giá 1 lần với Nhà tuyển dụng này!'));
 
         // store
-        $comment                    = new Comment;
-        $comment->title             = $input['title'];
-        $comment->description       = $input['description'];
-        $comment->star              = $input['countStar'];
-        $comment->company           = $input['company'];
-        $comment->created_by        = $current_id;
-        $comment->created_at        = date("Y-m-d H:i:s");
+        $comment = new Comment;
+        $comment->title = $input['title'];
+        $comment->description = $input['description'];
+        $comment->star = $input['countStar'];
+        $comment->company = $input['company'];
+        $comment->created_by = $current_id;
+        $comment->created_at = date("Y-m-d H:i:s");
 
-        if($comment->save()){
+        if ($comment->save()) {
             return \Response::json(array('code' => '200', 'message' => 'success', 'comment' => $comment));
         }
         return \Response::json(array('code' => '404', 'message' => 'unsuccess'));
     }
-    
-    public function follow(Request $request){
+
+    public function follow(Request $request) {
         $input = $request->all();
         $current_id = \Auth::user()->id;
 
         $follow = Follow::where('user', $current_id)->where('company', $input['company'])->first();
-        if($follow == null){
+        if ($follow == null) {
             // store
-            $follow                     = new Follow;
-            $follow->user               = $current_id;
-            $follow->company            = $input['company'];
+            $follow = new Follow;
+            $follow->user = $current_id;
+            $follow->company = $input['company'];
 
-            if($follow->save()){
+            if ($follow->save()) {
                 return \Response::json(array('code' => '200', 'message' => 'success', 'follow' => $follow));
             }
-        }else{
+        } else {
             return \Response::json(array('code' => '200', 'message' => 'success', 'follow' => $follow));
         }
         return \Response::json(array('code' => '404', 'message' => 'unsuccess'));
     }
 
-    public function unfollow(Request $request){
+    public function unfollow(Request $request) {
         $input = $request->all();
         $current_id = \Auth::user()->id;
 
         $follow = Follow::where('user', $current_id)->where('company', $input['company'])->first();
-        if($follow){
-            if($follow->delete()){
+        if ($follow) {
+            if ($follow->delete()) {
                 return \Response::json(array('code' => '200', 'message' => 'success', 'follow' => $follow));
-            }else{
+            } else {
                 return \Response::json(array('code' => '404', 'message' => 'unsuccess'));
             }
         }

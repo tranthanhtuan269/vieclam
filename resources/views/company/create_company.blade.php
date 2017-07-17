@@ -95,6 +95,13 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="form-group {{ $errors->has('sologan') ? 'has-error' : ''}}">
+                        <div class="col-md-12">
+                            {!! Form::text('sologan', null, ['class' => 'form-control', 'placeholder' => 'Khẩu hiệu']) !!}
+                            {!! $errors->first('sologan', '<p class="help-block">:message</p>') !!}
+                        </div>
+                    </div>
                     <hr>
                     <div class="form-group {{ $errors->has('jobs') ? 'has-error' : ''}}">
                         <div class="col-md-12">
@@ -163,7 +170,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-4 col-md-4">
                             <button class="btn btn-primary" id="submit-btn">Tạo mới</button>
-                            <a href="{{ url('/') }}" class="btn btn-primary">Trở về trang chủ</a>
+                            <a href="{{ url('/home') }}" class="btn btn-primary">Trở về trang chủ</a>
                         </div>
                     </div>
                     {!! Form::close() !!}
@@ -260,7 +267,7 @@ $(document).ready(function () {
     $("#submit-btn").click(function () {
         var listJobs = '';
         $('.dropdown-menu.inner>li.selected').each(function (index) {
-            listJobs += $(this).attr('data-original-index') + ';';
+            listJobs += $(this).text() + ';';
         });
 
         $('#description').val(CKEDITOR.instances["description"].getData());
