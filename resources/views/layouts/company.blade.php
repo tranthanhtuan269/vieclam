@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
         <link href="/css/customize.css" rel="stylesheet">
     </head>
-    <body>
+    <body data-site="{{ url('/') }}">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">

@@ -65,7 +65,7 @@ class CurriculumVitaeController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
-    {
+    {        
         $this->validate($request, [
 			'user' => 'required'
 		]);
@@ -159,6 +159,8 @@ class CurriculumVitaeController extends Controller
         //             ->withInput();
         // }
 
+        dd($request);
+        
         $img_banner = '';
         if ($request->hasFile('banner-img')) {
             $file_banner = $request->file('banner-img');

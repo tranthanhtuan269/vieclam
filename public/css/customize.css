@@ -38,3 +38,34 @@ img.no-vote{
 #jobs > option{
   width: 33%;
 }
+
+*:focus {
+    outline: 0 !important;
+}
+
+.hoc_tap_success-btn,
+.hoc_tap_delete-btn,
+.hoc_tap_edit-btn{
+  margin: 0 5px;
+}
+
+.form-hoc-tap-group{
+  border-top:1px solid #ccc;
+  padding-top: 15px;
+}
+
+.form-kinh-nghiem-group{
+  border-top:1px solid #ccc;
+  padding-top: 15px;
+}
+
+.first-form{
+  border-top:none;
+  padding-top: 15px;
+}
+
+.kinh-nghiem-hide{
+  line-height: 30px;
+  font-size: 16px;
+  color: green;
+}
