@@ -307,13 +307,38 @@
                         <div class="text-center"><div class="btn btn-link" id="them_moi_kinh_nghiem"> + Thêm mới</div></div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('word_experience') ? 'has-error' : ''}}">
-                        {!! Form::label('word_experience', 'Kinh nghiệm làm việc', ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
-                            {!! Form::text('word_experience', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('word_experience', '<p class="help-block">:message</p>') !!}
+                    <div class="panel panel-default" id="trinh_do_ngoai_ngu">
+                        <div class="panel-heading">Trình độ ngoại ngữ</div>
+                        <div class="panel-body">
+                            <input type="hidden" name="language" id="language" value="">
+                            <div class="form-ngon-ngu-group first-form" id="ngoai_ngu_0">
+                                <div id='ngoai_ngu_0_content'>
+                                    <div class="form-group">
+                                        <label for="ten_ngoai_ngu" class="col-md-2 control-label">Tên ngoại ngữ</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" class="ten_ngoai_ngu" id="ten_ngoai_ngu_0">
+                                        </div>
+                                        <label for="trinh_do_ngoai_ngu" class="col-md-2 control-label">Trình độ</label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" class="trinh_do_ngoai_ngu" id="trinh_do_ngoai_ngu_0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class='col-md-8'>
+                                            <p id='ngoai_ngu_0_txt' class='ngoai_ngu-hide'></p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class='btn btn-danger pull-right kinh_nghiem_delete-btn' id='delete_ngoai_ngu_0'>Hủy bỏ</div>
+                                            <div class='btn btn-primary pull-right ngoai_ngu_edit-btn' id='edit_ngoai_ngu_0' style='display:none;'>Chỉnh sửa</div>
+                                            <div class="btn btn-primary pull-right ngoai_ngu_success-btn" id='success_ngoai_ngu_0'>Hoàn thành</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="text-center"><div class="btn btn-link" id="them_moi_ngoai_ngu"> + Thêm mới</div></div>
                     </div>
+
                     <div class="form-group {{ $errors->has('language') ? 'has-error' : ''}}">
                         {!! Form::label('language', 'Ngoại ngữ', ['class' => 'col-md-3 control-label']) !!}
                         <div class="col-md-9">
