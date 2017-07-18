@@ -69,3 +69,9 @@ img.no-vote{
   font-size: 16px;
   color: green;
 }
+
+.language-delete{
+  margin: 0 15px;
+  padding: 5px;
+  color: red;
+}

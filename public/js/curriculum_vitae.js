@@ -2,88 +2,23 @@ $(document).ready(function () {
     var site_link = $('body').attr('data-site');
     var count_hoc_tap = 0;
     var count_kinh_nghiem = 0;
-    var count_ngoai_ngu = 0;
+    var count_language = 0;
 
-    $('#them_moi_ngoai_ngu').click(function () {
-        count_ngoai_ngu++;
-        var html = "";
-            html += "<div class='form-ngon-ngu-group' id='ngoai_ngu_" + count_ngoai_ngu + "'>";
-                html += "<div id='ngoai_ngu_" + count_ngoai_ngu + "_content'>";
-                    html += "<div class='form-group'>";
-                        html += "<label for='ten_ngoai_ngu' class='col-md-2 control-label'>Tên ngoại ngữ</label>";
-                        html += "<div class='col-md-4'>";
-                            html += "<input type='text' class='form-control' class='ten_ngoai_ngu' id='ten_ngoai_ngu_" + count_ngoai_ngu + "'>";
-                        html += "</div>";
-                        html += "<label for='trinh_do_ngoai_ngu' class='col-md-2 control-label'>Trình độ</label>";
-                        html += "<div class='col-md-4'>";
-                            html += "<input type='text' class='form-control' class='trinh_do_ngoai_ngu' id='trinh_do_ngoai_ngu_" + count_ngoai_ngu + "'>";
-                        html += "</div>";
-                    html += "</div>";
-                    html += "<div class='form-group'>";
-                        html += "<div class='col-md-8'>";
-                            html += "<p id='ngoai_ngu_" + count_ngoai_ngu + "_txt' class='ngoai_ngu-hide'></p>";
-                        html += "</div>";
-                        html += "<div class='col-md-4'>";
-                            html += "<div class='btn btn-danger pull-right ngoai_ngu_delete-btn' id='delete_ngoai_ngu_" + count_ngoai_ngu + "'>Hủy bỏ</div>";
-                            html += "<div class='btn btn-primary pull-right ngoai_ngu_edit-btn' id='edit_ngoai_ngu_" + count_ngoai_ngu + "' style='display:none;'>Chỉnh sửa</div>";
-                            html += "<div class='btn btn-primary pull-right ngoai_ngu_success-btn' id='success_ngoai_ngu_" + count_ngoai_ngu + "'>Hoàn thành</div>";
-                        html += "</div>";
-                    html += "</div>";
-                html += "</div>";
-            html += "</div>";
-        $(html).appendTo('#trinh_do_ngoai_ngu>.panel-body');
-        addEventToTrinhDoNgoaiNgu();
-    });
+    $('#add-language').click(function(){
+        count_language++;
+        var html = "<label for='ten_ngoai_ngu' class='col-md-4' id='language-"+count_language+"'><div class='col-md-12'>";
+        html += " - <span class='ngoai-ngu'>"+$('#ten_ngoai_ngu').val()+"</span> - Trình độ: <span class='ngoai-ngu'>"+$('#trinh_do_ngoai_ngu').val()+"</span>";
+        html += "<span class='language-delete' id='language-delete-"+count_language+"'>&nbsp;x&nbsp;</span></div></label>";
+        $(html).appendTo('#ngoai_ngu_content');
 
-    $('.ngoai_ngu_delete-btn').click(function () {
-        var id_obj = $(this).attr('id');
-        id_obj = id_obj.substring(17, id_obj.length);
-        $('#ngoai_ngu_' + id_obj).remove();
-        count_ngoai_ngu--;
-    });
-
-    $('.ngoai_ngu_success-btn').click(function () {
-        var id_obj = $(this).attr('id');
-        id_obj = id_obj.substring(18, id_obj.length);
-        $('#ngoai_ngu_' + id_obj + '_content').fadeOut("slow", function () {});
-        $('#ngoai_ngu_' + id_obj + '_txt').html(' - ' + $('#ten_ngoai_ngu_' + id_obj).val() + ' - Trình độ ' + $('#trinh_do_ngoai_ngu_' + id_obj).val());
-        $(this).hide();
-        $('#edit_ngoai_ngu_' + id_obj).show();
-    });
-
-    $('.ngoai_ngu_edit-btn').click(function () {
-        var id_obj = $(this).attr('id');
-        id_obj = id_obj.substring(15, id_obj.length);
-        $('#ngoai_ngu_' + id_obj + '_content').show();
-        $(this).hide();
-        $('#success_ngoai_ngu_' + id_obj).show();
-    });
-
-    function addEventToTrinhDoNgoaiNgu() {
-        $('.ngoai_ngu_delete-btn').click(function () {
+        $('.language-delete').click(function(){
             var id_obj = $(this).attr('id');
-            id_obj = id_obj.substring(17, id_obj.length);
-            $('#ngoai_ngu_' + id_obj).remove();
-            count_ngoai_ngu--;
+            id_obj = id_obj.substring(16, id_obj.length);
+            console.log(id_obj);
+            $('#language-' + id_obj).remove();
+            count_language--;
         });
-
-        $('.ngoai_ngu_success-btn').click(function () {
-            var id_obj = $(this).attr('id');
-            id_obj = id_obj.substring(18, id_obj.length);
-            $('#ngoai_ngu_' + id_obj + '_content').fadeOut("slow", function () {});
-            $('#ngoai_ngu_' + id_obj + '_txt').html(' - ' + $('#ten_ngoai_ngu_' + id_obj).val() + ' - Trình độ ' + $('#trinh_do_ngoai_ngu_' + id_obj).val());
-            $(this).hide();
-            $('#edit_ngoai_ngu_' + id_obj).show();
-        });
-
-        $('.ngoai_ngu_edit-btn').click(function () {
-            var id_obj = $(this).attr('id');
-            id_obj = id_obj.substring(15, id_obj.length);
-            $('#ngoai_ngu_' + id_obj + '_content').show();
-            $(this).hide();
-            $('#success_ngoai_ngu_' + id_obj).show();
-        });
-    }
+    });
 
     $('#them_moi_kinh_nghiem').click(function () {
         count_kinh_nghiem++;
