@@ -287,11 +287,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label for="ten_cong_ty" class="col-md-2 control-label">Mô tả ngắn</label>
-                                            <div class="col-md-10">
-                                                <input type="text" class="form-control" class="mo_ta_0" id="mo_ta_0" placeholder="Lý do nghỉ việc?">
-                                            </div>
+                                        <div class="col-md-2 col-sm-offset-1 image_company">
+                                            <img src="" id="company_image_0" class="img-company" style="height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
+                                            <input type="file" class="company-img" id="company-img-0" style="display: none;">
+                                        </div>
+                                        <div class="col-md-8 col-sm-offset-1">
+                                            <textarea rows="4" cols="50" class="form-control" class="mo_ta_0" id="mo_ta_0" placeholder="Lý do nghỉ việc?"></textarea>
                                         </div>
                                     </div>
                                 </div>

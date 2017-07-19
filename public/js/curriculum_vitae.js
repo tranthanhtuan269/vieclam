@@ -2,13 +2,11 @@ $(document).ready(function () {
     CKEDITOR.replace('interests');
     CKEDITOR.replace('references');
     CKEDITOR.replace('active');
-
     var site_link = $('body').attr('data-site');
     var count_hoc_tap = 0;
     var count_kinh_nghiem = 0;
     var count_language = 0;
     var count_qualification = 0;
-
     $('#add-qualification').click(function () {
         if ($('#ten_ky_nang').val().length <= 1) {
             swal("Tên kỹ năng trống!", "Xin hãy điền tên kỹ năng trước khi thêm mới!");
@@ -19,7 +17,6 @@ $(document).ready(function () {
         html += " - Thông thạo <span class='ngoai-ngu'>" + $('#ten_ky_nang').val() + "</span>";
         html += "<span class='qualification-delete' id='qualification-delete-" + count_qualification + "'>&nbsp;x&nbsp;</span></div></label>";
         $(html).appendTo('#qualification_content');
-
         $('.qualification-delete').click(function () {
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(21, id_obj.length);
@@ -27,7 +24,6 @@ $(document).ready(function () {
             count_qualification--;
         });
     });
-
     $('#add-language').click(function () {
         if ($('#ten_ngoai_ngu').val().length <= 1) {
             swal("Tên ngoại ngữ trống!", "Xin hãy điền tên ngoại ngữ trước khi thêm mới!");
@@ -44,7 +40,6 @@ $(document).ready(function () {
         html += " - <span class='ngoai-ngu'>" + $('#ten_ngoai_ngu').val() + "</span> - Trình độ: <span class='ngoai-ngu'>" + $('#trinh_do_ngoai_ngu').val() + "</span>";
         html += "<span class='language-delete' id='language-delete-" + count_language + "'>&nbsp;x&nbsp;</span></div></label>";
         $(html).appendTo('#ngoai_ngu_content');
-
         $('.language-delete').click(function () {
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(16, id_obj.length);
@@ -53,7 +48,6 @@ $(document).ready(function () {
             count_language--;
         });
     });
-
     function validate_kinh_nghiem_cu() {
         if ($('#ten_cong_ty_' + count_kinh_nghiem).val().length <= 0) {
             swal("Tên công ty không được để trống!", "Xin hãy điền Tên công ty!");
@@ -213,10 +207,12 @@ $(document).ready(function () {
         html += "</div>";
         html += "</div>";
         html += "<div class='form-group'>";
-        html += "<div class='col-md-12'>";
-        html += "<label for='ten_cong_ty' class='col-md-2 control-label'>Mô tả ngắn</label>";
-        html += "<div class='col-md-10'>";
-        html += "<input type='text' class='form-control' class='mo_ta_ngan' id='mo_ta_" + count_kinh_nghiem + "' placeholder='Lý do nghỉ việc?'>";
+        html += "<div class='col-md-2 col-sm-offset-1 image_company'>";
+        html += "<img src='' id='company_image_" + count_kinh_nghiem + "' class='img-company' style='height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;'>";
+        html += "<input type='file' class='company-img' id='company-img-" + count_kinh_nghiem + "' style='display: none;'>";
+        html += "</div>";
+        html += "<div class='col-md-8 col-sm-offset-1'>";
+        html += "<textarea rows='4' cols='50' class='form-control' class='mo_ta_" + count_kinh_nghiem + "' id='mo_ta_" + count_kinh_nghiem + "' placeholder='Lý do nghỉ việc?'></textarea>";
         html += "</div>";
         html += "</div>";
         html += "</div>";
@@ -235,14 +231,12 @@ $(document).ready(function () {
         $(html).appendTo('#kinh_nghiem_lam_viec>.panel-body');
         addEventToKinhNghiemLamViec();
     });
-
     $('.kinh_nghiem_delete-btn').click(function () {
         var id_obj = $(this).attr('id');
         id_obj = id_obj.substring(19, id_obj.length);
         $('#kinh_nghiem_lam_viec_' + id_obj).remove();
         count_kinh_nghiem--;
     });
-
     $('.kinh_nghiem_success-btn').click(function () {
         if (!validate_kinh_nghiem_cu()) {
             return false;
@@ -254,36 +248,29 @@ $(document).ready(function () {
         $(this).hide();
         $('#edit_kinh_nghiem_' + id_obj).show();
     });
-
     $('.kinh_nghiem_edit-btn').click(function () {
         var id_obj = $(this).attr('id');
-        console.log(id_obj);
         id_obj = id_obj.substring(17, id_obj.length);
         $('#kinh_nghiem_lam_viec_' + id_obj + '_content').show();
         $(this).hide();
         $('#success_kinh_nghiem_' + id_obj).show();
     });
-
     $(".thanh_pho").change(function () {
         cityId = $(this).attr('id');
         cityId = cityId.substring(10, cityId.length);
-
         var citId = $(this).val();
         var request = $.ajax({
             url: site_link + "/getDistrict/" + citId,
             method: "GET",
             dataType: "html"
         });
-
         request.done(function (msg) {
             $("#quan_huyen_" + cityId).html(msg);
         });
-
         request.fail(function (jqXHR, textStatus) {
             alert("Request failed: " + textStatus);
         });
     });
-
     function addEventToKinhNghiemLamViec() {
         $('.kinh_nghiem_delete-btn').click(function () {
             var id_obj = $(this).attr('id');
@@ -291,7 +278,6 @@ $(document).ready(function () {
             $('#kinh_nghiem_lam_viec_' + id_obj).remove();
             count_kinh_nghiem--;
         });
-
         $('.kinh_nghiem_success-btn').click(function () {
             if (!validate_kinh_nghiem_cu()) {
                 return false;
@@ -303,32 +289,26 @@ $(document).ready(function () {
             $(this).hide();
             $('#edit_kinh_nghiem_' + id_obj).show();
         });
-
         $('.kinh_nghiem_edit-btn').click(function () {
             var id_obj = $(this).attr('id');
-            console.log(id_obj);
             id_obj = id_obj.substring(17, id_obj.length);
             $('#kinh_nghiem_lam_viec_' + id_obj + '_content').show();
             $(this).hide();
             $('#success_kinh_nghiem_' + id_obj).show();
         });
-
         $('.thanh_pho').off('change');
         $(".thanh_pho").change(function () {
             cityId = $(this).attr('id');
             cityId = cityId.substring(10, cityId.length);
-
             var citId = $(this).val();
             var request = $.ajax({
                 url: site_link + "/getDistrict/" + citId,
                 method: "GET",
                 dataType: "html"
             });
-
             request.done(function (msg) {
                 $("#quan_huyen_" + cityId).html(msg);
             });
-
             request.fail(function (jqXHR, textStatus) {
                 alert("Request failed: " + textStatus);
             });
@@ -487,14 +467,12 @@ $(document).ready(function () {
         html += "<div class='col-md-5'>";
         html += "<input type='text' class='form-control' class='chuyen_nganh' id='chuyen_nganh_" + count_hoc_tap + "'>";
         html += "</div>";
-
         html += "</div>";
         html += "</div>";
         html += "<div class='form-group'>";
         html += "<div class='col-md-8'>";
         html += "<p id='truong_hoc_" + count_hoc_tap + "_txt' class='truong-hoc-hide'></p>";
         html += "</div>";
-
         html += "<div class='col-md-4'>";
         html += "<div class='btn btn-danger pull-right hoc_tap_delete-btn' id='delete_" + count_hoc_tap + "'>Hủy bỏ</div>";
         html += "<div class='btn btn-primary pull-right hoc_tap_success-btn' id='success_" + count_hoc_tap + "'>Hoàn thành</div>";
@@ -502,18 +480,15 @@ $(document).ready(function () {
         html += "</div>";
         html += "</div>";
         html += "</div>";
-
         $(html).appendTo('#qua_trinh_hoc_tap>.panel-body');
         addEventToQuaTrinhHocTap();
     });
-
     $('.hoc_tap_delete-btn').click(function () {
         var id_obj = $(this).attr('id');
         id_obj = id_obj.substring(7, id_obj.length);
         $('#hoc_tap_' + id_obj).remove();
         count_hoc_tap--;
     });
-
     $('.student_process').click(function () {
         var id_obj = $(this).attr('name');
         id_obj = id_obj.substring(16, id_obj.length);
@@ -525,7 +500,6 @@ $(document).ready(function () {
             $('#loai_tot_nghiep_' + id_obj).hide();
         }
     });
-
     $('#success_0').click(function () {
         if (!validate_hoc_tap_cu()) {
             return false;
@@ -535,7 +509,6 @@ $(document).ready(function () {
         $(this).hide();
         $('#edit_0').show();
     });
-
     $('.hoc_tap_edit-btn').click(function () {
         var id_obj = $(this).attr('id');
         id_obj = id_obj.substring(5, id_obj.length);
@@ -543,7 +516,6 @@ $(document).ready(function () {
         $(this).hide();
         $('#success_' + id_obj).show();
     });
-
     $('.bang_cap').change(function () {
         var id_obj = $(this).attr('name');
         id_obj = id_obj.substring(9, id_obj.length);
@@ -566,7 +538,6 @@ $(document).ready(function () {
                 break;
         }
     });
-
     function addEventToQuaTrinhHocTap() {
         $('.hoc_tap_delete-btn').click(function () {
             var id_obj = $(this).attr('id');
@@ -574,7 +545,6 @@ $(document).ready(function () {
             $('#hoc_tap_' + id_obj).remove();
             count_hoc_tap--;
         });
-
         $('.hoc_tap_success-btn').click(function () {
             if (!validate_hoc_tap_cu()) {
                 return false;
@@ -586,7 +556,6 @@ $(document).ready(function () {
             $(this).hide();
             $('#edit_' + id_obj).show();
         });
-
         $('.student_process').click(function () {
             var id_obj = $(this).attr('name');
             id_obj = id_obj.substring(16, id_obj.length);
@@ -598,7 +567,6 @@ $(document).ready(function () {
                 $('#loai_tot_nghiep_' + id_obj).hide();
             }
         });
-
         $('.hoc_tap_edit-btn').click(function () {
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(5, id_obj.length);
@@ -634,6 +602,49 @@ $(document).ready(function () {
     $('#datetimepicker').datetimepicker({
         format: 'DD/MM/YYYY'
     });
+    $('.img-company').on('click', function (e) {
+        var id_obj = $(this).attr('id');
+        id_obj = id_obj.substring(14, id_obj.length);
+        $('#company-img-' + id_obj).click();
+    });
+    
+    $('.company-img').on('change', function (e) {
+// show
+        var fileInput = this;
+//        var id_obj = $(this).attr('id');
+//        id_obj = id_obj.substring(12, id_obj.length);
+//        if (fileInput.files[0]) {
+//var reader = new FileReader();
+//        reader.onload = function (e) {
+//        $('#company_image_' + id_obj).attr('src', e.target.result);
+//        }
+//reader.readAsDataURL(fileInput.files[0]);
+//}
+
+// upload 
+        if (fileInput.files[0]) {
+            var data = new FormData();
+            data.append('input_file_name', fileInput.files[0]);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: 'POST',
+                processData: false, // important
+                contentType: false, // important
+                data: data,
+                url: site_link + "/postImage",
+                dataType: 'json',
+                // in PHP you can call and process file in the same way as if it was submitted from a form:
+                // $_FILES['input_file_name']
+                success: function (jsonData) {
+                    if (jsonData.code == 200) {
+                        $('#company_image_' + id_obj).attr('src', jsonData.image_url);
+                    }
+                }
+            });
+        }
+    });
     $('#avatar-image').on('click', function (e) {
         $('#avatar-img').click();
     });
@@ -647,7 +658,6 @@ $(document).ready(function () {
             reader.readAsDataURL(fileInput.files[0]);
         }
     });
-
     $('#images').on('click', function (e) {
         $('#images-img').click();
     });
@@ -664,7 +674,6 @@ $(document).ready(function () {
             i++;
         });
     });
-
     $("#city").change(function () {
         var citId = $("#city").val();
         var request = $.ajax({
@@ -672,16 +681,13 @@ $(document).ready(function () {
             method: "GET",
             dataType: "html"
         });
-
         request.done(function (msg) {
             $("#district").html(msg);
         });
-
         request.fail(function (jqXHR, textStatus) {
             alert("Request failed: " + textStatus);
         });
     });
-
     $("#district").change(function () {
         var districtId = $("#district").val();
         var request = $.ajax({
@@ -689,20 +695,18 @@ $(document).ready(function () {
             method: "GET",
             dataType: "html"
         });
-
         request.done(function (msg) {
             $("#town").html(msg);
         });
-
         request.fail(function (jqXHR, textStatus) {
             alert("Request failed: " + textStatus);
         });
     });
-
     $("#submit-btn").click(function () {
 
         alert(1);
         return false;
         $("#create-company").submit();
     });
-});
+}
+);

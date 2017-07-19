@@ -49,4 +49,18 @@ class HomeController extends Controller
         }
         return $html;
     }
+    
+    public function postImage(Request $request){
+        $img_file = '';
+        if ($request->hasFile('input_file_name')) {
+            $file_img = $request->file('input_file_name');
+            $filename = $file_img->getClientOriginalName();
+            $extension = $file_img->getClientOriginalExtension();
+            $img_file = date('His') . $filename;
+            $destinationPath = base_path() . '/public/images';
+            $file_img->move($destinationPath, $img_file);
+            return \Response::json(array('code' => '200', 'message' => 'success', 'image_url' => url('/') . '/images/'.$img_file));
+        }
+        return \Response::json(array('code' => '404', 'message' => 'unsuccess', 'image_url' => ""));
+    }
 }
