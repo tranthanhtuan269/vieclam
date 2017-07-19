@@ -611,8 +611,8 @@ $(document).ready(function () {
     $('.company-img').on('change', function (e) {
 // show
         var fileInput = this;
-//        var id_obj = $(this).attr('id');
-//        id_obj = id_obj.substring(12, id_obj.length);
+        var id_obj = $(this).attr('id');
+        id_obj = id_obj.substring(12, id_obj.length);
 //        if (fileInput.files[0]) {
 //var reader = new FileReader();
 //        reader.onload = function (e) {
