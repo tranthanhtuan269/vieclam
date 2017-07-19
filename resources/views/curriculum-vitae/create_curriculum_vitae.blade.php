@@ -25,7 +25,7 @@
                         <div class="col-md-2">
                             <div class="form-group {{ $errors->has('avatar') ? 'has-error' : ''}}">
                                 <div class="col-md-12">
-                                    <img src="" id="avatar-image" class="img" style="height: 150px; width: 150px; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
+                                    <img src="{{ url('/') }}/img/anh_dai_dien.jpg" id="avatar-image" class="img" style="height: 150px; width: 150px; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
                                     <input type="file" name="avatar-img" id="avatar-img" style="display: none;">
                                     {!! $errors->first('avatar', '<p class="help-block">:message</p>') !!}
                                 </div>
@@ -36,7 +36,7 @@
                                 {!! Form::label('birthday', 'Ngày sinh', ['class' => 'col-md-5 control-label']) !!}
                                 <div class="col-md-7">
                                     <div class='input-group date' id='datetimepicker'>
-                                        <input type='text' class="form-control" name="birthday" />
+                                        <input type='text' class="form-control" name="birthday" id="birthday" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar">
                                             </span>
@@ -203,6 +203,7 @@
                             <input type="hidden" name="word_experience" id="word_experience" value="">
                             <div class="form-kinh-nghiem-group first-form" id="kinh_nghiem_lam_viec_0">
                                 <div id='kinh_nghiem_lam_viec_0_content'>
+                                    <input type="hidden" id="lam_viec_0_image" value="">
                                     <div class="form-group">
                                         <div class="col-md-6">
                                             <label for="ten_cong_ty" class="col-md-4 control-label">Tên công ty đã làm</label>
@@ -288,11 +289,11 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-2 col-sm-offset-1 image_company">
-                                            <img src="" id="company_image_0" class="img-company" style="height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
+                                            <img src="{{ url('/') }}/img/anh_cong_ty.jpg" id="company_image_0" class="img-company" style="height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
                                             <input type="file" class="company-img" id="company-img-0" style="display: none;">
                                         </div>
                                         <div class="col-md-8 col-sm-offset-1">
-                                            <textarea rows="4" cols="50" class="form-control" class="mo_ta_0" id="mo_ta_0" placeholder="Lý do nghỉ việc?"></textarea>
+                                            <textarea rows="4" cols="50" class="form-control" class="mo_ta_0" id="mo_ta_0" placeholder="Mô tả ngắn về công việc"></textarea>
                                         </div>
                                     </div>
                                 </div>

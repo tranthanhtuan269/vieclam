@@ -123,6 +123,7 @@ $(document).ready(function () {
         var html = "";
         html += "<div class='form-kinh-nghiem-group' id='kinh_nghiem_lam_viec_" + count_kinh_nghiem + "'>";
         html += "<div id='kinh_nghiem_lam_viec_" + count_kinh_nghiem + "_content'>";
+        html += "<input type='hidden' id='lam_viec_" + count_kinh_nghiem + "_image' value=''>";
         html += "<div class='form-group'>";
         html += "<div class='col-md-6'>";
         html += "<label for='ten_cong_ty' class='col-md-4 control-label'>Tên công ty đã làm</label>";
@@ -208,11 +209,11 @@ $(document).ready(function () {
         html += "</div>";
         html += "<div class='form-group'>";
         html += "<div class='col-md-2 col-sm-offset-1 image_company'>";
-        html += "<img src='' id='company_image_" + count_kinh_nghiem + "' class='img-company' style='height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;'>";
+        html += "<img src='"+site_link+"/img/anh_cong_ty.jpg' id='company_image_" + count_kinh_nghiem + "' class='img-company' style='height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;'>";
         html += "<input type='file' class='company-img' id='company-img-" + count_kinh_nghiem + "' style='display: none;'>";
         html += "</div>";
         html += "<div class='col-md-8 col-sm-offset-1'>";
-        html += "<textarea rows='4' cols='50' class='form-control' class='mo_ta_" + count_kinh_nghiem + "' id='mo_ta_" + count_kinh_nghiem + "' placeholder='Lý do nghỉ việc?'></textarea>";
+        html += "<textarea rows='4' cols='50' class='form-control' class='mo_ta_" + count_kinh_nghiem + "' id='mo_ta_" + count_kinh_nghiem + "' placeholder='Mô tả ngắn về công việc?'></textarea>";
         html += "</div>";
         html += "</div>";
         html += "</div>";
@@ -609,19 +610,9 @@ $(document).ready(function () {
     });
     
     $('.company-img').on('change', function (e) {
-// show
         var fileInput = this;
         var id_obj = $(this).attr('id');
         id_obj = id_obj.substring(12, id_obj.length);
-//        if (fileInput.files[0]) {
-//var reader = new FileReader();
-//        reader.onload = function (e) {
-//        $('#company_image_' + id_obj).attr('src', e.target.result);
-//        }
-//reader.readAsDataURL(fileInput.files[0]);
-//}
-
-// upload 
         if (fileInput.files[0]) {
             var data = new FormData();
             data.append('input_file_name', fileInput.files[0]);
@@ -635,11 +626,10 @@ $(document).ready(function () {
                 data: data,
                 url: site_link + "/postImage",
                 dataType: 'json',
-                // in PHP you can call and process file in the same way as if it was submitted from a form:
-                // $_FILES['input_file_name']
                 success: function (jsonData) {
                     if (jsonData.code == 200) {
-                        $('#company_image_' + id_obj).attr('src', jsonData.image_url);
+                        $('#company_image_' + id_obj).attr('src', site_link + '/images/' + jsonData.image_url);
+                        $('#lam_viec_' + id_obj + '_image').val(jsonData.image_url);
                     }
                 }
             });
@@ -702,10 +692,46 @@ $(document).ready(function () {
             alert("Request failed: " + textStatus);
         });
     });
-    $("#submit-btn").click(function () {
 
-        alert(1);
-        return false;
+    function validateForm(){
+        if($('#birthday').val() == ''){
+            swal("Ngày sinh bị bỏ trống!", "Xin hãy điền ngày sinh của bạn!");
+            return false;
+        }
+
+        if($('#city').val() == '0'){
+            swal("Thành phố chưa được chọn!", "Xin hãy chọn Thành phố nơi bạn đang sinh sống!");
+            return false;
+        }
+
+        if($('#district').val() == '0'){
+            swal("Quận / Huyện chưa được chọn!", "Xin hãy chọn Quận / Huyện nơi bạn đang sinh sống!");
+            return false;
+        }
+
+        if($('#town').val() == '0'){
+            swal("Phường / Xã chưa được chọn!", "Xin hãy chọn Phường / Xã nơi bạn đang sinh sống!");
+            return false;
+        }
+
+        if($('#address').val().length == 0){
+            swal("Địa chỉ bị bỏ trống!", "Xin hãy điền địa chỉ nơi bạn đang sinh sống!");
+            return false;
+        }
+
+        if($('#avatar-image').attr('src') == (site_link + '/img/anh_dai_dien.jpg')){
+            swal("Ảnh đại diện chưa được upload!", "Xin hãy chọn 1 ảnh của bạn làm ảnh đại diện!");
+            return false;
+        }
+        return true;
+    }
+
+    $("#submit-btn").click(function () {
+        // render education
+        if(!validateForm()){
+            return false;
+        }
+        
         $("#create-company").submit();
     });
 }

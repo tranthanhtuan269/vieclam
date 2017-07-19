@@ -59,7 +59,7 @@ class HomeController extends Controller
             $img_file = date('His') . $filename;
             $destinationPath = base_path() . '/public/images';
             $file_img->move($destinationPath, $img_file);
-            return \Response::json(array('code' => '200', 'message' => 'success', 'image_url' => url('/') . '/images/'.$img_file));
+            return \Response::json(array('code' => '200', 'message' => 'success', 'image_url' => $img_file));
         }
         return \Response::json(array('code' => '404', 'message' => 'unsuccess', 'image_url' => ""));
     }
