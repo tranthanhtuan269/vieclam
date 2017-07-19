@@ -4,6 +4,8 @@
 <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
 <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+<script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -92,9 +94,9 @@
                                 <div id='hoc_tap_0_content'>
                                     <div class="form-group">
                                         <div class="col-md-12">
-                                            <label class="col-md-2"><input type="radio" class='check_box' name="bang_cap_0" value="0" checked> Chứng chỉ</label>
-                                            <label class="col-md-5"><input type="radio" class='check_box' name="bang_cap_0" value="1">Sau Đại học / Đại học / Cao đẳng / Trung cấp</label>
-                                            <label class="col-md-5"><input type="radio" class='check_box' name="bang_cap_0" value="2">Tiểu học / Trung học</label>
+                                            <label class="col-md-2"><input type="radio" class='bang_cap' name="bang_cap_0" value="0" checked> Chứng chỉ</label>
+                                            <label class="col-md-5"><input type="radio" class='bang_cap' name="bang_cap_0" value="1">Sau Đại học / Đại học / Cao đẳng / Trung cấp</label>
+                                            <label class="col-md-5"><input type="radio" class='bang_cap' name="bang_cap_0" value="2">Tiểu học / Trung học</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -103,8 +105,8 @@
                                             <input type="text" class="form-control" class="truong_hoc" id="truong_hoc_0" placeholder="Nhập tên trường, trung tâm học">
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="col-sm-offset-2"><input type="radio" name="student_process_0" value="0" checked>Đang học</label>
-                                            <label class="col-sm-offset-2"><input type="radio" name="student_process_0" value="1">Đã tốt nghiệp</label>
+                                            <label class="col-sm-offset-2"><input type="radio" class="student_process" name="student_process_0" value="0" checked>Đang học</label>
+                                            <label class="col-sm-offset-2"><input type="radio" class="student_process" name="student_process_0" value="1">Đã tốt nghiệp</label>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -132,7 +134,7 @@
                                         <div class="col-md-2">
                                             <select class="form-control col-md-2" class="nam_bat_dau" id="nam_bat_dau_0">
                                                 <option value="0">--Chọn Năm--</option>
-                                                <option value="1960">Năm 1960</option><option value="1961">Năm 1961</option><option value="1962">Năm 1962</option><option value="1963">Năm 1963</option><option value="1964">Năm 1964</option><option value="1965">Năm 1965</option><option value="1966">Năm 1966</option><option value="1967">Năm 1967</option><option value="1968">Năm 1968</option><option value="1969">Năm 1969</option><option value="1970">Năm 1970</option><option value="1971">Năm 1971</option><option value="1972">Năm 1972</option><option value="1973">Năm 1973</option><option value="1974">Năm 1974</option><option value="1975">Năm 1975</option><option value="1976">Năm 1976</option><option value="1977">Năm 1977</option><option value="1978">Năm 1978</option><option value="1979">Năm 1979</option><option value="1980">Năm 1980</option><option value="1981">Năm 1981</option><option value="1982">Năm 1982</option><option value="1983">Năm 1983</option><option value="1984">Năm 1984</option><option value="1985">Năm 1985</option><option value="1986">Năm 1986</option><option value="1987">Năm 1987</option><option value="1988">Năm 1988</option><option value="1989">Năm 1989</option><option value="1990">Năm 1990</option><option value="1991">Năm 1991</option><option value="1992">Năm 1992</option><option value="1993">Năm 1993</option><option value="1994">Năm 1994</option><option value="1995">Năm 1995</option><option value="1996">Năm 1996</option><option value="1997">Năm 1997</option><option value="1998">Năm 1998</option><option value="1999">Năm 1999</option><option value="2000">Năm 2000</option><option value="2001">Năm 2001</option><option value="2002">Năm 2002</option><option value="2003">Năm 2003</option><option value="2004">Năm 2004</option><option value="2005">Năm 2005</option><option value="2006">Năm 2006</option><option value="2007">Năm 2007</option><option value="2008">Năm 2008</option><option value="2009">Năm 2009</option><option value="2010">Năm 2010</option><option value="2011">Năm 2011</option><option value="2012">Năm 2012</option><option value="2013">Năm 2013</option><option value="2014">Năm 2014</option><option value="2015">Năm 2015</option><option value="2016">Năm 2016</option><option value="2017">Năm 2017</option>
+                                                <option value='2017'>Năm 2017</option><option value='2016'>Năm 2016</option><option value='2015'>Năm 2015</option><option value='2014'>Năm 2014</option><option value='2013'>Năm 2013</option><option value='2012'>Năm 2012</option><option value='2011'>Năm 2011</option><option value='2010'>Năm 2010</option><option value='2009'>Năm 2009</option><option value='2008'>Năm 2008</option><option value='2007'>Năm 2007</option><option value='2006'>Năm 2006</option><option value='2005'>Năm 2005</option><option value='2004'>Năm 2004</option><option value='2003'>Năm 2003</option><option value='2002'>Năm 2002</option><option value='2001'>Năm 2001</option><option value='2000'>Năm 2000</option><option value='1999'>Năm 1999</option><option value='1998'>Năm 1998</option><option value='1997'>Năm 1997</option><option value='1996'>Năm 1996</option><option value='1995'>Năm 1995</option><option value='1994'>Năm 1994</option><option value='1993'>Năm 1993</option><option value='1992'>Năm 1992</option><option value='1991'>Năm 1991</option><option value='1990'>Năm 1990</option><option value='1989'>Năm 1989</option><option value='1988'>Năm 1988</option><option value='1987'>Năm 1987</option><option value='1986'>Năm 1986</option><option value='1985'>Năm 1985</option><option value='1984'>Năm 1984</option><option value='1983'>Năm 1983</option><option value='1982'>Năm 1982</option><option value='1981'>Năm 1981</option><option value='1980'>Năm 1980</option><option value='1979'>Năm 1979</option><option value='1978'>Năm 1978</option><option value='1977'>Năm 1977</option><option value='1976'>Năm 1976</option><option value='1975'>Năm 1975</option><option value='1974'>Năm 1974</option><option value='1973'>Năm 1973</option><option value='1972'>Năm 1972</option><option value='1971'>Năm 1971</option><option value='1970'>Năm 1970</option><option value='1969'>Năm 1969</option><option value='1968'>Năm 1968</option><option value='1967'>Năm 1967</option><option value='1966'>Năm 1966</option><option value='1965'>Năm 1965</option><option value='1964'>Năm 1964</option><option value='1963'>Năm 1963</option><option value='1962'>Năm 1962</option><option value='1961'>Năm 1961</option>
                                             </select>
                                         </div>
                                         <div class="col-md-1">
@@ -158,23 +160,23 @@
                                         <div class="col-md-2">
                                             <select class="form-control col-md-2" class="nam_ket_thuc" id="nam_ket_thuc_0">
                                                 <option value="0">--Chọn Năm--</option>
-                                                <option value="1960">Năm 1960</option><option value="1961">Năm 1961</option><option value="1962">Năm 1962</option><option value="1963">Năm 1963</option><option value="1964">Năm 1964</option><option value="1965">Năm 1965</option><option value="1966">Năm 1966</option><option value="1967">Năm 1967</option><option value="1968">Năm 1968</option><option value="1969">Năm 1969</option><option value="1970">Năm 1970</option><option value="1971">Năm 1971</option><option value="1972">Năm 1972</option><option value="1973">Năm 1973</option><option value="1974">Năm 1974</option><option value="1975">Năm 1975</option><option value="1976">Năm 1976</option><option value="1977">Năm 1977</option><option value="1978">Năm 1978</option><option value="1979">Năm 1979</option><option value="1980">Năm 1980</option><option value="1981">Năm 1981</option><option value="1982">Năm 1982</option><option value="1983">Năm 1983</option><option value="1984">Năm 1984</option><option value="1985">Năm 1985</option><option value="1986">Năm 1986</option><option value="1987">Năm 1987</option><option value="1988">Năm 1988</option><option value="1989">Năm 1989</option><option value="1990">Năm 1990</option><option value="1991">Năm 1991</option><option value="1992">Năm 1992</option><option value="1993">Năm 1993</option><option value="1994">Năm 1994</option><option value="1995">Năm 1995</option><option value="1996">Năm 1996</option><option value="1997">Năm 1997</option><option value="1998">Năm 1998</option><option value="1999">Năm 1999</option><option value="2000">Năm 2000</option><option value="2001">Năm 2001</option><option value="2002">Năm 2002</option><option value="2003">Năm 2003</option><option value="2004">Năm 2004</option><option value="2005">Năm 2005</option><option value="2006">Năm 2006</option><option value="2007">Năm 2007</option><option value="2008">Năm 2008</option><option value="2009">Năm 2009</option><option value="2010">Năm 2010</option><option value="2011">Năm 2011</option><option value="2012">Năm 2012</option><option value="2013">Năm 2013</option><option value="2014">Năm 2014</option><option value="2015">Năm 2015</option><option value="2016">Năm 2016</option><option value="2017">Năm 2017</option>
+                                                <option value='2017'>Năm 2017</option><option value='2016'>Năm 2016</option><option value='2015'>Năm 2015</option><option value='2014'>Năm 2014</option><option value='2013'>Năm 2013</option><option value='2012'>Năm 2012</option><option value='2011'>Năm 2011</option><option value='2010'>Năm 2010</option><option value='2009'>Năm 2009</option><option value='2008'>Năm 2008</option><option value='2007'>Năm 2007</option><option value='2006'>Năm 2006</option><option value='2005'>Năm 2005</option><option value='2004'>Năm 2004</option><option value='2003'>Năm 2003</option><option value='2002'>Năm 2002</option><option value='2001'>Năm 2001</option><option value='2000'>Năm 2000</option><option value='1999'>Năm 1999</option><option value='1998'>Năm 1998</option><option value='1997'>Năm 1997</option><option value='1996'>Năm 1996</option><option value='1995'>Năm 1995</option><option value='1994'>Năm 1994</option><option value='1993'>Năm 1993</option><option value='1992'>Năm 1992</option><option value='1991'>Năm 1991</option><option value='1990'>Năm 1990</option><option value='1989'>Năm 1989</option><option value='1988'>Năm 1988</option><option value='1987'>Năm 1987</option><option value='1986'>Năm 1986</option><option value='1985'>Năm 1985</option><option value='1984'>Năm 1984</option><option value='1983'>Năm 1983</option><option value='1982'>Năm 1982</option><option value='1981'>Năm 1981</option><option value='1980'>Năm 1980</option><option value='1979'>Năm 1979</option><option value='1978'>Năm 1978</option><option value='1977'>Năm 1977</option><option value='1976'>Năm 1976</option><option value='1975'>Năm 1975</option><option value='1974'>Năm 1974</option><option value='1973'>Năm 1973</option><option value='1972'>Năm 1972</option><option value='1971'>Năm 1971</option><option value='1970'>Năm 1970</option><option value='1969'>Năm 1969</option><option value='1968'>Năm 1968</option><option value='1967'>Năm 1967</option><option value='1966'>Năm 1966</option><option value='1965'>Năm 1965</option><option value='1964'>Năm 1964</option><option value='1963'>Năm 1963</option><option value='1962'>Năm 1962</option><option value='1961'>Năm 1961</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="birthday" class="col-md-2 control-label">Tốt nghiệp loại</label>
+                                        <label for="loai_tot_nghiep_0" class="col-md-2 control-label"><span  id="loai_tot_nghiep_0_label" style="display:none;">Tốt nghiệp loại</span></label>
                                         <div class="col-md-3">
-                                            <select class="form-control" class="loai_tot_nghiep" id="loai_tot_nghiep_0">
+                                            <select class="form-control" class="loai_tot_nghiep" id="loai_tot_nghiep_0" style="display:none;">
                                                 <option value="0">--Chọn loại tốt nghiệp--</option>
-                                                <option value="1">Trung bình</option>
-                                                <option value="2">Trung bình khá</option>
+                                                <option value="1">Xuất sắc</option>
+                                                <option value="2">Giỏi</option>
                                                 <option value="3">Khá</option>
-                                                <option value="4">Giỏi</option>
-                                                <option value="5">Xuất sắc</option>
+                                                <option value="4">Trung bình khá</option>
+                                                <option value="5">Trung bình</option>
                                             </select>
                                         </div>
-                                        <label for="chuyen_nganh" class="col-md-2 control-label"><div id="loai_tot_nghiep_0_label">Chuyên ngành</div></label>
+                                        <label for="chuyen_nganh" class="col-md-2 control-label"><div id="chuyen_nganh_0_label">Chuyên ngành</div></label>
                                         <div class="col-md-5">
                                             <input type="text" class="form-control" class="chuyen_nganh" id="chuyen_nganh_0">
                                         </div>
@@ -240,7 +242,7 @@
                                         <div class="col-md-2">
                                             <select class="form-control col-md-2" class="nam_bat_dau" id="nam_bat_dau_lam_viec_0">
                                                 <option value="0">--Chọn Năm--</option>
-                                                <option value="1960">Năm 1960</option><option value="1961">Năm 1961</option><option value="1962">Năm 1962</option><option value="1963">Năm 1963</option><option value="1964">Năm 1964</option><option value="1965">Năm 1965</option><option value="1966">Năm 1966</option><option value="1967">Năm 1967</option><option value="1968">Năm 1968</option><option value="1969">Năm 1969</option><option value="1970">Năm 1970</option><option value="1971">Năm 1971</option><option value="1972">Năm 1972</option><option value="1973">Năm 1973</option><option value="1974">Năm 1974</option><option value="1975">Năm 1975</option><option value="1976">Năm 1976</option><option value="1977">Năm 1977</option><option value="1978">Năm 1978</option><option value="1979">Năm 1979</option><option value="1980">Năm 1980</option><option value="1981">Năm 1981</option><option value="1982">Năm 1982</option><option value="1983">Năm 1983</option><option value="1984">Năm 1984</option><option value="1985">Năm 1985</option><option value="1986">Năm 1986</option><option value="1987">Năm 1987</option><option value="1988">Năm 1988</option><option value="1989">Năm 1989</option><option value="1990">Năm 1990</option><option value="1991">Năm 1991</option><option value="1992">Năm 1992</option><option value="1993">Năm 1993</option><option value="1994">Năm 1994</option><option value="1995">Năm 1995</option><option value="1996">Năm 1996</option><option value="1997">Năm 1997</option><option value="1998">Năm 1998</option><option value="1999">Năm 1999</option><option value="2000">Năm 2000</option><option value="2001">Năm 2001</option><option value="2002">Năm 2002</option><option value="2003">Năm 2003</option><option value="2004">Năm 2004</option><option value="2005">Năm 2005</option><option value="2006">Năm 2006</option><option value="2007">Năm 2007</option><option value="2008">Năm 2008</option><option value="2009">Năm 2009</option><option value="2010">Năm 2010</option><option value="2011">Năm 2011</option><option value="2012">Năm 2012</option><option value="2013">Năm 2013</option><option value="2014">Năm 2014</option><option value="2015">Năm 2015</option><option value="2016">Năm 2016</option><option value="2017">Năm 2017</option>
+                                                <option value="2017">Năm 2017</option><option value="2016">Năm 2016</option><option value="2015">Năm 2015</option><option value="2014">Năm 2014</option><option value="2013">Năm 2013</option><option value="2012">Năm 2012</option><option value="2011">Năm 2011</option><option value="2010">Năm 2010</option><option value="2009">Năm 2009</option><option value="2008">Năm 2008</option><option value="2007">Năm 2007</option><option value="2006">Năm 2006</option><option value="2005">Năm 2005</option><option value="2004">Năm 2004</option><option value="2003">Năm 2003</option><option value="2002">Năm 2002</option><option value="2001">Năm 2001</option><option value="2000">Năm 2000</option><option value="1999">Năm 1999</option><option value="1998">Năm 1998</option><option value="1997">Năm 1997</option><option value="1996">Năm 1996</option><option value="1995">Năm 1995</option><option value="1994">Năm 1994</option><option value="1993">Năm 1993</option><option value="1992">Năm 1992</option><option value="1991">Năm 1991</option><option value="1990">Năm 1990</option><option value="1989">Năm 1989</option><option value="1988">Năm 1988</option><option value="1987">Năm 1987</option><option value="1986">Năm 1986</option><option value="1985">Năm 1985</option><option value="1984">Năm 1984</option><option value="1983">Năm 1983</option><option value="1982">Năm 1982</option><option value="1981">Năm 1981</option><option value="1980">Năm 1980</option><option value="1979">Năm 1979</option><option value="1978">Năm 1978</option><option value="1977">Năm 1977</option><option value="1976">Năm 1976</option><option value="1975">Năm 1975</option><option value="1974">Năm 1974</option><option value="1973">Năm 1973</option><option value="1972">Năm 1972</option><option value="1971">Năm 1971</option><option value="1970">Năm 1970</option><option value="1969">Năm 1969</option><option value="1968">Năm 1968</option><option value="1967">Năm 1967</option><option value="1966">Năm 1966</option><option value="1965">Năm 1965</option><option value="1964">Năm 1964</option><option value="1963">Năm 1963</option><option value="1962">Năm 1962</option><option value="1961">Năm 1961</option>
                                             </select>
                                         </div>
                                         <div class="col-md-1">
@@ -266,7 +268,7 @@
                                         <div class="col-md-2">
                                             <select class="form-control col-md-2" class="nam_ket_thuc" id="nam_ket_thuc_lam_viec_0">
                                                 <option value="0">--Chọn Năm--</option>
-                                                <option value="1960">Năm 1960</option><option value="1961">Năm 1961</option><option value="1962">Năm 1962</option><option value="1963">Năm 1963</option><option value="1964">Năm 1964</option><option value="1965">Năm 1965</option><option value="1966">Năm 1966</option><option value="1967">Năm 1967</option><option value="1968">Năm 1968</option><option value="1969">Năm 1969</option><option value="1970">Năm 1970</option><option value="1971">Năm 1971</option><option value="1972">Năm 1972</option><option value="1973">Năm 1973</option><option value="1974">Năm 1974</option><option value="1975">Năm 1975</option><option value="1976">Năm 1976</option><option value="1977">Năm 1977</option><option value="1978">Năm 1978</option><option value="1979">Năm 1979</option><option value="1980">Năm 1980</option><option value="1981">Năm 1981</option><option value="1982">Năm 1982</option><option value="1983">Năm 1983</option><option value="1984">Năm 1984</option><option value="1985">Năm 1985</option><option value="1986">Năm 1986</option><option value="1987">Năm 1987</option><option value="1988">Năm 1988</option><option value="1989">Năm 1989</option><option value="1990">Năm 1990</option><option value="1991">Năm 1991</option><option value="1992">Năm 1992</option><option value="1993">Năm 1993</option><option value="1994">Năm 1994</option><option value="1995">Năm 1995</option><option value="1996">Năm 1996</option><option value="1997">Năm 1997</option><option value="1998">Năm 1998</option><option value="1999">Năm 1999</option><option value="2000">Năm 2000</option><option value="2001">Năm 2001</option><option value="2002">Năm 2002</option><option value="2003">Năm 2003</option><option value="2004">Năm 2004</option><option value="2005">Năm 2005</option><option value="2006">Năm 2006</option><option value="2007">Năm 2007</option><option value="2008">Năm 2008</option><option value="2009">Năm 2009</option><option value="2010">Năm 2010</option><option value="2011">Năm 2011</option><option value="2012">Năm 2012</option><option value="2013">Năm 2013</option><option value="2014">Năm 2014</option><option value="2015">Năm 2015</option><option value="2016">Năm 2016</option><option value="2017">Năm 2017</option>
+                                                <option value="2017">Năm 2017</option><option value="2016">Năm 2016</option><option value="2015">Năm 2015</option><option value="2014">Năm 2014</option><option value="2013">Năm 2013</option><option value="2012">Năm 2012</option><option value="2011">Năm 2011</option><option value="2010">Năm 2010</option><option value="2009">Năm 2009</option><option value="2008">Năm 2008</option><option value="2007">Năm 2007</option><option value="2006">Năm 2006</option><option value="2005">Năm 2005</option><option value="2004">Năm 2004</option><option value="2003">Năm 2003</option><option value="2002">Năm 2002</option><option value="2001">Năm 2001</option><option value="2000">Năm 2000</option><option value="1999">Năm 1999</option><option value="1998">Năm 1998</option><option value="1997">Năm 1997</option><option value="1996">Năm 1996</option><option value="1995">Năm 1995</option><option value="1994">Năm 1994</option><option value="1993">Năm 1993</option><option value="1992">Năm 1992</option><option value="1991">Năm 1991</option><option value="1990">Năm 1990</option><option value="1989">Năm 1989</option><option value="1988">Năm 1988</option><option value="1987">Năm 1987</option><option value="1986">Năm 1986</option><option value="1985">Năm 1985</option><option value="1984">Năm 1984</option><option value="1983">Năm 1983</option><option value="1982">Năm 1982</option><option value="1981">Năm 1981</option><option value="1980">Năm 1980</option><option value="1979">Năm 1979</option><option value="1978">Năm 1978</option><option value="1977">Năm 1977</option><option value="1976">Năm 1976</option><option value="1975">Năm 1975</option><option value="1974">Năm 1974</option><option value="1973">Năm 1973</option><option value="1972">Năm 1972</option><option value="1971">Năm 1971</option><option value="1970">Năm 1970</option><option value="1969">Năm 1969</option><option value="1968">Năm 1968</option><option value="1967">Năm 1967</option><option value="1966">Năm 1966</option><option value="1965">Năm 1965</option><option value="1964">Năm 1964</option><option value="1963">Năm 1963</option><option value="1962">Năm 1962</option><option value="1961">Năm 1961</option>
                                             </select>
                                         </div>
                                     </div>
@@ -288,7 +290,7 @@
                                         <div class="col-md-12">
                                             <label for="ten_cong_ty" class="col-md-2 control-label">Mô tả ngắn</label>
                                             <div class="col-md-10">
-                                                <input type="text" class="form-control" class="mo_ta_0" id="mo_ta_0">
+                                                <input type="text" class="form-control" class="mo_ta_0" id="mo_ta_0" placeholder="Lý do nghỉ việc?">
                                             </div>
                                         </div>
                                     </div>
@@ -330,39 +332,140 @@
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('language') ? 'has-error' : ''}}">
-                        {!! Form::label('language', 'Ngoại ngữ', ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
-                            {!! Form::text('language', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('language', '<p class="help-block">:message</p>') !!}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Kỹ năng làm việc</div>
+                        <div class="panel-body">
+                            <input type="hidden" name="qualification" id="qualification" value="">
+                            <div class="form-ngon-ngu-group">
+                                <div class="form-group" id="qualification_content">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        VD: Word, Excel, Powerpoint,...
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ten_ky_nang" class="col-md-2 control-label">Tên kỹ năng</label>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" class="ten_ky_nang" id="ten_ky_nang">
+                                    </div>
+                                    <div class="btn btn-primary" id="add-qualification">Thêm mới</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group {{ $errors->has('interests') ? 'has-error' : ''}}">
-                        {!! Form::label('interests', 'Sở thích', ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
-                            {!! Form::text('interests', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('interests', '<p class="help-block">:message</p>') !!}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Sở thích - Tính cách</div>
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="interests" class="col-md-12">Sở thích</label>
+                                    <div class="col-md-12">
+                                        {!! Form::text('interests', null, ['class' => 'form-control', 'id' => 'interests']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="interests" class="col-md-12">Tính cách</label>
+                                    <div class="col-md-12">
+                                        {!! Form::text('references', null, ['class' => 'form-control', 'id' => 'references']) !!}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group {{ $errors->has('qualification') ? 'has-error' : ''}}">
-                        {!! Form::label('qualification', 'Trình độ chuyên môn', ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
-                            {!! Form::text('qualification', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('qualification', '<p class="help-block">:message</p>') !!}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Mục tiêu nghề nghiệp</div>
+                        <div class="panel-body">
+                            <input type="hidden" name="career_objective" id="career_objective" value="">
+                            <div class="form-career-objective-group">
+                                <div class="form-group">
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_0">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Muốn được trải nghiệm trong môi trường làm việc tại Doanh nghiệp!</span>
+                                    </label>
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_1">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Học hỏi kinh nghiệm và các kỹ năng xử lý tình huống trong công việc!</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_2">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Rèn luyện thêm khả năng giao tiếp!</span>
+                                    </label>
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_3">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Rèn luyện tác phong làm việc chuyên nghiệp!</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_4">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Thử đi làm thêm để trải nghiệm!</span>
+                                    </label>
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_5">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Kiếm thêm thu nhập để đi du lịch!</span>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_6">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Kiếm thêm thu nhập trang trải chi tiêu cá nhân!</span>
+                                    </label>
+                                    <label class="col-md-6 custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="career_objective_7">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">Kiếm thêm thu nhập hỗ trợ gia đình!</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group {{ $errors->has('career_objective') ? 'has-error' : ''}}">
-                        {!! Form::label('career_objective', 'Mục tiêu nghề nghiệp', ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
-                            {!! Form::text('career_objective', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('career_objective', '<p class="help-block">:message</p>') !!}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Hoạt động ngoại khóa</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    Mô tả một vài hoạt động mà bạn đã tham gia...
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    {!! Form::text('active', null, ['class' => 'form-control', 'id' => 'active']) !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
-                        {!! Form::label('images', 'Ảnh ', ['class' => 'col-md-3 control-label']) !!}
-                        <div class="col-md-9">
-                            {!! Form::text('images', null, ['class' => 'form-control']) !!}
-                            {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Thêm ảnh về bản thân</div>
+                        <div class="panel-body">
+                            <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
+                                <div class="col-md-12">
+                                    <label class="control-label">Thêm ảnh</label>
+                                </div>
+                                <div class="col-md-12">
+                                    <div id="images-plus"></div>
+                                    <div class="clearfix"></div>
+                                    <img src="{{ url('/') }}/img/icons8-Add-Image-50.png" id="images" class="img" style="height: 50px; width: 50px;">
+                                    <input type="file" name="images-img[]" id="images-img" style="display: none;" multiple>
+                                    {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -377,7 +480,7 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.7.1/basic/ckeditor.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
 <script src="{{ url('/') }}/js/curriculum_vitae.js"></script>
