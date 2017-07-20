@@ -224,8 +224,6 @@ $(document).ready(function () {
         html += "<textarea rows='4' cols='50' class='form-control' class='mo_ta_" + count_kinh_nghiem + "' id='mo_ta_" + count_kinh_nghiem + "' placeholder='Mô tả ngắn về công việc?'></textarea>";
         html += "</div>";
         html += "</div>";
-        html += "</div>";
-        html += "</div>";
         html += "<div class='form-group'>";
         html += "<div class='col-md-8'>";
         html += "<p id='kinh_nghiem_" + count_kinh_nghiem + "_txt' class='kinh-nghiem-hide'></p>";
@@ -234,6 +232,8 @@ $(document).ready(function () {
         html += "<div class='btn btn-danger pull-right kinh_nghiem_delete-btn' id='delete_kinh_nghiem_" + count_kinh_nghiem + "'>Hủy bỏ</div>";
         html += "<div class='btn btn-primary pull-right kinh_nghiem_edit-btn' id='edit_kinh_nghiem_" + count_kinh_nghiem + "' style='display:none;'>Chỉnh sửa</div>";
         html += "<div class='btn btn-primary pull-right kinh_nghiem_success-btn' id='success_kinh_nghiem_" + count_kinh_nghiem + "'>Hoàn thành</div>";
+        html += "</div>";
+        html += "</div>";
         html += "</div>";
         html += "</div>";
         html += "</div>";
@@ -813,7 +813,6 @@ $(document).ready(function () {
     };
 
     function re_render_qualification(id){
-        // console.log(id);
         var json_string = $('#qualification').val();
         $('#qualification').val('');
         json_string = json_string.substring(1, json_string.length);
