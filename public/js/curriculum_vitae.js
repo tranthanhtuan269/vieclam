@@ -209,7 +209,7 @@ $(document).ready(function () {
         html += "</div>";
         html += "<div class='form-group'>";
         html += "<div class='col-md-2 col-sm-offset-1 image_company'>";
-        html += "<img src='"+site_link+"/img/anh_cong_ty.jpg' id='company_image_" + count_kinh_nghiem + "' class='img-company' style='height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;'>";
+        html += "<img src='" + site_link + "/img/anh_cong_ty.jpg' id='company_image_" + count_kinh_nghiem + "' class='img-company' style='height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;'>";
         html += "<input type='file' class='company-img' id='company-img-" + count_kinh_nghiem + "' style='display: none;'>";
         html += "</div>";
         html += "<div class='col-md-8 col-sm-offset-1'>";
@@ -505,6 +505,7 @@ $(document).ready(function () {
         if (!validate_hoc_tap_cu()) {
             return false;
         }
+        renderJsonHocTap('0');
         $('#hoc_tap_0_content').fadeOut("slow", function () {});
         $('#truong_hoc_0_txt').html(' - ' + $('#truong_hoc_0').val() + ' ( ' + $('#nam_bat_dau_0').val() + ' - ' + $('#nam_ket_thuc_0').val() + ' )');
         $(this).hide();
@@ -608,7 +609,7 @@ $(document).ready(function () {
         id_obj = id_obj.substring(14, id_obj.length);
         $('#company-img-' + id_obj).click();
     });
-    
+
     $('.company-img').on('change', function (e) {
         var fileInput = this;
         var id_obj = $(this).attr('id');
@@ -693,33 +694,33 @@ $(document).ready(function () {
         });
     });
 
-    function validateForm(){
-        if($('#birthday').val() == ''){
+    function validateForm() {
+        if ($('#birthday').val() == '') {
             swal("Ngày sinh bị bỏ trống!", "Xin hãy điền ngày sinh của bạn!");
             return false;
         }
 
-        if($('#city').val() == '0'){
+        if ($('#city').val() == '0') {
             swal("Thành phố chưa được chọn!", "Xin hãy chọn Thành phố nơi bạn đang sinh sống!");
             return false;
         }
 
-        if($('#district').val() == '0'){
+        if ($('#district').val() == '0') {
             swal("Quận / Huyện chưa được chọn!", "Xin hãy chọn Quận / Huyện nơi bạn đang sinh sống!");
             return false;
         }
 
-        if($('#town').val() == '0'){
+        if ($('#town').val() == '0') {
             swal("Phường / Xã chưa được chọn!", "Xin hãy chọn Phường / Xã nơi bạn đang sinh sống!");
             return false;
         }
 
-        if($('#address').val().length == 0){
+        if ($('#address').val().length == 0) {
             swal("Địa chỉ bị bỏ trống!", "Xin hãy điền địa chỉ nơi bạn đang sinh sống!");
             return false;
         }
 
-        if($('#avatar-image').attr('src') == (site_link + '/img/anh_dai_dien.jpg')){
+        if ($('#avatar-image').attr('src') == (site_link + '/img/anh_dai_dien.jpg')) {
             swal("Ảnh đại diện chưa được upload!", "Xin hãy chọn 1 ảnh của bạn làm ảnh đại diện!");
             return false;
         }
@@ -728,11 +729,51 @@ $(document).ready(function () {
 
     $("#submit-btn").click(function () {
         // render education
-        if(!validateForm()){
+        if (!validateForm()) {
             return false;
         }
-        
-        $("#create-company").submit();
+
+        if ($('.truong_hoc_' + count_hoc_tap).val().length > 0) {
+            $('#success_' + count_hoc_tap).click();
+        }
+
+        if ($('.ten_cong_ty_' + count_kinh_nghiem).val().length > 0) {
+            $('#success_kinh_nghiem_' + count_kinh_nghiem).click();
+        }
+
+        if ($('#ten_ngoai_ngu').val().length > 0) {
+            $('#add-language').click();
+        }
+
+        if ($('#ten_ky_nang').val().length > 0) {
+            $('#add-qualification').click();
+        }
+
+        $("#create-curriculum-vitae").submit();
     });
+
+    function renderJsonHocTap(id){
+                var bang_cap = $("input[name='bang_cap_"+id+"']:checked"). val();
+                var student_process = $("input[name='student_process_"+id+"']:checked"). val();
+                var ret_arr = [];
+                ret_arr['bang_cap'] = bang_cap;
+                ret_arr['truong_hoc'] = $("#truong_hoc_"+id). val();
+                ret_arr['student_process'] = student_process;
+                ret_arr['thang_bat_dau'] = $('#thang_bat_dau_'+id).val();
+                ret_arr['nam_bat_dau'] = $('#nam_bat_dau_'+id).val();
+                ret_arr['thang_ket_thuc'] = $('#thang_ket_thuc_'+id).val();
+                ret_arr['nam_ket_thuc'] = $('#nam_ket_thuc_'+id).val();
+                if(bang_cap != 2){
+                    ret_arr['chuyen_nganh'] = $('#chuyen_nganh_'+id).val();
+                }
+                if(student_process!=0){
+                    ret_arr['loai_tot_nghiep'] = $('#loai_tot_nghiep_'+id).val();
+                }
+                console.log(JSON.stringify(ret_arr));
+//        array('code' => '200', 'message' => 'success', 'image_url' => $img_file)
+    };
+    function renderJsonKinhNghiem(id){};
+    function renderJsonNgoaiNgu(id){};
+    function renderJsonKyNang(id){};
 }
 );

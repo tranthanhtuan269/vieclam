@@ -20,7 +20,7 @@
                     </ul>
                     @endif
 
-                    {!! Form::open(['url' => '/curriculumvitae/store', 'class' => 'form-horizontal', 'files' => true]) !!}
+                    {!! Form::open(['url' => '/curriculumvitae/store', 'class' => 'form-horizontal', 'files' => true, 'id' => 'create-curriculum-vitae']) !!}
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group {{ $errors->has('avatar') ? 'has-error' : ''}}">
