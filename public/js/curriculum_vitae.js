@@ -12,18 +12,23 @@ $(document).ready(function () {
             swal("Tên kỹ năng trống!", "Xin hãy điền tên kỹ năng trước khi thêm mới!");
             return false;
         }
+
+        renderJsonKyNang();
         count_qualification++;
-        var html = "<label for='ten_ky_nang' class='col-md-4' id='qualification-" + count_qualification + "'><div class='col-md-12'>";
+        var html = "<label for='ten_ky_nang' class='col-md-4 qualification-holder' id='qualification-" + count_qualification + "'><div class='col-md-12'>";
         html += " - Thông thạo <span class='ngoai-ngu'>" + $('#ten_ky_nang').val() + "</span>";
         html += "<span class='qualification-delete' id='qualification-delete-" + count_qualification + "'>&nbsp;x&nbsp;</span></div></label>";
         $(html).appendTo('#qualification_content');
+        $('.qualification-delete').off('click');
         $('.qualification-delete').click(function () {
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(21, id_obj.length);
             $('#qualification-' + id_obj).remove();
+            re_render_qualification(id_obj);
             count_qualification--;
         });
     });
+
     $('#add-language').click(function () {
         if ($('#ten_ngoai_ngu').val().length <= 1) {
             swal("Tên ngoại ngữ trống!", "Xin hãy điền tên ngoại ngữ trước khi thêm mới!");
@@ -35,16 +40,19 @@ $(document).ready(function () {
             return false;
         }
 
+        renderJsonNgoaiNgu();
+
         count_language++;
         var html = "<label for='ten_ngoai_ngu' class='col-md-4' id='language-" + count_language + "'><div class='col-md-12'>";
         html += " - <span class='ngoai-ngu'>" + $('#ten_ngoai_ngu').val() + "</span> - Trình độ: <span class='ngoai-ngu'>" + $('#trinh_do_ngoai_ngu').val() + "</span>";
         html += "<span class='language-delete' id='language-delete-" + count_language + "'>&nbsp;x&nbsp;</span></div></label>";
         $(html).appendTo('#ngoai_ngu_content');
+        $('.language-delete').off('click');
         $('.language-delete').click(function () {
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(16, id_obj.length);
-            console.log(id_obj);
             $('#language-' + id_obj).remove();
+            re_render_language(id_obj);
             count_language--;
         });
     });
@@ -242,6 +250,7 @@ $(document).ready(function () {
         if (!validate_kinh_nghiem_cu()) {
             return false;
         }
+        renderJsonKinhNghiem(count_kinh_nghiem);
         var id_obj = $(this).attr('id');
         id_obj = id_obj.substring(20, id_obj.length);
         $('#kinh_nghiem_lam_viec_' + id_obj + '_content').fadeOut("slow", function () {});
@@ -273,16 +282,19 @@ $(document).ready(function () {
         });
     });
     function addEventToKinhNghiemLamViec() {
+        $('.kinh_nghiem_delete-btn').off('click');
         $('.kinh_nghiem_delete-btn').click(function () {
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(19, id_obj.length);
             $('#kinh_nghiem_lam_viec_' + id_obj).remove();
             count_kinh_nghiem--;
         });
+        $('.kinh_nghiem_success-btn').off('click');
         $('.kinh_nghiem_success-btn').click(function () {
             if (!validate_kinh_nghiem_cu()) {
                 return false;
             }
+            renderJsonKinhNghiem(count_kinh_nghiem);
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(20, id_obj.length);
             $('#kinh_nghiem_lam_viec_' + id_obj + '_content').fadeOut("slow", function () {});
@@ -290,6 +302,7 @@ $(document).ready(function () {
             $(this).hide();
             $('#edit_kinh_nghiem_' + id_obj).show();
         });
+        $('.kinh_nghiem_edit-btn').off('click');
         $('.kinh_nghiem_edit-btn').click(function () {
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(17, id_obj.length);
@@ -505,7 +518,7 @@ $(document).ready(function () {
         if (!validate_hoc_tap_cu()) {
             return false;
         }
-        renderJsonHocTap('0');
+        renderJsonHocTap(count_hoc_tap);
         $('#hoc_tap_0_content').fadeOut("slow", function () {});
         $('#truong_hoc_0_txt').html(' - ' + $('#truong_hoc_0').val() + ' ( ' + $('#nam_bat_dau_0').val() + ' - ' + $('#nam_ket_thuc_0').val() + ' )');
         $(this).hide();
@@ -551,6 +564,7 @@ $(document).ready(function () {
             if (!validate_hoc_tap_cu()) {
                 return false;
             }
+            renderJsonHocTap(count_hoc_tap);
             var id_obj = $(this).attr('id');
             id_obj = id_obj.substring(8, id_obj.length);
             $('#hoc_tap_' + id_obj + '_content').fadeOut("slow", function () {});
@@ -753,27 +767,122 @@ $(document).ready(function () {
     });
 
     function renderJsonHocTap(id){
-                var bang_cap = $("input[name='bang_cap_"+id+"']:checked"). val();
-                var student_process = $("input[name='student_process_"+id+"']:checked"). val();
-                var ret_arr = [];
-                ret_arr['bang_cap'] = bang_cap;
-                ret_arr['truong_hoc'] = $("#truong_hoc_"+id). val();
-                ret_arr['student_process'] = student_process;
-                ret_arr['thang_bat_dau'] = $('#thang_bat_dau_'+id).val();
-                ret_arr['nam_bat_dau'] = $('#nam_bat_dau_'+id).val();
-                ret_arr['thang_ket_thuc'] = $('#thang_ket_thuc_'+id).val();
-                ret_arr['nam_ket_thuc'] = $('#nam_ket_thuc_'+id).val();
-                if(bang_cap != 2){
-                    ret_arr['chuyen_nganh'] = $('#chuyen_nganh_'+id).val();
-                }
-                if(student_process!=0){
-                    ret_arr['loai_tot_nghiep'] = $('#loai_tot_nghiep_'+id).val();
-                }
-                console.log(JSON.stringify(ret_arr));
-//        array('code' => '200', 'message' => 'success', 'image_url' => $img_file)
+        var bang_cap = $("input[name='bang_cap_"+id+"']:checked"). val();
+        var student_process = $("input[name='student_process_"+id+"']:checked"). val();
+        var ret_arr = {};
+        ret_arr['bang_cap'] = bang_cap;
+        ret_arr['truong_hoc'] = $("#truong_hoc_"+id). val();
+        ret_arr['student_process'] = student_process;
+        ret_arr['thang_bat_dau'] = $('#thang_bat_dau_'+id).val();
+        ret_arr['nam_bat_dau'] = $('#nam_bat_dau_'+id).val();
+        ret_arr['thang_ket_thuc'] = $('#thang_ket_thuc_'+id).val();
+        ret_arr['nam_ket_thuc'] = $('#nam_ket_thuc_'+id).val();
+        if(bang_cap != 2){
+            ret_arr['chuyen_nganh'] = $('#chuyen_nganh_'+id).val();
+        }
+        if(student_process!=0){
+            ret_arr['loai_tot_nghiep'] = $('#loai_tot_nghiep_'+id).val();
+        }
+        $('#education').val($('#education').val() + ';' + JSON.stringify(ret_arr));
     };
-    function renderJsonKinhNghiem(id){};
-    function renderJsonNgoaiNgu(id){};
-    function renderJsonKyNang(id){};
+    function renderJsonKinhNghiem(id){
+        var ret_arr = {};
+        ret_arr['ten_cong_ty'] = $('#ten_cong_ty_'+id).val();
+        ret_arr['vi_tri'] = $('#vi_tri_'+id).val();
+        ret_arr['thang_bat_dau_lam_viec'] = $('#thang_bat_dau_lam_viec_'+id).val();
+        ret_arr['nam_bat_dau_lam_viec'] = $('#nam_bat_dau_lam_viec_'+id).val();
+        ret_arr['thang_ket_thuc_lam_viec'] = $('#thang_ket_thuc_lam_viec_'+id).val();
+        ret_arr['nam_ket_thuc_lam_viec'] = $('#nam_ket_thuc_lam_viec_'+id).val();
+        ret_arr['dia_chi_cong_ty'] = $('#dia_chi_cong_ty_'+id).val();
+        ret_arr['thanh_pho'] = $('#thanh_pho_'+id).val();
+        ret_arr['quan_huyen'] = $('#quan_huyen_'+id).val();
+        ret_arr['mo_ta'] = $('#mo_ta_'+id).val();
+        ret_arr['company_image'] = $('#company_image_'+id).attr('src');
+        $('#word_experience').val($('#word_experience').val() + ';' + JSON.stringify(ret_arr));
+    };
+    function renderJsonNgoaiNgu(){
+        var ret_arr = {};
+        ret_arr['ten_ngoai_ngu'] = $('#ten_ngoai_ngu').val();
+        ret_arr['trinh_do_ngoai_ngu'] = $('#trinh_do_ngoai_ngu').val();
+        $('#language').val($('#language').val() + ';' + JSON.stringify(ret_arr));
+    };
+    function renderJsonKyNang(){
+        var ret_arr = {};
+        ret_arr['ten_ky_nang'] = $('#ten_ky_nang').val();
+        $('#qualification').val($('#qualification').val() + ';' + JSON.stringify(ret_arr));
+    };
+
+    function re_render_qualification(id){
+        // console.log(id);
+        var json_string = $('#qualification').val();
+        $('#qualification').val('');
+        json_string = json_string.substring(1, json_string.length);
+        json_array = json_string.split(";");
+        $('#qualification_content').html('');
+        var j=0;
+        for(var i = 0; i < json_array.length; i++){
+            if(i+1 == id){
+                
+            }else{
+                var obj = $.parseJSON(json_array[i]);
+                var html = ren_ky_nang(j+1, obj.ten_ky_nang);
+                $('#qualification_content').append(html);
+                $('#qualification').val($('#qualification').val() + ';' + json_array[i]);
+                j++;
+            }
+        }
+        $('.qualification-delete').off('click');
+        $('.qualification-delete').click(function () {
+            var id_obj = $(this).attr('id');
+            id_obj = id_obj.substring(21, id_obj.length);
+            $('#qualification-' + id_obj).remove();
+            re_render_qualification(id_obj);
+            count_qualification--;
+        });
+    }
+
+    function re_render_language(id){
+        var json_string = $('#language').val();
+        $('#language').val('');
+        json_string = json_string.substring(1, json_string.length);
+        json_array = json_string.split(";");
+        $('#ngoai_ngu_content').html('');
+        var j=0;
+        for(var i = 0; i < json_array.length; i++){
+            if(i+1 == id){
+                
+            }else{
+                var obj = $.parseJSON(json_array[i]);
+                var html = ren_ngoai_ngu(j+1, obj.ten_ngoai_ngu, obj.trinh_do_ngoai_ngu);
+                // update content
+                $('#ngoai_ngu_content').append(html);
+                // update json 
+                $('#language').val($('#language').val() + ';' + json_array[i]);
+                j++;
+            }
+        }
+        $('.language-delete').off('click');
+        $('.language-delete').click(function () {
+            var id_obj = $(this).attr('id');
+            id_obj = id_obj.substring(16, id_obj.length);
+            $('#language-' + id_obj).remove();
+            re_render_language(id_obj);
+            count_language--;
+        });
+    }
+
+    function ren_ngoai_ngu(id, ten_ngoai_ngu, trinh_do_ngoai_ngu){
+        var html_return = "<label for='ten_ngoai_ngu' class='col-md-4' id='language-" + id + "'><div class='col-md-12'>";
+        html_return += " - <span class='ngoai-ngu'>" + ten_ngoai_ngu + "</span> - Trình độ: <span class='ngoai-ngu'>" + trinh_do_ngoai_ngu + "</span>";
+        html_return += "<span class='language-delete' id='language-delete-" + id + "'>&nbsp;x&nbsp;</span></div></label>";
+        return html_return;
+    }
+
+    function ren_ky_nang(id, ten_ky_nang){
+        var html_return = "<label for='ten_ky_nang' class='col-md-4 qualification-holder' id='qualification-" + id + "'><div class='col-md-12'>";
+        html_return += " - Thông thạo <span class='ngoai-ngu'>" + ten_ky_nang + "</span>";
+        html_return += "<span class='qualification-delete' id='qualification-delete-" + id + "'>&nbsp;x&nbsp;</span></div></label>";
+        return html_return;
+    }
 }
 );
