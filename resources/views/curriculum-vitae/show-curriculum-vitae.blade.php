@@ -1,6 +1,8 @@
 @extends('layouts.company')
 
 @section('content')
+<script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">            
@@ -66,7 +68,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-3 col-md-offset-1">Thành tích học tập </div>
-                                        <div class="col-md-8"></div>
+                                        <div class="col-md-8">{{ $edu->loai_tot_nghiep }}</div>
                                     </div>
                                     <hr>
                                     <?php 
@@ -255,9 +257,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12"style="display:none;">
-                            <div class="btn btn-danger pull-right">In hồ sơ</div>
-                            <div class="btn btn-primary pull-right">Lưu hồ sơ</div>
+                        <div class="col-md-12">
+                            <div class="btn btn-danger pull-right" style="display:none;">In hồ sơ</div>
+                            <div class="btn btn-primary pull-right" style="display:none;">Lưu hồ sơ</div>
+                            <div class="btn btn-primary pull-right" data-toggle="modal" data-target="#danh-gia">Đánh giá ứng viên</div>
                         </div>
                     </div>
                 </div>
@@ -265,4 +268,108 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="danh-gia" tabindex="-1" role="dialog" aria-labelledby="danhgiaLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Đánh giá ứng viên</h4>
+      </div>
+      <div class="modal-body">
+            <form class="form-horizontal">
+            <input type="hidden" name="curriculumvitae" value="{{ $curriculumvitae->id }}">
+            <input type="hidden" name="score" value="3">
+            <div class="form-group">
+                <div class="col-sm-12 text-center">
+                    <p class="star-vote" id="star-vote">
+                        <img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-1" class="vote">
+                        <img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-2" class="vote">
+                        <img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-3" class="vote">
+                    </p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <textarea class="form-control" rows="5" id="inputDescription">Nói cho mọi người biết điều bạn nghĩ về ứng viên</textarea>
+                </div>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="pull-left message-danh-gia">Hãy cho chúng tôi biết về điều bạn thích và không thích</div>
+        <button type="button" class="btn btn-primary" id="send-message">Gửi đánh giá</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#star-vote>img').click(function () {
+            switch ($(this).attr('id')) {
+                case 'star-vote-1':
+                    $('#star-vote-1').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-2').removeClass('vote').addClass('no-vote');
+                    $('#star-vote-3').removeClass('vote').addClass('no-vote');
+                    break;
+                case 'star-vote-2':
+                    $('#star-vote-1').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-2').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-3').removeClass('vote').addClass('no-vote');
+                    break;
+                case 'star-vote-3':
+                    $('#star-vote-1').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-2').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-3').removeClass('no-vote').addClass('vote');
+                    break;
+                case 'star-vote-4':
+                    $('#star-vote-1').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-2').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-3').removeClass('no-vote').addClass('vote');
+                    break;
+                case 'star-vote-5':
+                    $('#star-vote-1').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-2').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-3').removeClass('no-vote').addClass('vote');
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        $('#send-message').click(function(){
+            var countStar = $('#star-vote>img.vote').length;
+            var description = $('#inputDescription').val();
+            var curriculumvitae = $('input[name=curriculumvitae]').val()
+            var request = $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ url('/') }}/curriculumvitae/send-comment",
+                method: "POST",
+                data: {
+                    'curriculumvitae': curriculumvitae,
+                    'description': description,
+                    'countStar': countStar,
+                },
+                dataType: "json"
+            });
+
+            request.done(function (msg) {
+                if (msg.code == 200) {
+                    $('#add-comment').modal('toggle');
+                    swal("Thông báo", "Thêm đánh giá thành công!", "success");
+                } else {
+                    $('#add-comment').modal('toggle');
+                    swal("Cảnh báo", msg.message, "error");
+                }
+            });
+
+            request.fail(function (jqXHR, textStatus) {
+                alert("Request failed: " + textStatus);
+            });
+        });
+    });
+</script>
 @endsection

@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
     Route::resource('Admin/company-size', 'CompanySizeController');
     Route::resource('admin/job', 'JobController');
     Route::post('/postImage', 'HomeController@postImage');
+    Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
 });
 
 // Check role in route middleware
@@ -57,6 +58,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function 
     //Route::resource('company/job', 'JobController');
     Route::resource('admin/job', 'JobController');
     Route::post('/postImage', 'HomeController@postImage');
+    Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
 });
 
 // Check role in route middleware
@@ -65,4 +67,5 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'user'], function ()
     Route::post('curriculumvitae/store', 'CurriculumVitaeController@storeCurriculumVitae');
     Route::get('curriculumvitae/{id}', 'CurriculumVitaeController@showCurriculumVitae');
     Route::post('/postImage', 'HomeController@postImage');
+    Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
 });

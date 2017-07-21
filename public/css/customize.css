@@ -106,3 +106,8 @@ img.no-vote{
     border-bottom: 1px dashed #ccc;
     text-transform: uppercase;
 }
+
+.message-danh-gia{
+    color:#ccc;
+    line-height: 34px;
+}

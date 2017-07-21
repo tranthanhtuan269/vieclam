@@ -65,6 +65,35 @@ INSERT INTO `cities` VALUES (1,'Hà Nội',NULL,NULL),(2,'Hồ Chí Minh',NULL,N
 UNLOCK TABLES;
 
 --
+-- Table structure for table `comment_curriculum_vitaes`
+--
+
+DROP TABLE IF EXISTS `comment_curriculum_vitaes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comment_curriculum_vitaes` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `curriculumvitae` int(11) NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `star` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comment_curriculum_vitaes`
+--
+
+LOCK TABLES `comment_curriculum_vitaes` WRITE;
+/*!40000 ALTER TABLE `comment_curriculum_vitaes` DISABLE KEYS */;
+INSERT INTO `comment_curriculum_vitaes` VALUES (1,6,'aaa',3,'2017-07-21 04:38:32','2017-07-21 04:38:32',3);
+/*!40000 ALTER TABLE `comment_curriculum_vitaes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `comments`
 --
 
@@ -293,7 +322,7 @@ DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE `jobs` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` int(11) NOT NULL,
+  `number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiration_date` datetime NOT NULL,
   `work_time` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `public` int(11) NOT NULL,
@@ -337,7 +366,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +375,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2017_07_07_070354_create_companies_table',2),(4,'2017_07_07_070453_create_jobs_table',2),(5,'2017_07_08_041145_create_comments_table',2),(6,'2017_07_08_050311_create_follows_table',2),(7,'2017_07_09_025320_create_curriculum_vitaes_table',2),(8,'2017_07_12_115342_create_posts_table',2),(9,'2016_01_01_193651_create_roles_permissions_tables',3),(10,'2017_07_13_102332_create_cities_table',4),(11,'2017_07_14_034908_create_districts_table',4),(12,'2017_07_14_035547_create_cache_table',4),(13,'2017_07_14_035608_create_sessions_table',4),(14,'2017_07_14_040435_create_cities_table',5),(15,'2017_07_14_040514_create_districts_table',6),(16,'2017_07_14_040720_create_cities_table',7),(17,'2017_07_14_040750_create_districts_table',8),(18,'2017_07_14_041104_create_cities_table',9),(19,'2017_07_14_041228_create_districts_table',10),(20,'2017_07_14_044910_create_towns_table',11),(21,'2017_07_14_154915_create_curriculum_vitaes_table',12),(22,'2017_07_14_171205_create_companies_table',13),(23,'2017_07_15_160840_create_job_types_table',14),(24,'2017_07_15_160912_create_company_sizes_table',15),(25,'2017_07_17_033158_create_follows_table',16),(26,'2017_07_17_034253_create_comments_table',17),(27,'2017_07_17_035627_create_jobs_table',17);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2017_07_07_070354_create_companies_table',2),(4,'2017_07_07_070453_create_jobs_table',2),(5,'2017_07_08_041145_create_comments_table',2),(6,'2017_07_08_050311_create_follows_table',2),(7,'2017_07_09_025320_create_curriculum_vitaes_table',2),(8,'2017_07_12_115342_create_posts_table',2),(9,'2016_01_01_193651_create_roles_permissions_tables',3),(10,'2017_07_13_102332_create_cities_table',4),(11,'2017_07_14_034908_create_districts_table',4),(12,'2017_07_14_035547_create_cache_table',4),(13,'2017_07_14_035608_create_sessions_table',4),(14,'2017_07_14_040435_create_cities_table',5),(15,'2017_07_14_040514_create_districts_table',6),(16,'2017_07_14_040720_create_cities_table',7),(17,'2017_07_14_040750_create_districts_table',8),(18,'2017_07_14_041104_create_cities_table',9),(19,'2017_07_14_041228_create_districts_table',10),(20,'2017_07_14_044910_create_towns_table',11),(21,'2017_07_14_154915_create_curriculum_vitaes_table',12),(22,'2017_07_14_171205_create_companies_table',13),(23,'2017_07_15_160840_create_job_types_table',14),(24,'2017_07_15_160912_create_company_sizes_table',15),(25,'2017_07_17_033158_create_follows_table',16),(26,'2017_07_17_034253_create_comments_table',17),(27,'2017_07_17_035627_create_jobs_table',17),(28,'2017_07_17_041019_create_jobs_table',18),(29,'2017_07_21_113043_create_comment_curriculum_vitaes_table',18);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -576,4 +605,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-21 17:30:11
+-- Dump completed on 2017-07-21 18:43:13
