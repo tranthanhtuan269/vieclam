@@ -92,3 +92,17 @@ img.no-vote{
     border-radius: 3px;
     float: left;
 }
+
+.curriculumvitae{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 0;
+}
+.curriculumvitae .main-top{
+    margin-bottom: 10px;
+}
+
+.curriculumvitae  .panel-heading{
+    border-bottom: 1px dashed #ccc;
+    text-transform: uppercase;
+}

@@ -6,8 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\CurriculumVitae;
+use App\Company;
+use App\User;
 use Illuminate\Http\Request;
 use Session;
+// use Carbon\Carbon;
 
 class CurriculumVitaeController extends Controller
 {
@@ -92,6 +95,41 @@ class CurriculumVitaeController extends Controller
         return view('curriculum-vitae.show', compact('curriculumvitae'));
     }
 
+    public function showCurriculumVitae($id)
+    {
+        $curriculumvitae = CurriculumVitae::findOrFail($id);
+        $user = User::findOrFail($curriculumvitae->user);
+        $curriculumvitae = \DB::table('curriculum_vitaes')
+                ->join('cities', 'cities.id', '=', 'curriculum_vitaes.city')
+                ->join('districts', 'districts.id', '=', 'curriculum_vitaes.district')
+                ->join('users', 'users.id', '=', 'curriculum_vitaes.user')
+                ->select(
+                        'curriculum_vitaes.id', 
+                        'curriculum_vitaes.avatar', 
+                        'curriculum_vitaes.birthday', 
+                        'curriculum_vitaes.gender', 
+                        'users.name as name', 
+                        'curriculum_vitaes.address', 
+                        'cities.name as city', 
+                        'districts.name as district', 
+                        'curriculum_vitaes.education', 
+                        'curriculum_vitaes.word_experience', 
+                        'curriculum_vitaes.language', 
+                        'curriculum_vitaes.interests', 
+                        'curriculum_vitaes.references', 
+                        'curriculum_vitaes.qualification', 
+                        'curriculum_vitaes.career_objective', 
+                        'curriculum_vitaes.images', 
+                        'curriculum_vitaes.active', 
+                        'curriculum_vitaes.updated_at' 
+                )
+                ->where('curriculum_vitaes.id', $id)
+                ->first();
+        // dd($curriculumvitae);
+
+        return view('curriculum-vitae.show-curriculum-vitae', compact('curriculumvitae', 'user'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -159,26 +197,18 @@ class CurriculumVitaeController extends Controller
         //             ->withInput();
         // }
 
-        dd($request);
-        
-        $img_banner = '';
-        if ($request->hasFile('banner-img')) {
-            $file_banner = $request->file('banner-img');
-            $filename = $file_banner->getClientOriginalName();
-            $extension = $file_banner->getClientOriginalExtension();
-            $img_banner = date('His') . $filename;
-            $destinationPath = base_path() . '/public/images';
-            $file_banner->move($destinationPath, $img_banner);
-        }
+        // dd($request);
 
-        $img_logo = '';
-        if ($request->hasFile('logo-img')) {
-            $file_logo = $request->file('logo-img');
-            $filename = $file_logo->getClientOriginalName();
-            $extension = $file_logo->getClientOriginalExtension();
-            $img_logo = date('His') . $filename;
+
+        
+        $img_avatar = '';
+        if ($request->hasFile('avatar-img')) {
+            $file_avatar = $request->file('avatar-img');
+            $filename = $file_avatar->getClientOriginalName();
+            $extension = $file_avatar->getClientOriginalExtension();
+            $img_avatar = date('His') . $filename;
             $destinationPath = base_path() . '/public/images';
-            $file_logo->move($destinationPath, $img_logo);
+            $file_avatar->move($destinationPath, $img_avatar);
         }
 
         $picture = '';
@@ -196,21 +226,23 @@ class CurriculumVitaeController extends Controller
         }
 
         $input = $request->all();
-        if ($input['description'] == null)
-            $input['description'] = '';
-        unset($input['banner-img']);
-        unset($input['logo-img']);
+
+        unset($input['avatar-img']);
         unset($input['images-img']);
-        $input['logo'] = $img_logo;
-        $input['banner'] = $img_banner;
+        unset($input['bang_cap_0']);
+        unset($input['student_process_0']);
+
+        $input['avatar'] = $img_avatar;
         $input['images'] = $allPic;
         $input['user'] = \Auth::user()->id;
+        $input['created_at'] = date("Y-m-d H:i:s");
+        $input['updated_at'] = date("Y-m-d H:i:s");
         
-        $company = Company::create($input);
+        $curriculumVitae = CurriculumVitae::create($input);
 
-        if ($company) {
+        if ($curriculumVitae) {
             return redirect()->action(
-                    'CompanyController@info', ['id' => $company->id]
+                    'CurriculumVitaeController@showCurriculumVitae', ['id' => $curriculumVitae->id]
                 );
         }
 

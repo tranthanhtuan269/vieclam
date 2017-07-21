@@ -742,6 +742,14 @@ $(document).ready(function () {
     }
 
     $("#submit-btn").click(function () {
+        $('#active').val(CKEDITOR.instances['active'].getData());
+        $('#references').val(CKEDITOR.instances['references'].getData());
+        $('#interests').val(CKEDITOR.instances['interests'].getData());
+
+        $.each($(".career_objective:checked"), function(){            
+            $('#career_objective').val($('#career_objective').val() + ';' + $( this ).attr('id'));
+        });
+        
         // render education
         if (!validateForm()) {
             return false;
@@ -763,6 +771,9 @@ $(document).ready(function () {
             $('#add-qualification').click();
         }
 
+
+        return false;
+
         $("#create-curriculum-vitae").submit();
     });
 
@@ -781,7 +792,7 @@ $(document).ready(function () {
             ret_arr['chuyen_nganh'] = $('#chuyen_nganh_'+id).val();
         }
         if(student_process!=0){
-            ret_arr['loai_tot_nghiep'] = $('#loai_tot_nghiep_'+id).val();
+            ret_arr['loai_tot_nghiep'] = $('#loai_tot_nghiep_'+id + ' option:selected').text();
         }
         $('#education').val($('#education').val() + ';' + JSON.stringify(ret_arr));
     };
@@ -794,8 +805,8 @@ $(document).ready(function () {
         ret_arr['thang_ket_thuc_lam_viec'] = $('#thang_ket_thuc_lam_viec_'+id).val();
         ret_arr['nam_ket_thuc_lam_viec'] = $('#nam_ket_thuc_lam_viec_'+id).val();
         ret_arr['dia_chi_cong_ty'] = $('#dia_chi_cong_ty_'+id).val();
-        ret_arr['thanh_pho'] = $('#thanh_pho_'+id).val();
-        ret_arr['quan_huyen'] = $('#quan_huyen_'+id).val();
+        ret_arr['thanh_pho'] = $('#thanh_pho_'+id + ' option:selected').text();
+        ret_arr['quan_huyen'] = $('#quan_huyen_'+id + ' option:selected').text();
         ret_arr['mo_ta'] = $('#mo_ta_'+id).val();
         ret_arr['company_image'] = $('#company_image_'+id).attr('src');
         $('#word_experience').val($('#word_experience').val() + ';' + JSON.stringify(ret_arr));

@@ -63,5 +63,6 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function 
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'user'], function () {
     Route::get('curriculumvitae/create', 'CurriculumVitaeController@createCurriculumVitae');
     Route::post('curriculumvitae/store', 'CurriculumVitaeController@storeCurriculumVitae');
+    Route::get('curriculumvitae/{id}', 'CurriculumVitaeController@showCurriculumVitae');
     Route::post('/postImage', 'HomeController@postImage');
 });

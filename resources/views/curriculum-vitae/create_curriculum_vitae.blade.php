@@ -387,48 +387,48 @@
                             <div class="form-career-objective-group">
                                 <div class="form-group">
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_0">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_0">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Muốn được trải nghiệm trong môi trường làm việc tại Doanh nghiệp!</span>
                                     </label>
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_1">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_1">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Học hỏi kinh nghiệm và các kỹ năng xử lý tình huống trong công việc!</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_2">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_2">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Rèn luyện thêm khả năng giao tiếp!</span>
                                     </label>
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_3">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_3">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Rèn luyện tác phong làm việc chuyên nghiệp!</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_4">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_4">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Thử đi làm thêm để trải nghiệm!</span>
                                     </label>
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_5">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_5">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Kiếm thêm thu nhập để đi du lịch!</span>
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_6">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_6">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Kiếm thêm thu nhập trang trải chi tiêu cá nhân!</span>
                                     </label>
                                     <label class="col-md-6 custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="career_objective_7">
+                                        <input type="checkbox" class="career_objective custom-control-input" id="career_objective_7">
                                         <span class="custom-control-indicator"></span>
                                         <span class="custom-control-description">Kiếm thêm thu nhập hỗ trợ gia đình!</span>
                                     </label>
