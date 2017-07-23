@@ -25,7 +25,7 @@ class Job extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'number', 'expiration_date', 'work_time', 'public', 'description', 'required', 'benefit', 'city', 'district', 'position', 'experience', 'work_type', 'job_type', 'salary', 'gender', 'age', 'company'];
+    protected $fillable = ['name', 'number', 'expiration_date', 'work_time', 'public', 'description', 'requirement', 'benefit', 'time_start', 'city', 'district', 'position', 'experience', 'education', 'job_type', 'work_type', 'salary', 'gender', 'age', 'company'];
 
     
 }

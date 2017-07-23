@@ -23,7 +23,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $city = 1; //hanoi // 2 = hochiminh // 3 =  danang
+
+        if(isset($_GET['city']) && is_numeric($_GET['city'])){
+            $city = (int)$_GET['city'];
+        }
+
+        // get district of city
+        $districts = \DB::table('districts')
+                    ->where('districts.city', '=', $city)
+                    ->get();   
+
+        // get cv of vip
+        $cvs = \DB::table('curriculum_vitaes')
+                    ->where('curriculum_vitaes.vip', '=', 1)
+                    ->take(10)
+                    ->get();  
+        // dd($cvs);
+
+        return view('home', compact('districts'));
     }
 
     public function getDistrict($id){
