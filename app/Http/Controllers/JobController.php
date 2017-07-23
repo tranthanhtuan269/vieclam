@@ -214,7 +214,26 @@ class JobController extends Controller
     public function info($id){
         $job = Job::findOrFail($id);
         if($job && $job->company){
-            $company = Company::findOrFail($job->company);
+            $company = \DB::table('companies')
+                ->join('cities', 'cities.id', '=', 'companies.city')
+                ->join('districts', 'districts.id', '=', 'companies.district')
+                ->join('towns', 'towns.id', '=', 'companies.town')
+                ->join('company_sizes', 'company_sizes.id', '=', 'companies.size')
+                ->select(
+                        'companies.name', 
+                        'companies.logo', 
+                        'companies.address', 
+                        'cities.name as city', 
+                        'districts.name as district', 
+                        'towns.name as town', 
+                        'companies.jobs', 
+                        'company_sizes.detail as size', 
+                        'companies.sologan', 
+                        'companies.description',
+                        'companies.images'
+                )
+                ->where('companies.id', $id)
+                ->first();
         }
         return view('job.info', compact('job', 'company'));
     }
