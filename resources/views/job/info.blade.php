@@ -12,32 +12,34 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<?php //dd($company->logo); ?>
 	<header>
 		<div class="container">
 			<div class="row clearfix">
-				<div class="logo clearfix"><a href=""><img src="{{ url('/') }}/images/{{ $company->logo }}" id="logo" alt=""><p>Junior Java Developers (fresher welcome)</p></a></div>
+				<div class="logo clearfix"><a href=""><img src="{{ url('/') }}/images/{{ $company->logo }}" id="logo" alt=""><p>{{ $job->name }}</p></a></div>
 				<div class="link"><a class="bt-join" href="">Ứng tuyển ngay</a></div>
 			</div>
 		</div>
 	</header>
 	<div class="container">
 		<div class="row ads clearfix">
-			<div class="col-md-4 col-xs-12">
-				<div class="item-ads"><img src="{{ url('/') }}/images/slide.png" alt=""></div>
-			</div>
-			<div class="col-md-4 col-xs-12">
-				<div class="item-ads"><img src="{{ url('/') }}/images/slide.png" alt=""></div>
-			</div>
-			<div class="col-md-4 col-xs-12">
-				<div class="item-ads"><img src="{{ url('/') }}/images/slide.png" alt=""></div>
-			</div>
+			@if(isset($company->images))
+			<?php 
+				$company->images=rtrim($company->images,";");
+				$images = explode(";",$company->images);
+				for($i = 0; $i < count($images); $i++){ if($i == 3) break; ?>
+					
+					<div class="col-md-4 col-xs-12">
+						<div class="item-ads"><img src="{{ url('/') }}/images/{{ $images[$i] }}" alt=""></div>
+					</div>
+
+				<?php } ?>
+			@endif
 		</div>
 		<div class="contents-job row">
 			<div class="col-md-4 info-company col-xs-12">
 				<div class="logo"><a href=""><img src="{{ url('/') }}/images/{{ $company->logo }}" alt=""></a></div>
 				<div class="info">
-					<p class="title">FPT Software</p>
+					<p class="title">{{ $company->name }}</p>
 					<div class="star">
 						<img src="{{ url('/') }}/images/star.png" alt="">
 						<img src="{{ url('/') }}/images/star.png" alt="">
@@ -45,28 +47,29 @@
 						<img src="{{ url('/') }}/images/star.png" alt="">
 						<img src="{{ url('/') }}/images/star.png" alt="">
 					</div>
-					<p class="time-new-roman"><i></i>801, Tòa nhà Trần Phú, Hà Nội </p>
-					<p class="time-new-roman"><i></i>Hà Nội, Đà Nẵng, TP. Hồ Chí Minh</p>
-					<p class="time-new-roman"><i></i>Quận Cầu Giấy, Hà Nội</p>
-					<p class="time-new-roman"><i></i>Thương mại điện tử</p>
-					<p class="time-new-roman" style="display: inline-block;margin-right: 50px"><i></i>300+</p>
-					<p class="time-new-roman" style="display: inline-block;"><i></i>20 chi nhánh</p>
+					<p class="time-new-roman"><i></i>{{ $company->address }}, {{ $company->city }} </p>
+					<p class="time-new-roman"><i></i>{{ $company->city }}</p>
+					<p class="time-new-roman"><i></i>{{ $company->district }}, {{ $company->city }}</p>
+					<p class="time-new-roman"><i></i>{{ $company->jobs }}</p>
+					<p class="time-new-roman" style="display: inline-block;margin-right: 50px"><i></i>{{ $company->size }}+</p>
 					<p class="time-new-roman"><i></i>Thứ 2 - Thứ 6</p>
-					<p class="time-new-roman"><i></i>Đi để thành công</p>
+					@if(strlen($company->sologan) > 0)
+					<p class="time-new-roman"><i></i>{{ $company->sologan }}</p>
+					@endif
 					<div class="link time-new-roman" ><a href="" class="underline">Trang tuyển dụng <i class="muiten"></i></a></div>
 				</div>
 			</div>
 			<div class="col-md-8  col-xs-12">
 				<div class="info-job">
-					<p class="title" style="margin-top: -8px">Junior Java Developers (fresher welcome)</p>
+					<p class="title" style="margin-top: -8px">{{ $job->name }}</p>
 					<p class="time-new-roman"><i></i><span style="margin-right: 35px">
-					Quận 3, Thành phố Hồ Chí Minh
+					{{ $company->district }}, {{ $company->city }}
 					</span>
 					<a href="" style="color:#2a70b8;display: inline-block;" class="underline">Xem bản đồ <i class="muiten"></i></a></p>
-					<p class="time-new-roman"><i></i>Thỏa thuận</p>
-					<p class="time-new-roman"><i></i>12/06/2017 (còn 3 ngày)</p>
-					<p class="time-new-roman"><i></i>5 người</p>
-					<p class="time-new-roman"><i></i>Nam</p>
+					<p class="time-new-roman"><i></i>{{ $job->salary }}</p>
+					<p class="time-new-roman"><i></i>{{ $job->expiration_date }} (còn 3 ngày)</p>
+					<p class="time-new-roman"><i></i>{{ $job->number }} người</p>
+					<p class="time-new-roman"><i></i><?php if($job->gender == 0) { echo "Nam"; }else{ echo "Nữ"; } ?></p>
 					<div class="bt clearfix">
 						<a class="bt-join time-new-roman" href="">Ứng tuyển ngay</a> 
 						<span style="padding:0;" id="share">
