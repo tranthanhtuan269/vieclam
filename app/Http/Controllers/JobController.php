@@ -212,6 +212,10 @@ class JobController extends Controller
     }
 
     public function info($id){
-        echo $id; die;
+        $job = Job::findOrFail($id);
+        if($job && $job->company){
+            $company = Company::findOrFail($job->company);
+        }
+        return view('job.info', compact('job', 'company'));
     }
 }
