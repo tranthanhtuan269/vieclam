@@ -111,3 +111,28 @@ img.no-vote{
     color:#ccc;
     line-height: 34px;
 }
+
+.info-page .info-company{
+    margin-top: 20px;
+}
+
+.info-page .info-company .border-blue h3{
+    color: #2865dc;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+@media (min-width: 992px) {
+    .info-page .info-company .border-blue{
+        border-left: 2px solid #2865dc;
+        padding-left: 50px;
+    }
+
+    .info-page .info-company h5{
+        margin-bottom: 20px;    
+    }
+
+    .info-page .info-company img{
+        margin:30% 15% 0;
+    }
+}

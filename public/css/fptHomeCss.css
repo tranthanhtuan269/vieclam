@@ -123,6 +123,7 @@ footer{width: 100%;margin-top: 100px;border-top: 3px solid #2A70B8}
 .footer-top .app a:nth-child(2){background-position:-177px -535px}
 .footer-bot{font-size: 11px;color:#9B9B9B;margin-bottom: 50px}
 .footer-bot p{margin-bottom: 0px;}
+.item .content{padding: 0 10px;}
 
 @media (min-width: 1200px) {
   .container {

@@ -212,7 +212,26 @@ class JobController extends Controller
     }
 
     public function info($id){
-        $job = Job::findOrFail($id);
+        $job = \DB::table('jobs')
+                ->join('cities', 'cities.id', '=', 'jobs.city')
+                ->join('districts', 'districts.id', '=', 'jobs.district')
+                ->join('salaries', 'salaries.id', '=', 'jobs.salary')
+                ->select(
+                    'jobs.name',
+                    'jobs.expiration_date',
+                    'jobs.number',
+                    'jobs.gender',
+                    'jobs.description',
+                    'jobs.required',
+                    'jobs.benefit',
+                    'jobs.company',
+                    'cities.name as city', 
+                    'districts.name as district', 
+                    'salaries.name as salary'
+                )
+                ->where('jobs.id', $id)
+                ->first();
+                // dd($job);
         if($job && $job->company){
             $company = \DB::table('companies')
                 ->join('cities', 'cities.id', '=', 'companies.city')
@@ -227,14 +246,19 @@ class JobController extends Controller
                         'districts.name as district', 
                         'towns.name as town', 
                         'companies.jobs', 
-                        'company_sizes.detail as size', 
+                        'company_sizes.size as size', 
                         'companies.sologan', 
                         'companies.description',
                         'companies.images'
                 )
-                ->where('companies.id', $id)
+                ->where('companies.id', $job->company)
                 ->first();
+                // dd($company);
+            if($company)
+                return view('job.info', compact('job', 'company'));
+            else
+                return view('errors.404');
         }
-        return view('job.info', compact('job', 'company'));
+        return view('errors.404');
     }
 }

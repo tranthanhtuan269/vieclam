@@ -178,19 +178,19 @@
                             </div>
                             <div class="form-group {{ $errors->has('salary') ? 'has-error' : ''}}">
                                 <div class="col-md-12">
-                                    <input type="hidden" id="salary" name="salary" value="0">
+                                    <input type="hidden" id="salary" name="salary" value="1">
                                     <select class="form-control" title="Mức lương" id="salary_select" name="salary_select">
-                                        <option value="0">Thỏa thuận mức lương</option>
-                                        <option value="1">Dưới 1 triệu</option>
-                                        <option value="2">1 - 2 triệu</option>
-                                        <option value="3">2 - 3 triệu</option>
-                                        <option value="4">2 - 4 triệu</option>
-                                        <option value="5">4 - 5 triệu</option>
-                                        <option value="6">5 - 8 triệu</option>
-                                        <option value="7">8 - 12 triệu</option>
-                                        <option value="8">12 - 15 triệu</option>
-                                        <option value="9">15 - 20 triệu</option>
-                                        <option value="10">Trên 20 năm</option>
+                                        <option value="1">Thỏa thuận mức lương</option>
+                                        <option value="2">Dưới 1 triệu</option>
+                                        <option value="3">1 - 2 triệu</option>
+                                        <option value="4">2 - 3 triệu</option>
+                                        <option value="5">2 - 4 triệu</option>
+                                        <option value="6">4 - 5 triệu</option>
+                                        <option value="7">5 - 8 triệu</option>
+                                        <option value="8">8 - 12 triệu</option>
+                                        <option value="9">12 - 15 triệu</option>
+                                        <option value="10">15 - 20 triệu</option>
+                                        <option value="11">Trên 20 năm</option>
                                     </select>
                                     {!! $errors->first('salary', '<p class="help-block">:message</p>') !!}
                                 </div>
