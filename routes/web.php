@@ -22,8 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('send-comment', 'CompanyController@sendcomment');
 Route::post('follow-company', 'CompanyController@follow');
 Route::post('unfollow-company', 'CompanyController@unfollow');
-Route::get('company/info/{id}', 'CompanyController@info');
-Route::get('company/jobs/{id}', 'CompanyController@jobs');
+Route::get('company/{id}/info', 'CompanyController@info');
+Route::get('company/{id}/joblist', 'CompanyController@joblist');
 
 Route::get('/getDistrict/{id}', 'HomeController@getDistrict');
 Route::get('/getTown/{id}', 'HomeController@getTown');
@@ -71,4 +71,5 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
     Route::resource('admin/job', 'JobController');
     Route::post('/postImage', 'HomeController@postImage');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
+    Route::resource('admin/salary', 'SalaryController');
 });

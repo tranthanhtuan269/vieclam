@@ -284,9 +284,9 @@
             <div class="form-group">
                 <div class="col-sm-12 text-center">
                     <p class="star-vote" id="star-vote">
-                        <img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-1" class="vote">
-                        <img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-2" class="vote">
-                        <img src="{{ url('/') }}/img/star.png" alt="" id="star-vote-3" class="vote">
+                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
                     </p>
                 </div>
             </div>

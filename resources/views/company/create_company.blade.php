@@ -161,7 +161,7 @@
                         </div>
                         <div class="col-md-12">
                             <div id="images-plus"></div>
-                            <img src="{{ url('/') }}/img/icons8-Add-Image-50.png" id="images" class="img" style="height: 50px; width: 50px;">
+                            <img src="{{ url('/') }}/images/icons8-Add-Image-50.png" id="images" class="img" style="height: 50px; width: 50px;">
                             <input type="file" name="images-img[]" id="images-img" style="display: none;" multiple>
                             {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
                         </div>
