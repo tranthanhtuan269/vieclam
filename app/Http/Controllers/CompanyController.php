@@ -218,7 +218,7 @@ class CompanyController extends Controller {
     }
 
     public function info($id) {
-        // load company info
+         // load company info
         if (\Auth::check()) {
             $current_id = \Auth::user()->id;
 
@@ -232,30 +232,33 @@ class CompanyController extends Controller {
             $followed = 0;
         }
 
-//        $company = Company::find($id);
+        // $company = Company::find($id);
         $company = \DB::table('companies')
                 ->join('cities', 'cities.id', '=', 'companies.city')
                 ->join('districts', 'districts.id', '=', 'companies.district')
                 ->join('towns', 'towns.id', '=', 'companies.town')
                 ->join('company_sizes', 'company_sizes.id', '=', 'companies.size')
+                ->join('users', 'users.id', '=', 'companies.user')
                 ->select(
+                        'companies.id', 
                         'companies.name', 
+                        'companies.logo', 
+                        'companies.banner', 
                         'companies.address', 
                         'cities.name as city', 
                         'districts.name as district', 
                         'towns.name as town', 
                         'companies.jobs', 
-                        'company_sizes.detail as size', 
+                        'company_sizes.size as size', 
                         'companies.sologan', 
                         'companies.description',
-                        'companies.images'
+                        'companies.images',
+                        'users.phone as hotline'
                 )
                 ->where('companies.id', $id)
                 ->first();
-        dd($company);
-        if ($company) {
-            $company->hotline = $company->getPhoneNumber($company->user);
 
+        if ($company) {
             // load comment of company
             $comments = Comment::where('company', $id)->get();
             $totalStar = 0;
@@ -270,12 +273,12 @@ class CompanyController extends Controller {
 
             $star = intval($totalStar / $numberComment);
 
-            return view('company.jobs', array('company' => $company, 'jobs' => $jobs, 'followed' => $followed, 'comments' => $comments, 'votes' => $star));
+            return view('company.info', array('company' => $company, 'followed' => $followed, 'comments' => $comments, 'votes' => $star));
         }
         return view('errors.404');
     }
 
-    public function jobs($id) {
+    public function listjobs($id) {
         // load company info
         if (\Auth::check()) {
             $current_id = \Auth::user()->id;
@@ -311,7 +314,7 @@ class CompanyController extends Controller {
 
             $star = intval($totalStar / $numberComment);
 
-            return view('company.jobs', array('company' => $company, 'jobs' => $jobs, 'followed' => $followed, 'comments' => $comments, 'votes' => $star));
+            return view('company.listjobs', array('company' => $company, 'jobs' => $jobs, 'followed' => $followed, 'comments' => $comments, 'votes' => $star));
         }
         return view('errors.404');
     }

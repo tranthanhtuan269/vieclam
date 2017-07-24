@@ -51,12 +51,12 @@
 					<p class="time-new-roman"><i></i>{{ $company->city }}</p>
 					<p class="time-new-roman"><i></i>{{ $company->district }}, {{ $company->city }}</p>
 					<p class="time-new-roman"><i></i>{{ $company->jobs }}</p>
-					<p class="time-new-roman" style="display: inline-block;margin-right: 50px"><i></i>{{ $company->size }}+</p>
+					<p class="time-new-roman" style="display: inline-block;margin-right: 50px"><i></i>{{ $company->size }} người</p>
 					<p class="time-new-roman"><i></i>Thứ 2 - Thứ 6</p>
 					@if(strlen($company->sologan) > 0)
 					<p class="time-new-roman"><i></i>{{ $company->sologan }}</p>
 					@endif
-					<div class="link time-new-roman" ><a href="" class="underline">Trang tuyển dụng <i class="muiten"></i></a></div>
+					<div class="link time-new-roman" ><a href="{{ url('/') }}/company/{{ $company->id }}/listjobs" class="underline">Trang tuyển dụng <i class="muiten"></i></a></div>
 				</div>
 			</div>
 			<div class="col-md-8  col-xs-12">

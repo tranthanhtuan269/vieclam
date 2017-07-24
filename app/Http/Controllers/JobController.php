@@ -212,7 +212,27 @@ class JobController extends Controller
     }
 
     public function info($id){
-        $job = Job::findOrFail($id);
+        $job = \DB::table('jobs')
+                ->join('cities', 'cities.id', '=', 'jobs.city')
+                ->join('districts', 'districts.id', '=', 'jobs.district')
+                ->join('salaries', 'salaries.id', '=', 'jobs.salary')
+                ->select(
+                        'jobs.id',
+                        'jobs.name',
+                        'cities.name as city', 
+                        'districts.name as district', 
+                        'jobs.description',
+                        'jobs.required',
+                        'jobs.benefit',
+                        'jobs.number',
+                        'jobs.company',
+                        'jobs.expiration_date',
+                        'jobs.gender',
+                        'salaries.name as salary'
+
+                )
+                ->where('jobs.id', $id)
+                ->first();
         if($job && $job->company){
             $company = \DB::table('companies')
                 ->join('cities', 'cities.id', '=', 'companies.city')
@@ -220,6 +240,7 @@ class JobController extends Controller
                 ->join('towns', 'towns.id', '=', 'companies.town')
                 ->join('company_sizes', 'company_sizes.id', '=', 'companies.size')
                 ->select(
+                        'companies.id', 
                         'companies.name', 
                         'companies.logo', 
                         'companies.address', 
@@ -227,7 +248,7 @@ class JobController extends Controller
                         'districts.name as district', 
                         'towns.name as town', 
                         'companies.jobs', 
-                        'company_sizes.detail as size', 
+                        'company_sizes.size as size', 
                         'companies.sologan', 
                         'companies.description',
                         'companies.images'
