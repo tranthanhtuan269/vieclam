@@ -70,19 +70,38 @@
                         </div>
                     </div>
                     
-                    <div class="pn-left pn-hightlight row info-company">
+                    <div class="pn-left pn-hightlight row">
                         <h5>NƠI BẠN SẼ LÀM VIỆC</h5>
                         <div class="col-md-12 col-xs-12">
                             <div class="row">
                                 <div class="col-md-12 col-xs-12">
-                                    <?php echo $company->images; ?>
+                                    <div class="wrapper-big" id="wrapper-big">
+                                        <div class="prev" id="btPrev-big"><img src="{{ url('/') }}/images/prev.png" alt=""></div>
+                                        <div class="next"  id="btNext-big"><img src="{{ url('/') }}/images/next.png" alt=""></div>
+                                        <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
+                                            <div id="contents-big">
+                                                <?php 
+                                                    $imageString=rtrim($company->images,";");
+                                                    $images = explode(";",$imageString);
+                                                    foreach ($images as $image) {
+                                                ?>
+                                                <div class="item-work-big" >
+                                                    <p class="work-img"><img  src="{{ url('/') }}/images/{{ $image }}" alt=""></p>
+                                                </div>
+                                                <?php 
+                                                    }
+                                                    ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="pn-left pn-hightlight row info-company">
+                    <div class="pn-left pn-hightlight row">
                         <h5>ĐỊA CHỈ</h5>
+                        <div id="map"></div>
                     </div>
                 </div>
                 <div class="col-md-3 col-right col-xs-12">
@@ -356,7 +375,19 @@
                 setTimeout(function () {
                     onNext(false);
                 }, 2000);
+
+                //------------------------------------------------//
+
+                var w2_big = $("#wrapper-big").outerWidth();
+                var w3_big = w2_big;
+                $(".item-work-big").css("width", w3_big + "px");
+                var n_big = w3_big * ($("#contents-big .item-work-big").length);
+                $("#contents-big").css("width", n_big + "px");
+                setTimeout(function () {
+                    onNext_big(false);
+                }, 2000);
             };
+
             var isR = false;
             var action;
             $("#btPrev").click(function () {
@@ -414,6 +445,78 @@
                     }, 2000);
                 }
             }
+
+            // -----------------------------------------------------
+            var isR_big = false;
+            var action_big;
+            $("#btPrev-big").click(function () {
+                onPrev_big(true);
+            });
+            $("#btNext-big").click(function () {
+                onNext_big(true);
+            });
+            function onNext_big(b_big) {
+                if (b_big)
+                    clearTimeout(action_big);
+                if (isR_big)
+                    return;
+                isR_big = true;
+                var w_big = $(".item-work-big").outerWidth();
+                var n_big = parseFloat($("#contents-big").css("margin-left"));
+                var w2_big = $("#contents-big").outerWidth();
+                var w3_big = $("#wrapper-big").outerWidth();
+                var n2_big = n_big - w_big;
+                if (n2_big + w2_big - w3_big >= 0) {
+                    $("#contents-big").animate({marginLeft: n2_big + 'px'}, {duration: 300, complete: function () {
+                            isR_big = false;
+                        }});
+                    action_big = setTimeout(function () {
+                        onNext(false);
+                    }, 2000);
+                } else {
+                    isR_big = false;
+                    action_big = setTimeout(function () {
+                        onPrev(false);
+                    }, 2000);
+                }
+            }
+            function onPrev_big(b_big) {
+                if (b_big)
+                    clearTimeout(action_big);
+                if (isR_big)
+                    return;
+                isR_big = true;
+                var w_big = $(".item-work-big").outerWidth();
+                var n_big = parseFloat($("#contents-big").css("margin-left"));
+                var w2_big = $("#contents-big").outerWidth();
+                var n2_big = n_big + w_big;
+                if (n2_big <= 0) {
+                    $("#contents-big").animate({marginLeft: n2_big + 'px'}, {duration: 300, complete: function () {
+                            isR_big = false;
+                        }});
+                    action_big = setTimeout(function () {
+                        onPrev(false);
+                    }, 2000);
+                } else {
+                    isR_big = false;
+                    action_big = setTimeout(function () {
+                        onNext(false);
+                    }, 2000);
+                }
+            }
+
+            function initMap() {
+                var uluru = {lat: 21.0303907, lng: 105.8461458};
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 10,
+                  center: uluru
+                });
+                var marker = new google.maps.Marker({
+                  position: uluru,
+                  map: map
+                });
+            }
+
             $('#star-vote>img').click(function () {
                 switch ($(this).attr('id')) {
                     case 'star-vote-1':
@@ -545,6 +648,9 @@
                     alert("Request failed: " + textStatus);
                 });
             });
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhlfeeJco9hP4jLWY1ObD08l9J44v7IIE&callback=initMap">
         </script>
     </body>
 </html>
