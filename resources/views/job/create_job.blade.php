@@ -65,6 +65,12 @@
                                     {!! $errors->first('requirement', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
+                            <div class="form-group {{ $errors->has('public') ? 'has-error' : ''}}">
+                                <div class="col-md-12">
+                                    <select class="form-control" id="public" name="public"><option value="0">Hiển thị với ứng viên</option><option value="1">Không hiển thị</option></select>
+                                    {!! $errors->first('public', '<p class="help-block">:message</p>') !!}
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group {{ $errors->has('time_start') ? 'has-error' : ''}}">
@@ -92,6 +98,9 @@
                                 </div>
                             </div>
                             <div class="form-group {{ $errors->has('position') ? 'has-error' : ''}}">
+                                <div class="col-md-12">
+                                    <label class="control-label"></label>
+                                </div>
                                 <div class="col-md-12">
                                     <select class="form-control" id="position" name="position">
                                         <option value="0">--Chức vụ--</option>
@@ -236,20 +245,15 @@
                                     {!! $errors->first('benefit', '<p class="help-block">:message</p>') !!}
                                 </div>
                             </div>
-                            <div class="form-group {{ $errors->has('public') ? 'has-error' : ''}}">
-                                <div class="col-md-12">
-                                    <select class="form-control" id="public" name="public"><option value="0">Hiển thị với ứng viên</option><option value="1">Không hiển thị</option></select>
-                                    {!! $errors->first('public', '<p class="help-block">:message</p>') !!}
+                            <div class="form-group">
+                                <div class="col-md-12 pull-right">
+                                    <button class="btn btn-primary" id="submit-btn">Tạo mới</button>
+                                    <a href="{{ url('/home') }}" class="btn btn-primary">Trở về trang chủ</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-4 col-md-4">
-                            <button class="btn btn-primary" id="submit-btn">Tạo mới</button>
-                            <a href="{{ url('/home') }}" class="btn btn-primary">Trở về trang chủ</a>
-                        </div>
-                    </div>
+                    
                     {!! Form::close() !!}
                 </div>
             </div>

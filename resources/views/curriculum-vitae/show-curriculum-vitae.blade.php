@@ -3,14 +3,14 @@
 @section('content')
 <script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
-<div class="container">
+<div class="container show-curriculum-vitae-page">
     <div class="row">
-        <div class="col-md-12">            
+        <div class="col-md-7">            
             <div class="row curriculumvitae">
                 <div class="col-md-12">
                     <div class="row main-top">
                         <div class="col-md-4">
-                            <img src="{{ url('/') }}/images/{{ $curriculumvitae->avatar }}" width="250" height="250" class="img-circle">
+                            <img src="{{ url('/') }}/images/{{ $curriculumvitae->avatar }}" width="200" height="200" class="img-circle">
                         </div>
                         <div class="col-md-8">
                             <div class="row">
@@ -266,6 +266,153 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-5">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cv-btn-holder">
+                        <div class="btn btn-primary btn-lg">Lưu hồ sơ</div>
+                        <div class="btn btn-warning btn-lg">Xem thông tin liên hệ ( -3 điểm )</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cv-info-holder">
+                <div class="col-md-2 cv-info">View: 160</div>
+                <div class="col-md-3 text-center cv-info">Download: 160</div>
+                <div class="col-md-3 text-center cv-info">Done: 100%</div>
+                <div class="col-md-4 text-right cv-info">Updated: 26/07/2017</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cv-rate-holder">
+                        <div class="rate-holder-label">Đánh giá ứng viên</div>
+                        <p class="star-vote text-center" id="star-vote">
+                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cv-rates-holder">
+                        <div class="rate-holders-label">Nhà tuyển dụng nói gì?</div>
+                        <div class="content-rates">
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                            <div class="content-rate">
+                                <p class="star-vote" id="star-vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                </p>
+                                <div class="rate-comment">
+                                    Nhanh nhen hoat bat tieng anh giao tiep tot
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -287,6 +434,8 @@
                         <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
                         <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
                         <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
+                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
+                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
                     </p>
                 </div>
             </div>
@@ -312,26 +461,36 @@
                     $('#star-vote-1').removeClass('no-vote').addClass('vote');
                     $('#star-vote-2').removeClass('vote').addClass('no-vote');
                     $('#star-vote-3').removeClass('vote').addClass('no-vote');
+                    $('#star-vote-4').removeClass('vote').addClass('no-vote');
+                    $('#star-vote-5').removeClass('vote').addClass('no-vote');
                     break;
                 case 'star-vote-2':
                     $('#star-vote-1').removeClass('no-vote').addClass('vote');
                     $('#star-vote-2').removeClass('no-vote').addClass('vote');
                     $('#star-vote-3').removeClass('vote').addClass('no-vote');
+                    $('#star-vote-4').removeClass('vote').addClass('no-vote');
+                    $('#star-vote-5').removeClass('vote').addClass('no-vote');
                     break;
                 case 'star-vote-3':
                     $('#star-vote-1').removeClass('no-vote').addClass('vote');
                     $('#star-vote-2').removeClass('no-vote').addClass('vote');
                     $('#star-vote-3').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-4').removeClass('vote').addClass('no-vote');
+                    $('#star-vote-5').removeClass('vote').addClass('no-vote');
                     break;
                 case 'star-vote-4':
                     $('#star-vote-1').removeClass('no-vote').addClass('vote');
                     $('#star-vote-2').removeClass('no-vote').addClass('vote');
                     $('#star-vote-3').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-4').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-5').removeClass('vote').addClass('no-vote');
                     break;
                 case 'star-vote-5':
                     $('#star-vote-1').removeClass('no-vote').addClass('vote');
                     $('#star-vote-2').removeClass('no-vote').addClass('vote');
                     $('#star-vote-3').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-4').removeClass('no-vote').addClass('vote');
+                    $('#star-vote-5').removeClass('no-vote').addClass('vote');
                     break;
                 default:
                     break;

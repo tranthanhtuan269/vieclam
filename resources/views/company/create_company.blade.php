@@ -155,6 +155,57 @@
                             {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                        <input id="searchBox" class="controls" type="text" placeholder="Search Box">
+                        {!! Form::text('lat', 21.027443939911, ['class' => 'form-control hide', 'id' => 'lat']) !!}
+                        {!! Form::text('lng', 105.83038324971, ['class' => 'form-control hide', 'id' => 'lng']) !!}
+                        <div id="map"></div>
+                        <script>
+                          function initMap() {
+                            point = {lat: 21.027443939911, lng: 105.83038324971};
+
+                            var map = new google.maps.Map(document.getElementById('map'),{
+                              center:point,
+                              zoom:15
+                            });
+
+                            var marker = new google.maps.Marker({
+                              position:point,
+                              map:map,
+                              draggable:true
+                            });
+
+                            var searchBox = new google.maps.places.SearchBox(document.getElementById('searchBox'));
+
+                            google.maps.event.addListener(searchBox,'places_changed', function(){
+                              var places = searchBox.getPlaces();
+                              var bounds = new google.maps.LatLngBounds();
+                              var i, place;
+                              for (var i = 0; place = places[i]; i++) {
+                                bounds.extend(place.geometry.location);
+                                marker.setPosition(place.geometry.location);
+                              }
+
+                              map.fitBounds(bounds);
+                              map.setZoom(15);
+                            });
+
+                            google.maps.event.addListener(marker,'position_changed', function(){
+                              var lat = marker.getPosition().lat();
+                              var lng= marker.getPosition().lng();
+
+                              $("#lat").val(lat);
+                              $("#lng").val(lng);
+                            });
+                          }
+
+                        </script>
+                        <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhlfeeJco9hP4jLWY1ObD08l9J44v7IIE&libraries=places&callback=initMap">
+                        </script>
+                        </div>
+                    </div>
                     <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
                         <div class="col-md-12">
                             <label class="control-label">Thêm ảnh</label>

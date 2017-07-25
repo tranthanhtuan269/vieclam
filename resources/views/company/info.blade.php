@@ -45,9 +45,14 @@
             <div class="main-content row">
                 <div class="col-left col-md-9 col-xs-12">
                     <div class="row">
-                        <div class="hot-new"><span style="color:#f99f3c">Tin nóng: </span><a href="">Khai trương nhà hàng tại 156 Cầu Giấy
+                        <div class="hot-new">
+                            <span style="color:#f99f3c">Tin nóng: </span>
+                            <a href="">Khai trương nhà hàng tại 156 Cầu Giấy
                                 <span class="hot-new-img"></span></a>
-                            <button  type="button" class="bt-rate btn btn-primary" data-toggle="modal" data-target="#add-comment"><i></i>Thêm đánh giá</button>
+                            @if($company->user != Auth::user()->id)<button type="button" class="bt-rate btn btn-primary" data-toggle="modal" data-target="#add-comment"><i></i>Thêm đánh giá</button>
+                            @else
+                            <button id="create_job_btn" class="bt-rate btn btn-primary"><i></i>Tạo tuyển dụng</button>
+                            @endif
                         </div>
                     </div>
 
@@ -506,9 +511,9 @@
             }
 
             function initMap() {
-                var uluru = {lat: 21.0303907, lng: 105.8461458};
+                var uluru = {lat: {{ $company->lat }}, lng: {{ $company->lng }}};
                 var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 10,
+                  zoom: 15,
                   center: uluru
                 });
                 var marker = new google.maps.Marker({
@@ -647,6 +652,10 @@
                 request.fail(function (jqXHR, textStatus) {
                     alert("Request failed: " + textStatus);
                 });
+            });
+
+            $('#create_job_btn').click(function(){
+                window.location.href = "{{ url('/') }}/job/create";
             });
         </script>
         <script async defer

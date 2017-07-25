@@ -183,7 +183,6 @@ return [
         // For crud generator & html
         Appzcoder\CrudGenerator\CrudGeneratorServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Cornford\Googlmapper\MapperServiceProvider::class,
 
     ],
 
@@ -236,7 +235,6 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
-        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
 
     ],
 

@@ -25,7 +25,7 @@ class Company extends Model
      *
      * @var array
      */
-    protected $fillable = ['user', 'banner', 'logo', 'name', 'sub_name', 'tax_code', 'sologan', 'size', 'jobs', 'city', 'district', 'town', 'address', 'description', 'images'];
+    protected $fillable = ['user', 'banner', 'logo', 'name', 'sub_name', 'tax_code', 'sologan', 'size', 'jobs', 'city', 'district', 'town', 'address', 'description', 'images', 'lat', 'lng'];
 
     public function getPhoneNumber($user_id){
         $user = User::findOrFail($user_id);

@@ -128,6 +128,70 @@ img.no-vote{
     background-color: grey;
 }
 
+.show-curriculum-vitae-page .cv-info{
+    font-size: 11px;
+}
+
+.show-curriculum-vitae-page .cv-btn-holder{
+    width: 100%;
+    margin: 0 auto;
+    border: 2px solid #337ab7;
+    border-radius: 4px;
+}
+
+.show-curriculum-vitae-page .cv-info-holder{
+    margin: 20px -15px;
+}
+
+.show-curriculum-vitae-page .cv-btn-holder .btn{
+    margin: 6px;
+}
+
+.show-curriculum-vitae-page .cv-rate-holder {
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.show-curriculum-vitae-page .cv-rates-holder {
+    border: 2px solid #ccc;
+    margin-top: 20px;
+    border-radius: 6px;
+    padding: 8px 20px;
+}
+
+.show-curriculum-vitae-page .cv-rates-holder .rate-holders-label {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.show-curriculum-vitae-page .cv-rates-holder .content-rate {
+    margin:10px 0;
+}
+
+.show-curriculum-vitae-page .cv-rates-holder .content-rate p.star-vote {
+    margin:10px 0;
+}
+
+.show-curriculum-vitae-page .cv-rate-holder .rate-holder-label {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.show-curriculum-vitae-page .cv-rates-holder img.vote {
+    padding: 5px;
+    background-color: blue;
+    border-radius: 6px;
+}
+
+.show-curriculum-vitae-page .cv-rate-holder img.vote {
+    padding: 9px;
+    background-color: blue;
+    border-radius: 6px;
+}
+
 @media (min-width: 992px) {
     .info-page .info-company .border-blue{
         border-left: 2px solid #2865dc;
@@ -139,6 +203,7 @@ img.no-vote{
     }
 
     .info-page .info-company img{
-        margin:30% 15% 0;
+        margin:30% 0% 0;
+        width: 100%;
     }
 }
