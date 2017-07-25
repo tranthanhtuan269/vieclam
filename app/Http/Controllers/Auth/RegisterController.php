@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Socialite;
 
 class RegisterController extends Controller
 {
@@ -50,7 +51,6 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|string|max:11|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -63,20 +63,90 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $type = $data['type'];
-        $user = User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'phone' => $data['phone'],
-            'type' => $type,
             'password' => bcrypt($data['password']),
         ]);
-        
-        if($type == 1){
-            $user->assignRole('poster');
-        }else{
-            $user->assignRole('user');
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleGoogleCallback()
+    {
+
+        try {
+            $socialUser = Socialite::driver('google')->user();
+        } catch (Exception $e) {
+            return redirect('/');
         }
-        return $user;
+
+        $user = User::Where('email', $socialUser->getEmail())->first();
+        if(!$user){
+            $user_login = User::create([
+                'name' => $socialUser->getName(),
+                'email' => $socialUser->getEmail(),
+                'avatar' => $socialUser->getAvatar()
+            ]);
+
+            auth()->login($user_login);
+        }else{
+            auth()->login($user);
+        }
+
+        return redirect()->to('/#');
+    }
+
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return Response
+     */
+    public function handleFacebookCallback()
+    {
+
+        try {
+            $socialUser = Socialite::driver('facebook')->user();
+        } catch (Exception $e) {
+            return redirect('/');
+        }
+
+        $user = User::Where('email', $socialUser->getEmail())->first();
+
+        if(!$user){
+            $user_login = User::create([
+                'name' => $socialUser->getName(),
+                'email' => $socialUser->getEmail(),
+                'avatar' => $socialUser->getAvatar()
+            ]);
+            auth()->login($user_login);
+        }else{
+            auth()->login($user);
+        }
+
+        return redirect()->to('/#');
     }
 }
