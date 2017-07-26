@@ -51,6 +51,38 @@ class CurriculumVitaeController extends Controller
         return view('curriculum-vitae.index', compact('curriculumvitae'));
     }
 
+
+    public function indexCurriculumVitae(Request $request)
+    {
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $curriculumvitae = CurriculumVitae::where('user', 'LIKE', "%$keyword%")
+                ->orWhere('avatar', 'LIKE', "%$keyword%")
+                ->orWhere('birthday', 'LIKE', "%$keyword%")
+                ->orWhere('gender', 'LIKE', "%$keyword%")
+                ->orWhere('address', 'LIKE', "%$keyword%")
+                ->orWhere('city', 'LIKE', "%$keyword%")
+                ->orWhere('district', 'LIKE', "%$keyword%")
+                ->orWhere('town', 'LIKE', "%$keyword%")
+                ->orWhere('education', 'LIKE', "%$keyword%")
+                ->orWhere('word_experience', 'LIKE', "%$keyword%")
+                ->orWhere('language', 'LIKE', "%$keyword%")
+                ->orWhere('interests', 'LIKE', "%$keyword%")
+                ->orWhere('references', 'LIKE', "%$keyword%")
+                ->orWhere('qualification', 'LIKE', "%$keyword%")
+                ->orWhere('career_objective', 'LIKE', "%$keyword%")
+                ->orWhere('images', 'LIKE', "%$keyword%")
+                ->orWhere('active', 'LIKE', "%$keyword%")
+                ->paginate($perPage);
+        } else {
+            $curriculumvitae = CurriculumVitae::paginate($perPage);
+        }
+
+        return view('curriculum-vitae.index_curriculum_vitae', compact('curriculumvitae'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

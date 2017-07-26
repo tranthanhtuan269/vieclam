@@ -1537,12 +1537,12 @@
         $(document).ready(function(){
             $('#login-btn').click(function(){
                 var loginEmail = $('#login-email').val();
-                var loginPassword = $('#login-email').val();
+                var loginPassword = $('#login-password').val();
                 var request = $.ajax({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ url('/') }}/login",
+                    url: "{{ url('/') }}/auth/login",
                     method: "POST",
                     data: {
                         'email': loginEmail,
@@ -1552,11 +1552,45 @@
                 });
 
                 request.done(function (msg) {
-                    if (msg.code == 200) {
-                        swal("Thông báo", "Thêm đánh giá thành công!", "success");
-                    } else {
-                        swal("Cảnh báo", msg.message, "error");
-                    }
+                    if(msg.code == 200) {
+                        location.reload();
+                   }
+                });
+
+                request.fail(function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+            });
+
+            $('#register-btn').click(function(){
+                var registerFirstname = $('#firstname').val();
+                var registerLastname = $('#lastname').val();
+                var username = registerFirstname + ' ' + registerLastname;
+                var registersdt = $('#sdt').val();
+                var registerEmail = $('#register-email').val();
+                var registerPassword = $('#register-password').val();
+                var rPassword = $('#r_password').val();
+                if(registerPassword != rPassword){
+                    return false;
+                }
+
+                var request = $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: "{{ url('/') }}/auth/register",
+                    method: "POST",
+                    data: {
+                        'username': username,
+                        'password': registerPassword
+                    },
+                    dataType: "json"
+                });
+
+                request.done(function (msg) {
+                    if(msg.code == 200) {
+                        location.reload();
+                   }
                 });
 
                 request.fail(function (jqXHR, textStatus) {
