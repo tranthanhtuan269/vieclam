@@ -22,6 +22,8 @@ Route::get('auth/facebook', 'Auth\RegisterController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebookCallback');
 Route::get('auth/google', 'Auth\RegisterController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\RegisterController@handleGoogleCallback');
+Route::get('curriculumvitae/index', 'CurriculumVitaeController@indexCurriculumVitae');
+Route::get('curriculumvitae/{id}', 'CurriculumVitaeController@showCurriculumVitae');
 
 Route::post('send-comment', 'CompanyController@sendcomment');
 Route::post('follow-company', 'CompanyController@follow');
@@ -36,7 +38,6 @@ Route::get('/getTown/{id}', 'HomeController@getTown');
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'user'], function () {
     Route::get('curriculumvitae/create', 'CurriculumVitaeController@createCurriculumVitae');
     Route::post('curriculumvitae/store', 'CurriculumVitaeController@storeCurriculumVitae');
-    Route::get('curriculumvitae/{id}', 'CurriculumVitaeController@showCurriculumVitae');
     Route::post('/postImage', 'HomeController@postImage');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
     Route::get('/job/view/{id}', 'JobController@info');
