@@ -34,6 +34,7 @@
                                 <div class="login">
                                     <ul class="nav navbar-nav navbar-right">
                                         <!-- Authentication Links -->
+                                        <?php dd(Auth::guest()); ?>
                                         @if (Auth::guest())
                                             <li><a href="{{ url('/login') }}">Đăng Nhập</a></li>
                                             <li><a href="{{ url('/register') }}">Đăng Ký</a></li>
