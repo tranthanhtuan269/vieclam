@@ -10,13 +10,10 @@
   | contains the "web" middleware group. Now create something great!
   |
  */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+  
 Auth::routes();
 
+Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('auth/facebook', 'Auth\RegisterController@redirectToFacebook');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleFacebookCallback');
@@ -27,22 +24,24 @@ Route::post('auth/register', 'SiteController@registerApi');
 Route::get('curriculumvitae/index', 'CurriculumVitaeController@indexCurriculumVitae');
 Route::get('curriculumvitae/{id}', 'CurriculumVitaeController@showCurriculumVitae');
 
-Route::post('send-comment', 'CompanyController@sendcomment');
-Route::post('follow-company', 'CompanyController@follow');
-Route::post('unfollow-company', 'CompanyController@unfollow');
-Route::get('company/{id}/info', 'CompanyController@info');
-Route::get('company/{id}/listjobs', 'CompanyController@listjobs');
+Route::group(['middleware' => 'auth'], function(){
 
-Route::get('/getDistrict/{id}', 'HomeController@getDistrict');
-Route::get('/getTown/{id}', 'HomeController@getTown');
+    Route::post('send-comment', 'CompanyController@sendcomment');
+    Route::post('follow-company', 'CompanyController@follow');
+    Route::post('unfollow-company', 'CompanyController@unfollow');
+    Route::get('company/{id}/info', 'CompanyController@info');
+    Route::get('company/{id}/listjobs', 'CompanyController@listjobs');
 
-// Check role in route middleware
-Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'user'], function () {
+    Route::get('/getDistrict/{id}', 'HomeController@getDistrict');
+    Route::get('/getTown/{id}', 'HomeController@getTown');
+
+    // Check role in route middleware
     Route::get('curriculumvitae/create', 'CurriculumVitaeController@createCurriculumVitae');
     Route::post('curriculumvitae/store', 'CurriculumVitaeController@storeCurriculumVitae');
     Route::post('/postImage', 'HomeController@postImage');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
     Route::get('/job/view/{id}', 'JobController@info');
+
 });
 
 // Check role in route middleware
@@ -52,9 +51,6 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'poster'], function 
     Route::get('job/create', 'JobController@createJob');
     Route::post('job/store', 'JobController@storeJob');
     Route::get('/job/view/{id}', 'JobController@info');
-    //Route::resource('company/job', 'JobController');
-    Route::resource('admin/job', 'JobController');
-    Route::post('/postImage', 'HomeController@postImage');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
 });
 
@@ -76,7 +72,5 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
     Route::resource('admin/job-type', 'JobTypeController');
     Route::resource('Admin/company-size', 'CompanySizeController');
     Route::resource('admin/job', 'JobController');
-    Route::post('/postImage', 'HomeController@postImage');
-    Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
     Route::resource('admin/salary', 'SalaryController');
 });
