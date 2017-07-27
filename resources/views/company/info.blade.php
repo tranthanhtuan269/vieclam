@@ -511,7 +511,12 @@
             }
 
             function initMap() {
-                var uluru = {lat: {{ $company->lat }}, lng: {{ $company->lng }}};
+                <?php if($company->lat == "" || $company->lng == ""){ ?>
+                    var uluru = {lat: 21.027443939911, lng: 105.83038324971};
+                <?php }else{ ?>
+                    var uluru = {lat: "{{ $company->lat }}", lng: "{{ $company->lng }}"};
+                <?php } ?>
+                
                 var map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 15,
                   center: uluru

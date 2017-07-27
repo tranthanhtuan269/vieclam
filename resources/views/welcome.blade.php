@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Gmon') }}</title>
-    <link rel="stylesheet" href="{{ url('/') }}/css/home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,8 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
     <script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="{{ url('/') }}/css/home.css">
 </head>
-<body>
+<body class="homepage">
     <header>
         <div class="header-top clearfix">
             <nav class="navbar navbar-default">
@@ -177,7 +177,7 @@
                                 <form class="search">
                                     <input type="text" name="" id="" class="col-md-5" placeholder="Nhập tên công việc">
                                     <span> <i></i>
-                                        <select  id="tinh">
+                                        <select id="tinh">
                                             <option>Hà Nội</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -196,11 +196,11 @@
                                     <button type="submit" class="visible-xs" style="width: auto;border:1px solid #EBEAEA;padding:5px 7px;height: auto;margin:auto;margin-top: 10px;background-color: #F5F5F5;color:#A8A8A8;border-radius: 4px">Tìm kiếm</button>
                                 </form>
                                 <div class="city">
-                                    <a href="">Hà Nội</a>
-                                    <a href="">TP HCM</a>
-                                    <a href="">Đà Nẵng</a>
-                                    <a href="">Hải Phòng</a>
-                                    <a href="">Bình Dương</a>
+                                    <a href="{{ url('/') }}/?city=1">Hà Nội</a>
+                                    <a href="{{ url('/') }}/?city=2">TP HCM</a>
+                                    <a href="{{ url('/') }}/?city=3">Đà Nẵng</a>
+                                    <a href="{{ url('/') }}/?city=4">Hải Phòng</a>
+                                    <a href="{{ url('/') }}/?city=14">Bình Dương</a>
                                 </div>
                             </div>
                             <div class="col-md-3 clearfix">
@@ -243,29 +243,17 @@
                 <div class="row news">
                     <div class="col-md-6" style="margin-right: -1px">
                         <div class="top row">
-                            <div class="col-md-4  col-xs-4"><a href="" class="active">Hà Nội</a></div>
-                            <div class="col-md-4  col-xs-4"><a href="">Đà Nẵng</a></div>
-                            <div class="col-md-4  col-xs-4"><a href="">TP.HCM</a></div>
+                            <div class="col-md-4 col-xs-4"><a href="{{ url('/') }}/?city=1" @if($city == 1) class="active" @endif>Hà Nội</a></div>
+                            <div class="col-md-4 col-xs-4"><a href="{{ url('/') }}/?city=3" @if($city == 3) class="active" @endif>Đà Nẵng</a></div>
+                            <div class="col-md-4 col-xs-4"><a href="{{ url('/') }}/?city=2" @if($city == 2) class="active" @endif>TP.HCM</a></div>
                         </div>
                         <div class="row title">
                             Tìm kiếm việc làm theo các quận
                         </div>
                         <div class="row contentsLeft" id="list-districts">
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
-                            <a href="">Thanh xuân</a>
+                            @foreach($districts as $district)
+                                <a href="{{ url('/') }}/?district={{ $district->id }}">{{ $district->name }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-md-6 " >
@@ -298,7 +286,7 @@
                                     <div class="point"><a  class=""></a><hr></div>
                                 </div>
                                 <div class="col-md-3 col-xs-3">
-                                    <div class="point"><a class=""></a><hr class="left  "></div>
+                                    <div class="point"><a class=""></a><hr class="left"></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -361,17 +349,18 @@
         <div class="vip-candidates row">
             <div class="title clearfix"><span>Ứng viên VIP <i class="hot"></i></span><a href="">984 ứng viên VIP <i></i></a></div>
             <div class="clearfix wrapper" id="wrapper-candidates">
+                @foreach($cvs as $cv)
                 <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
+                    <a href="{{ url('/') }}/curriculumvitae/{{ $cv->id }}" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
+                        <div class="img"><img src="{{ url('/') }}/images/{{ $cv->avatar }}" alt=""></div>
+                        <p class="name text-center">{{ $cv->username }}</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/{{ $cv->avatar }}" alt=""></div></div>
+                                <p>{{ $cv->username }}</p>
+                                <p>{{ $cv->birthday }}</p>
+                                <!-- <p>CLB AIESEC Hà Nội</p> -->
                             </div>
                             <div class="link">
                                 Xem hồ sơ của tôi &rsaquo;
@@ -379,258 +368,7 @@
                         </div>
                     </a>
                 </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>  
-                <div class="item-u" >
-                    <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
-                        <p class="name text-center">Đỗ Khánh Linh</p>
-                        <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
-                        <div class="view">
-                            <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
-                                <p>Đỗ Khánh Linh</p>
-                                <p>22/06/1996</p>
-                                <p>CLB AIESEC Hà Nội</p>
-                            </div>
-                            <div class="link">
-                                Xem hồ sơ của tôi &rsaquo;
-                            </div>
-                        </div>
-                    </a>
-                </div>      
+                @endforeach
             </div>
         </div>
         <div class="hot-jobs row">
@@ -638,216 +376,22 @@
             <div class="wrapper" id="wrapper4">
                 <div style="width: 100%;overflow: visible;display: inline-block;position: relative;">
                     <div class="contents">
+                        @foreach($jobs as $job)
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/images/{{ $job->logo }}" alt=""></p>
                                     <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
+                                        <div class="single"><p>{{ $job->name }} tại {{ $job->companyname }}</p></div>
                                         <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
+                                            <p class="location"><i></i>{{ $job->district }}, {{ $job->city }}</p>
+                                            <p class="salary"><i></i>{{ $job->salary }}</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -1582,7 +1126,9 @@
                     method: "POST",
                     data: {
                         'username': username,
-                        'password': registerPassword
+                        'password': registerPassword,
+                        'email': registerEmail,
+                        'phone': registersdt
                     },
                     dataType: "json"
                 });
