@@ -21,8 +21,8 @@ Route::get('auth/google', 'Auth\RegisterController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\RegisterController@handleGoogleCallback');
 Route::post('auth/login', 'SiteController@loginApi');
 Route::post('auth/register', 'SiteController@registerApi');
-Route::get('curriculumvitae/index', 'CurriculumVitaeController@indexCurriculumVitae');
-Route::get('curriculumvitae/{id}', 'CurriculumVitaeController@showCurriculumVitae');
+Route::get('curriculumvitae', 'CurriculumVitaeController@indexCurriculumVitae');
+Route::get('curriculumvitae/view/{id}', 'CurriculumVitaeController@showCurriculumVitae');
 
 Route::group(['middleware' => 'auth'], function(){
 

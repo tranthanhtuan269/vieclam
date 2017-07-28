@@ -40,6 +40,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(strlen($curriculumvitae->education) > 0)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
@@ -66,11 +67,13 @@
                                         <div class="col-md-3 col-md-offset-1">Chuyên ngành </div>
                                         <div class="col-md-8">{{ $edu->chuyen_nganh }} </div>
                                     </div>
+                                    @if(isset($edu->loai_tot_nghiep))
                                     <div class="row">
                                         <div class="col-md-3 col-md-offset-1">Thành tích học tập </div>
                                         <div class="col-md-8">{{ $edu->loai_tot_nghiep }}</div>
                                     </div>
                                     <hr>
+                                    @endif
                                     <?php 
                                         }
                                     ?>
@@ -78,6 +81,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if(strlen($curriculumvitae->word_experience) > 0)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
@@ -122,6 +127,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if(strlen($curriculumvitae->qualification) > 0)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
@@ -150,6 +157,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if(strlen($curriculumvitae->language) > 0)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
@@ -173,6 +182,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
@@ -186,6 +196,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(strlen($curriculumvitae->career_objective) > 0)
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
@@ -231,6 +242,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
@@ -241,11 +253,13 @@
                                     </div>
                                     <div class="row">
                                         <?php 
+                                            if(strlen($curriculumvitae->images) > 0){
                                             $images = explode(";",$curriculumvitae->images);
                                             $i = 0;
                                             foreach ($images as $image) {
                                                 $i++;
                                                 if($i%4 == 0) break;
+                                            }
                                         ?>
                                         <div class="col-md-4"><img src="{{ url('/') }}/images/{{ $image }}" width="100%" height="192"></div>
                                         <?php 

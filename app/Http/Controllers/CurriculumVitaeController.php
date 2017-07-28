@@ -54,33 +54,38 @@ class CurriculumVitaeController extends Controller
 
     public function indexCurriculumVitae(Request $request)
     {
-        $keyword = $request->get('search');
-        $perPage = 25;
+        $curriculumvitaes = \DB::table('curriculum_vitaes')
+                ->join('cities', 'cities.id', '=', 'curriculum_vitaes.city')
+                ->join('districts', 'districts.id', '=', 'curriculum_vitaes.district')
+                ->join('users', 'users.id', '=', 'curriculum_vitaes.user')
+                ->select(
+                        'curriculum_vitaes.id', 
+                        'curriculum_vitaes.avatar', 
+                        'curriculum_vitaes.birthday', 
+                        'curriculum_vitaes.gender', 
+                        'users.name as name', 
+                        'curriculum_vitaes.address', 
+                        'cities.name as city', 
+                        'districts.name as district', 
+                        'curriculum_vitaes.education', 
+                        'curriculum_vitaes.school', 
+                        'curriculum_vitaes.word_experience', 
+                        'curriculum_vitaes.language', 
+                        'curriculum_vitaes.interests', 
+                        'curriculum_vitaes.references', 
+                        'curriculum_vitaes.qualification', 
+                        'curriculum_vitaes.career_objective', 
+                        'curriculum_vitaes.images', 
+                        'curriculum_vitaes.active', 
+                        'curriculum_vitaes.updated_at' 
+                )
+                ->take(30)
+                ->orderby('curriculum_vitaes.updated_at', 'desc')
+                ->get();
 
-        if (!empty($keyword)) {
-            $curriculumvitae = CurriculumVitae::where('user', 'LIKE', "%$keyword%")
-                ->orWhere('avatar', 'LIKE', "%$keyword%")
-                ->orWhere('birthday', 'LIKE', "%$keyword%")
-                ->orWhere('gender', 'LIKE', "%$keyword%")
-                ->orWhere('address', 'LIKE', "%$keyword%")
-                ->orWhere('city', 'LIKE', "%$keyword%")
-                ->orWhere('district', 'LIKE', "%$keyword%")
-                ->orWhere('town', 'LIKE', "%$keyword%")
-                ->orWhere('education', 'LIKE', "%$keyword%")
-                ->orWhere('word_experience', 'LIKE', "%$keyword%")
-                ->orWhere('language', 'LIKE', "%$keyword%")
-                ->orWhere('interests', 'LIKE', "%$keyword%")
-                ->orWhere('references', 'LIKE', "%$keyword%")
-                ->orWhere('qualification', 'LIKE', "%$keyword%")
-                ->orWhere('career_objective', 'LIKE', "%$keyword%")
-                ->orWhere('images', 'LIKE', "%$keyword%")
-                ->orWhere('active', 'LIKE', "%$keyword%")
-                ->paginate($perPage);
-        } else {
-            $curriculumvitae = CurriculumVitae::paginate($perPage);
-        }
+                // dd($curriculumvitaes);
 
-        return view('curriculum-vitae.index_curriculum_vitae', compact('curriculumvitae'));
+        return view('curriculum-vitae.index_curriculum_vitae', compact('curriculumvitaes'));
     }
 
     /**
@@ -267,6 +272,7 @@ class CurriculumVitaeController extends Controller
 
         $input['avatar'] = $img_avatar;
         $input['images'] = $allPic;
+        $input['active'] = 1;
         $input['user'] = \Auth::user()->id;
         $input['created_at'] = date("Y-m-d H:i:s");
         $input['updated_at'] = date("Y-m-d H:i:s");

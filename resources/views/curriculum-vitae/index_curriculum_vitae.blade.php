@@ -9,20 +9,21 @@
     <div class="row first-row">
         <div class="col-md-9">
             <div class="row">
-                <div class="col-md-6 cv-item">
-                    <div class="col-md-3 img-cv">
-                        <img src="{{ url('/') }}/images/khanhlinh.png">
+                @foreach($curriculumvitaes as $curriculumvitae)
+                <div class="cv-item">
+                    <div class="img-cv">
+                        <img src="{{ url('/') }}/images/{{ $curriculumvitae->avatar }}">
                     </div>
-                    <div class="col-md-9 info-cv">
-                        <p class="cv-name">Trần Thanh Tuấn</p>
-                        <p class="cv-scholl">ĐẠI HỌC BÁCH KHOA</p>
-                        <p class="cv-info cv-address"><i></i>Cầu Giấy, Hà Nội</p>
+                    <div class="info-cv">
+                        <p class="cv-name">{{ $curriculumvitae->name }}</p>
+                        <p class="cv-scholl">{{ $curriculumvitae->school }}</p>
+                        <p class="cv-info cv-address"><i></i>{{ $curriculumvitae->district }}, {{ $curriculumvitae->city }}</p>
                         <p class="cv-info cv-time-work"><i></i><span class="text-bold">Có thể làm từ:</span> 18h00 - 23h00</p>
-                        <p class="cv-info cv-born"><i></i><span class="text-bold">Sinh năm:</span> 1997 - <span class="text-bold">Giới tính:</span> Nam</p>
+                        <p class="cv-info cv-born"><i></i><span class="text-bold">Sinh năm:</span> {{ substr($curriculumvitae->birthday, 6, 4) }} - <span class="text-bold">Giới tính:</span> @if($curriculumvitae->gender == 0) Nam @else Nữ; @endif</p>
                         <p class="cv-info cv-star"><i></i><i></i><i></i><i></i><i></i><i></i></p>
                     </div>
                 </div>
-
+                @endforeach
             </div>
             
         </div>
