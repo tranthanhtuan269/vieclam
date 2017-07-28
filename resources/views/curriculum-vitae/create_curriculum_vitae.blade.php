@@ -102,7 +102,7 @@
                                     <div class="form-group">
                                         <label for="birthday" class="col-md-2 control-label">Học tại</label>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control" class="truong_hoc" id="truong_hoc_0" placeholder="Nhập tên trường, trung tâm học">
+                                            <input type="text" name="school" class="form-control truong_hoc" id="truong_hoc_0" placeholder="Nhập tên trường, trung tâm học">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="col-sm-offset-2"><input type="radio" class="student_process" name="student_process_0" value="0" checked>Đang học</label>

@@ -25,7 +25,7 @@ class CurriculumVitae extends Model
      *
      * @var array
      */
-    protected $fillable = ['user', 'avatar', 'birthday', 'gender', 'address', 'city', 'district', 'town', 'education', 'word_experience', 'language', 'interests', 'references', 'qualification', 'career_objective', 'images', 'active'];
+    protected $fillable = ['user', 'avatar', 'birthday', 'gender', 'address', 'city', 'district', 'town', 'education','school', 'word_experience', 'language', 'interests', 'references', 'qualification', 'career_objective', 'images', 'active'];
 
     
 }
