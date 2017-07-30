@@ -225,7 +225,7 @@
                         <a href=""><i></i>Nhân sự tài năng</a>
                     </div>
                     <div class="menu-right">
-                        <a href=""><i></i>Tạo hồ sơ</a>
+                        <a href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
                         <a href=""><i></i>Trang tuyển dụng</a>
                     </div>
                 </div>

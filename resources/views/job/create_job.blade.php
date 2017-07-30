@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Tạo trang tuyển dụng</div>
+                <div class="panel-heading">Đăng tin tuyển dụng</div>
                 <div class="panel-body">
                     @if ($errors->any())
                     <ul class="alert alert-danger">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
                                 <div class="col-md-12">
-                                    <label class="control-label">Thêm mô tả</label>
+                                    <label class="control-label">Mô tả công việc</label>
                                 </div>
                                 <div class="col-md-12">
                                     {!! Form::text('description', null, ['class' => 'form-control', 'id' => 'description']) !!}

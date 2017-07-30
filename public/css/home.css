@@ -260,7 +260,7 @@
 
 
 .curriculumvitae-list .cv-item .info-cv{
-	width: 68%;
+	width: 66%;
 	float: left;
 }
 
@@ -301,6 +301,51 @@
 .curriculumvitae-list .cv-item .info-cv .cv-star i:nth-child(4){background-position:-80px 0px;}
 .curriculumvitae-list .cv-item .info-cv .cv-star i:nth-child(5){background-position:-60px 0px;}
 .curriculumvitae-list .cv-item .info-cv .cv-star i:nth-child(6){background-position:-60px 0px;}
+
+.curriculumvitae-list .cv-item-2 .img-cv{
+	width: 30%;float: left;
+	margin-left: 3%;
+}
+
+.curriculumvitae-list .cv-item-2 .img-cv img{
+	width: 100%;
+}
+.curriculumvitae-list .cv-item-2 .info-cv{
+	margin-left: 2%;
+	width: 65%;
+	float: left;
+}
+
+.curriculumvitae-list .cv-item-2 .info-cv p{
+	margin: 0;
+}
+
+.curriculumvitae-list .cv-item-2 .info-cv .cv-name{
+	font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.curriculumvitae-list .cv-item-2 .info-cv .cv-scholl{
+	font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #2e5099;
+}
+
+.curriculumvitae-list .cv-item-2 .info-cv .cv-info i{
+	width: 20px;height: 20px;background: url("../images/icon_ungvien.png") no-repeat;display: inline-block;margin-right: -3px;
+}
+
+.curriculumvitae-list .ung-vien-tai-nang{
+	margin-bottom: 10px;
+	clear: both;
+}
+
+.curriculumvitae-list .cv-item-2 .info-cv .cv-star i:nth-child(2){background-position:-80px 0px;}
+.curriculumvitae-list .cv-item-2 .info-cv .cv-star i:nth-child(3){background-position:-80px 0px;}
+.curriculumvitae-list .cv-item-2 .info-cv .cv-star i:nth-child(4){background-position:-80px 0px;}
+.curriculumvitae-list .cv-item-2 .info-cv .cv-star i:nth-child(5){background-position:-80px 0px;}
+.curriculumvitae-list .cv-item-2 .info-cv .cv-star i:nth-child(6){background-position:-80px 0px;}
 
 @media (min-width: 1200px) {
 	.homepage .container { width: 1000px !important; }

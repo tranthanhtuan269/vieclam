@@ -80,12 +80,27 @@ class CurriculumVitaeController extends Controller
                         'curriculum_vitaes.updated_at' 
                 )
                 ->take(30)
-                ->orderby('curriculum_vitaes.updated_at', 'desc')
+                ->orderby('curriculum_vitaes.created_at', 'desc')
+                ->get();
+
+        $curriculumvitaes2 = \DB::table('curriculum_vitaes')
+                ->join('cities', 'cities.id', '=', 'curriculum_vitaes.city')
+                ->join('districts', 'districts.id', '=', 'curriculum_vitaes.district')
+                ->join('users', 'users.id', '=', 'curriculum_vitaes.user')
+                ->select(
+                        'curriculum_vitaes.id', 
+                        'curriculum_vitaes.avatar',
+                        'users.name as name', 
+                        'curriculum_vitaes.school',
+                        'curriculum_vitaes.updated_at' 
+                )
+                ->take(5)
+                ->orderby('curriculum_vitaes.created_at', 'desc')
                 ->get();
 
                 // dd($curriculumvitaes);
 
-        return view('curriculum-vitae.index_curriculum_vitae', compact('curriculumvitaes'));
+        return view('curriculum-vitae.index_curriculum_vitae', compact('curriculumvitaes', 'curriculumvitaes2'));
     }
 
     /**

@@ -74,7 +74,9 @@
                             <div class="row"><div class="col-md-12 col-xs-12"><?php echo $company->description; ?></div></div>
                         </div>
                     </div>
-                    
+                    <?php 
+                        if(strlen($company->images)>0){
+                            ?>
                     <div class="pn-left pn-hightlight row">
                         <h5>NƠI BẠN SẼ LÀM VIỆC</h5>
                         <div class="col-md-12 col-xs-12">
@@ -86,6 +88,7 @@
                                         <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                                             <div id="contents-big">
                                                 <?php 
+                                                    
                                                     $imageString=rtrim($company->images,";");
                                                     $images = explode(";",$imageString);
                                                     foreach ($images as $image) {
@@ -104,6 +107,7 @@
                         </div>
                     </div>
                     
+                    <?php } ?>
                     <div class="pn-left pn-hightlight row">
                         <h5>ĐỊA CHỈ</h5>
                         <div id="map"></div>

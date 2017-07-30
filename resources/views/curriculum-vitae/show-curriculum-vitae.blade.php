@@ -254,15 +254,15 @@
                                     <div class="row">
                                         <?php 
                                             if(strlen($curriculumvitae->images) > 0){
-                                            $images = explode(";",$curriculumvitae->images);
-                                            $i = 0;
-                                            foreach ($images as $image) {
-                                                $i++;
-                                                if($i%4 == 0) break;
-                                            }
+                                                $images = explode(";",$curriculumvitae->images);
+                                                $i = 0;
+                                                foreach ($images as $image) {
+                                                    $i++;
+                                                    if($i%4 == 0) break;
                                         ?>
-                                        <div class="col-md-4"><img src="{{ url('/') }}/images/{{ $image }}" width="100%" height="192"></div>
+                                        <div class="col-md-4"><img src="{{ url('/') }}/images/{{ $image }}" width="100%"></div>
                                         <?php 
+                                        }
                                         }
                                         ?>
                                     </div>
