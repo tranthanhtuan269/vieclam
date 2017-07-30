@@ -12,6 +12,8 @@ class City extends Model
      * @var string
      */
     protected $table = 'cities';
+    public $timestamps = false;
+
 
     /**
     * The database primary key value.

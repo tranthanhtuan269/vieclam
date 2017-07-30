@@ -38,6 +38,15 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
+                                        <td>@if($item->active==0)
+                                                <div class="btn btn-default btn-xs" data-id="{{ $item->id }}">
+                                                Unactive
+                                                </div>
+                                            @else 
+                                                <div class="btn btn-success btn-xs" data-id="{{ $item->id }}">
+                                                Active
+                                                </div>
+                                            @endif</td>
                                         <td>
                                             <a href="{{ url('/admin/city/' . $item->id) }}" title="View City"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/admin/city/' . $item->id . '/edit') }}" title="Edit City"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

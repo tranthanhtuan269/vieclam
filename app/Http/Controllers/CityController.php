@@ -128,4 +128,12 @@ class CityController extends Controller
 
         return redirect('admin/city');
     }
+
+    public function active(Request $request){
+        var_dump($request);
+    }
+
+    public function unactive(Request $request){
+        var_dump($request);
+    }
 }

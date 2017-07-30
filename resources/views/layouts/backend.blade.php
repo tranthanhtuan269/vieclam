@@ -8,6 +8,8 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <base href="{{ url('/') }}" target="_blank">
+
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Styles -->
@@ -105,5 +107,8 @@
                 $('ul.navbar-nav a[href="{{ "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]" }}"]').closest('li').addClass('active');
             });
         </script>
+
+        <script src="/js/backend.js"></script>
+
     </body>
 </html>
