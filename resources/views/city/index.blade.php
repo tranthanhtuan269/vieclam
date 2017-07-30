@@ -39,11 +39,11 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>@if($item->active==0)
-                                                <div class="btn btn-default btn-xs" data-id="{{ $item->id }}">
+                                                <div class="btn btn-default btn-xs">
                                                 Unactive
                                                 </div>
                                             @else 
-                                                <div class="btn btn-success btn-xs" data-id="{{ $item->id }}">
+                                                <div class="btn btn-success btn-xs">
                                                 Active
                                                 </div>
                                             @endif</td>

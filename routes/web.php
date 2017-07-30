@@ -74,3 +74,9 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'admin'], function (
     Route::resource('admin/job', 'JobController');
     Route::resource('admin/salary', 'SalaryController');
 });
+
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'master'], function () {
+    Route::post('city/active', 'CityController@active');
+    Route::post('city/unactive', 'CityController@unactive');
+    Route::get('city/admin', 'CityController@admin');
+});

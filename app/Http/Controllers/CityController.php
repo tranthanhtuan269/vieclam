@@ -129,6 +129,13 @@ class CityController extends Controller
         return redirect('admin/city');
     }
 
+    public function admin()
+    {
+        $perPage = 10;
+        $city = City::paginate($perPage);
+        return view('city.admin', compact('city'));
+    }
+
     public function active(Request $request){
         var_dump($request);
     }
