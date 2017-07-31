@@ -351,7 +351,7 @@
             <div class="clearfix wrapper" id="wrapper-candidates">
                 @foreach($cvs as $cv)
                 <div class="item-u" >
-                    <a href="{{ url('/') }}/curriculumvitae/{{ $cv->id }}" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
+                    <a href="{{ url('/') }}/curriculumvitae/view/{{ $cv->id }}" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
                         <div class="img"><img src="{{ url('/') }}/images/{{ $cv->avatar }}" alt=""></div>
                         <p class="name text-center">{{ $cv->username }}</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
