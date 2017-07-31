@@ -192,6 +192,20 @@ img.no-vote{
     border-radius: 6px;
 }
 
+
+/*admin city*/
+.hidden-object{
+    display: none;
+    width: auto;
+}
+
+.show-object{
+    display: block;
+    width: auto;
+}
+
+/*end admin city*/
+
 @media (min-width: 992px) {
     .info-page .info-company .border-blue{
         border-left: 2px solid #2865dc;

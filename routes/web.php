@@ -79,4 +79,8 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'master'], function 
     Route::post('city/active', 'CityController@active');
     Route::post('city/unactive', 'CityController@unactive');
     Route::get('city/admin', 'CityController@admin');
+
+    Route::post('district/active', 'DistrictController@active');
+    Route::post('district/unactive', 'DistrictController@unactive');
+    Route::get('district/admin', 'DistrictController@admin');
 });

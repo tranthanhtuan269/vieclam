@@ -137,4 +137,35 @@ class DistrictController extends Controller
 
         return redirect('admin/district');
     }
+
+    public function admin()
+    {
+        $perPage = 10;
+        $district = District::paginate($perPage);
+        return view('district.admin', compact('district'));
+    }
+
+    public function active(Request $request){
+        $input = $request->all();
+        if(isset($input) && isset($input['district'])){
+            $district = District::findOrFail($input['district']);
+            $district->active = 0;
+            if($district->save()){
+                return \Response::json(array('code' => '200', 'message' => 'Update success!'));
+            }
+        }
+        return \Response::json(array('code' => '404', 'message' => 'Update unsuccess!'));
+    }
+
+    public function unactive(Request $request){
+        $input = $request->all();
+        if(isset($input) && isset($input['district'])){
+            $district = District::findOrFail($input['district']);
+            $district->active = 1;
+            if($district->save()){
+                return \Response::json(array('code' => '200', 'message' => 'Update success!'));
+            }
+        }
+        return \Response::json(array('code' => '404', 'message' => 'Update unsuccess!'));
+    }
 }

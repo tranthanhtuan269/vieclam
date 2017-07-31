@@ -137,10 +137,26 @@ class CityController extends Controller
     }
 
     public function active(Request $request){
-        var_dump($request);
+        $input = $request->all();
+        if(isset($input) && isset($input['city'])){
+            $city = City::findOrFail($input['city']);
+            $city->active = 0;
+            if($city->save()){
+                return \Response::json(array('code' => '200', 'message' => 'Update success!'));
+            }
+        }
+        return \Response::json(array('code' => '404', 'message' => 'Update unsuccess!'));
     }
 
     public function unactive(Request $request){
-        var_dump($request);
+        $input = $request->all();
+        if(isset($input) && isset($input['city'])){
+            $city = City::findOrFail($input['city']);
+            $city->active = 1;
+            if($city->save()){
+                return \Response::json(array('code' => '200', 'message' => 'Update success!'));
+            }
+        }
+        return \Response::json(array('code' => '404', 'message' => 'Update unsuccess!'));
     }
 }

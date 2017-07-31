@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">City</div>
+                    <div class="panel-heading">District</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/city/create') }}" class="btn btn-success btn-sm" title="Add New City">
+                        <a href="{{ url('/admin/district/create') }}" class="btn btn-success btn-sm" title="Add New District">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -20,20 +20,22 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10%">ID</th>
-                                        <th style="width: 80%">Name</th>
+                                        <th style="width: 40%">Name</th>
+                                        <th style="width: 40%">City</th>
                                         <th style="width: 10%">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($city as $item)
+                                @foreach($district as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
+                                        <td>{{ $item->city }}</td>
                                         <td>
-                                                <div class="btn btn-default btn-xs active-city @if($item->active==0) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
+                                                <div class="btn btn-default btn-xs active-district @if($item->active==0) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
                                                 Unactive
                                                 </div>
-                                                <div class="btn btn-success btn-xs unactive-city @if($item->active==1) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
+                                                <div class="btn btn-success btn-xs unactive-district @if($item->active==1) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
                                                 Active
                                                 </div>
                                         </td>
@@ -41,7 +43,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $city->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $district->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

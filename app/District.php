@@ -12,6 +12,7 @@ class District extends Model
      * @var string
      */
     protected $table = 'districts';
+    public $timestamps = false;
 
     /**
     * The database primary key value.
@@ -25,7 +26,7 @@ class District extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'city'];
+    protected $fillable = ['name', 'city', 'active'];
 
     
 }

@@ -11,6 +11,11 @@
                         City
                     </a>
                 </li>
+                <li role="presentation">
+                    <a href="{{ url('/') }}/district/admin">
+                        District
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
