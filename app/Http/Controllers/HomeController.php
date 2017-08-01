@@ -52,7 +52,57 @@ class HomeController extends Controller
         }
 
         if($district > 0){
+            // get district of city
+            $district = \DB::table('districts')
+                        ->where('districts.id', '=', $districts)
+                        ->where('districts.active', '=', 1)
+                        ->first();   
 
+            if($district){
+                // get district of city
+                $districts = \DB::table('districts')
+                        ->where('districts.city', '=', $district->city)
+                        ->where('districts.active', '=', 1)
+                        ->get();  
+
+                // get job of vip
+                $jobsvip1 = \DB::table('jobs')
+                        ->join('companies', 'companies.id', '=', 'jobs.company')
+                        ->join('salaries', 'salaries.id', '=', 'jobs.salary')
+                        ->join('cities', 'cities.id', '=', 'jobs.city')
+                        ->join('districts', 'districts.id', '=', 'jobs.district')
+                        ->where('jobs.district', '=', $district->id)
+                        ->where('jobs.vip', '=', 1)
+                        ->select('jobs.id as id', 'jobs.name as name', 'salaries.name as salary', 'companies.logo', 'companies.name as companyname', 'cities.name as city', 'districts.name as district')
+                        ->orderBy('jobs.created_at', 'desc')
+                        ->take(10)
+                        ->get();
+
+                // get job of vip
+                $jobsvip2 = \DB::table('jobs')
+                        ->join('companies', 'companies.id', '=', 'jobs.company')
+                        ->join('salaries', 'salaries.id', '=', 'jobs.salary')
+                        ->join('cities', 'cities.id', '=', 'jobs.city')
+                        ->join('districts', 'districts.id', '=', 'jobs.district')
+                        ->where('jobs.district', '=', $district->id)
+                        ->where('jobs.vip', '=', 2)
+                        ->select('jobs.id as id', 'jobs.name as name', 'salaries.name as salary', 'companies.logo', 'companies.name as companyname', 'cities.name as city', 'districts.name as district')
+                        ->orderBy('jobs.created_at', 'desc')
+                        ->take(8)
+                        ->get();
+
+                // get job of vip
+                $jobs = \DB::table('jobs')
+                        ->join('companies', 'companies.id', '=', 'jobs.company')
+                        ->join('salaries', 'salaries.id', '=', 'jobs.salary')
+                        ->join('cities', 'cities.id', '=', 'jobs.city')
+                        ->join('districts', 'districts.id', '=', 'jobs.district')
+                        ->where('jobs.district', '=', $district->id)
+                        ->select('jobs.id as id', 'jobs.name as name', 'salaries.name as salary', 'companies.logo', 'companies.name as companyname', 'cities.name as city', 'districts.name as district')
+                        ->orderBy('jobs.created_at', 'desc')
+                        ->take(10)
+                        ->get();
+            }
         }else{
             $city = 1; //hanoi // 2 = hochiminh // 3 =  danang
 
@@ -60,20 +110,12 @@ class HomeController extends Controller
                 $city = (int)$_GET['city'];
             }
 
+
             // get district of city
             $districts = \DB::table('districts')
                         ->where('districts.city', '=', $city)
+                        ->where('districts.active', '=', 1)
                         ->get();   
-
-            // dd($districts);
-            // get cv of vip
-            $cvs = \DB::table('curriculum_vitaes')
-                        ->join('users', 'users.id', '=', 'curriculum_vitaes.user')
-                        ->where('curriculum_vitaes.city', '=', 1)
-                        ->select('curriculum_vitaes.id as id', 'users.name as username', 'curriculum_vitaes.birthday', 'curriculum_vitaes.avatar')
-                        ->orderBy('curriculum_vitaes.created_at', 'desc')
-                        ->take(10)
-                        ->get();  
 
             // get job of vip
             $jobs = \DB::table('jobs')
@@ -85,10 +127,51 @@ class HomeController extends Controller
                         ->select('jobs.id as id', 'jobs.name as name', 'salaries.name as salary', 'companies.logo', 'companies.name as companyname', 'cities.name as city', 'districts.name as district')
                         ->orderBy('jobs.created_at', 'desc')
                         ->take(10)
-                        ->get();  
-            // dd($cvs);
+                        ->get(); 
+
+            // get job of vip
+            $jobsvip1 = \DB::table('jobs')
+                    ->join('companies', 'companies.id', '=', 'jobs.company')
+                    ->join('salaries', 'salaries.id', '=', 'jobs.salary')
+                    ->join('cities', 'cities.id', '=', 'jobs.city')
+                    ->join('districts', 'districts.id', '=', 'jobs.district')
+                    ->where('jobs.city', '=', 1)
+                    ->where('jobs.vip', '=', 1)
+                    ->select('jobs.id as id', 'jobs.name as name', 'salaries.name as salary', 'companies.logo', 'companies.name as companyname', 'cities.name as city', 'districts.name as district')
+                    ->orderBy('jobs.created_at', 'desc')
+                    ->take(10)
+                    ->get();
+
+            // get job of vip
+            $jobsvip2 = \DB::table('jobs')
+                    ->join('companies', 'companies.id', '=', 'jobs.company')
+                    ->join('salaries', 'salaries.id', '=', 'jobs.salary')
+                    ->join('cities', 'cities.id', '=', 'jobs.city')
+                    ->join('districts', 'districts.id', '=', 'jobs.district')
+                    ->where('jobs.city', '=', 1)
+                    ->where('jobs.vip', '=', 2)
+                    ->select('jobs.id as id', 'jobs.name as name', 'salaries.name as salary', 'companies.logo', 'companies.name as companyname', 'cities.name as city', 'districts.name as district')
+                    ->orderBy('jobs.created_at', 'desc')
+                    ->take(8)
+                    ->get();
         }
-        return view('welcome', compact('districts', 'city', 'cvs', 'jobs'));
+
+        // get cv of vip
+        $cvs = \DB::table('curriculum_vitaes')
+            ->join('users', 'users.id', '=', 'curriculum_vitaes.user')
+            ->select('curriculum_vitaes.id as id', 'users.name as username', 'curriculum_vitaes.birthday', 'curriculum_vitaes.avatar')
+            ->orderBy('curriculum_vitaes.created_at', 'desc')
+            ->take(10)
+            ->get();  
+
+        // get cv of vip
+        $companies = \DB::table('companies')
+            ->select('id', 'name', 'logo')
+            ->orderBy('companies.created_at', 'desc')
+            ->take(10)
+            ->get();  
+
+        return view('welcome', compact('districts', 'city', 'cvs', 'jobs', 'jobsvip1', 'jobsvip2', 'companies'));
     }
 
     public function getDistrict($id){

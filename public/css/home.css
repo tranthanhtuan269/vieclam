@@ -174,7 +174,7 @@
 
 .homepage .work-img{height: 120px;text-align: center;background: white;margin:-3px -1px -3px -1px;height: 100%;border: 3px solid transparent;line-height: 120px}
 .homepage .hot-jobs .work-img{height: 120px!important;text-align: center;background: white;margin:-3px -1px -3px -1px;height: 100%;border: 3px solid transparent;line-height: 120px}
-.homepage .work-img img{width: auto;height: 70%;position: relative;}
+.homepage .work-img img{width: 70%;height: 70%;position: relative;}
 
 .homepage .item-work a:hover{color:black;}
 .homepage .item-work a:hover{padding:0;}

@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/postImage', 'HomeController@postImage');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
     Route::get('/job/view/{id}', 'JobController@info');
+    Route::post('/job/join', 'JobController@join');
 
 });
 
@@ -84,3 +85,4 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'master'], function 
     Route::post('district/unactive', 'DistrictController@unactive');
     Route::get('district/admin', 'DistrictController@admin');
 });
+Route::resource('apply', 'Apply\\ApplyController');

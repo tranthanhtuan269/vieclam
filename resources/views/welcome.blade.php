@@ -376,10 +376,10 @@
             <div class="wrapper" id="wrapper4">
                 <div style="width: 100%;overflow: visible;display: inline-block;position: relative;">
                     <div class="contents">
-                        @foreach($jobs as $job)
+                        @foreach($jobsvip1 as $job)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="">
+                                <a href="{{ url('/') }}/job/view/{{ $job->id }}">
                                     <p class="work-img"><img  src="{{ url('/') }}/images/{{ $job->logo }}" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>{{ $job->name }} tại {{ $job->companyname }}</p></div>
@@ -401,118 +401,22 @@
             <div class="wrapper" id="wrapper3">
                 <div style="width: 100%;overflow: visible;display: inline-block;position: relative;">
                     <div class="contents">
+                    @foreach($jobsvip2 as $job)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                <a href="{{ url('/') }}/job/view/{{ $job->id }}">
+                                    <p class="work-img"><img  src="{{ url('/') }}/images/{{ $job->logo }}" alt=""></p>
                                     <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
+                                        <div class="single"><p>{{ $job->name }} tại {{ $job->companyname }}</p></div>
                                         <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
+                                            <p class="location"><i></i>{{ $job->district }}, {{ $job->city }}</p>
+                                            <p class="salary"><i></i>{{ $job->salary }}</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                    @endforeach 
                     </div>
                 </div>
             </div>
@@ -529,175 +433,23 @@
                 <div class="next"  id="btNextNewJobs"><img src="{{ url('/') }}/images/next.png" alt=""></div>
                 <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                     <div class="contents" id="contents-jobs">
+                        @foreach($jobs as $job)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="">
+                                <a href="{{ url('/') }}/job/view/{{ $job->id }}">
                                     <span class="icon-new"><img src="{{ url('/') }}/images/icon-new.png" alt=""></span>
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/images/{{ $job->logo }}" alt=""></p>
                                     <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
+                                        <div class="single"><p>{{ $job->name }} tại {{ $job->companyname }}</p></div>
                                         <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
+                                            <p class="location"><i></i>{{ $job->district }}, {{ $job->city }}</p>
+                                            <p class="salary"><i></i>{{ $job->salary }}</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p class="location"><i></i>Cầu Giấy, Ba Đình, Hà Nội</p>
-                                            <p class="salary"><i></i>2 - 3 triệu</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -709,13 +461,14 @@
                 <div class="next"  id="btNextNewEmployer"><img src="{{ url('/') }}/images/next.png" alt=""></div>
                 <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                     <div class="contents" id="contents-employer">
+                        @foreach($companies as $company)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="">
+                                <a href="{{ url('/') }}/company/{{ $company->id }}/info">
                                     <span class="icon-new"><img src="{{ url('/') }}/images/icon-new.png" alt=""></span>
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung2.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/images/{{ $company->logo }}" alt=""></p>
                                     <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
+                                        <div class="single"><p>{{ $company->name }}</p></div>
                                         <div class="work-view">
                                             <p>Xem thêm &rsaquo;&rsaquo;</p>
                                         </div>
@@ -723,123 +476,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="item-work" >
-                            <div class="border-item">
-                                <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
-                                    <div class="details">
-                                        <div class="single"><p>Starbucks Coffee</p></div>
-                                        <div class="work-view">
-                                            <p>Xem thêm &rsaquo;&rsaquo;</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

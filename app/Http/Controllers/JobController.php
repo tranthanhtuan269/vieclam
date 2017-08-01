@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Job;
 use App\Company;
+use App\Apply;
 use Illuminate\Http\Request;
 use Session;
 
@@ -257,5 +258,19 @@ class JobController extends Controller
                 ->first();
         }
         return view('job.info', compact('job', 'company'));
+    }
+
+    public function join(Request $request){
+        if(isset($request->job) && $request->job > 0){
+            $apply = new Apply;
+
+            $apply->user = \Auth::user()->id;
+            $apply->job = $request->job;
+
+            if($apply->save()){
+                return \Response::json(array('code' => '200', 'message' => 'Created success!'));
+            }
+        }
+        return \Response::json(array('code' => '403', 'message' => 'Created unsuccess!'));
     }
 }

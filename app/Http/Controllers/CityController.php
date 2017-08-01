@@ -140,7 +140,7 @@ class CityController extends Controller
         $input = $request->all();
         if(isset($input) && isset($input['city'])){
             $city = City::findOrFail($input['city']);
-            $city->active = 0;
+            $city->active = 1;
             if($city->save()){
                 return \Response::json(array('code' => '200', 'message' => 'Update success!'));
             }
@@ -152,7 +152,7 @@ class CityController extends Controller
         $input = $request->all();
         if(isset($input) && isset($input['city'])){
             $city = City::findOrFail($input['city']);
-            $city->active = 1;
+            $city->active = 0;
             if($city->save()){
                 return \Response::json(array('code' => '200', 'message' => 'Update success!'));
             }

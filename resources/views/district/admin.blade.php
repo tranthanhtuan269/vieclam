@@ -26,24 +26,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($district as $item)
+                                @foreach($districts as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->city }}</td>
                                         <td>
-                                                <div class="btn btn-default btn-xs active-district @if($item->active==0) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
-                                                Unactive
-                                                </div>
-                                                <div class="btn btn-success btn-xs unactive-district @if($item->active==1) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
-                                                Active
-                                                </div>
+                                            <div class="btn btn-default btn-xs active-district @if($item->active==1) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
+                                            Unactive
+                                            </div>
+                                            <div class="btn btn-success btn-xs unactive-district @if($item->active==0) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
+                                            Active
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $district->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $districts->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

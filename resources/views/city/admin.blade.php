@@ -30,10 +30,10 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>
-                                                <div class="btn btn-default btn-xs active-city @if($item->active==0) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
+                                                <div class="btn btn-default btn-xs active-city @if($item->active==1) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
                                                 Unactive
                                                 </div>
-                                                <div class="btn btn-success btn-xs unactive-city @if($item->active==1) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
+                                                <div class="btn btn-success btn-xs unactive-city @if($item->active==0) hidden-object @else show-object @endif" data-id="{{ $item->id }}">
                                                 Active
                                                 </div>
                                         </td>

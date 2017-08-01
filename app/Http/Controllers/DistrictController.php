@@ -141,15 +141,20 @@ class DistrictController extends Controller
     public function admin()
     {
         $perPage = 10;
-        $district = District::paginate($perPage);
-        return view('district.admin', compact('district'));
+
+        $districts = \DB::table('districts')
+            ->join('cities', 'cities.id', '=', 'districts.city')
+            ->where('cities.active', '=', 1)
+            ->select('districts.id as id', 'districts.name as name', 'districts.active as active', 'cities.name as city')
+            ->paginate($perPage);
+        return view('district.admin', compact('districts'));
     }
 
     public function active(Request $request){
         $input = $request->all();
         if(isset($input) && isset($input['district'])){
             $district = District::findOrFail($input['district']);
-            $district->active = 0;
+            $district->active = 1;
             if($district->save()){
                 return \Response::json(array('code' => '200', 'message' => 'Update success!'));
             }
@@ -161,7 +166,7 @@ class DistrictController extends Controller
         $input = $request->all();
         if(isset($input) && isset($input['district'])){
             $district = District::findOrFail($input['district']);
-            $district->active = 1;
+            $district->active = 0;
             if($district->save()){
                 return \Response::json(array('code' => '200', 'message' => 'Update success!'));
             }

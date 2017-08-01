@@ -4,19 +4,23 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <base href="{{ url('/') }}" target="_blank">
 	<title>Test</title>
-	<link rel="stylesheet" href="{{ url('/') }}/css/fptHomeCss.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
 	<link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
 	<script src="{{ url('/') }}/js/bootstrap.js" type="text/javascript" charset="utf-8" async defer></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="{{ url('/') }}/css/fptHomeCss.css">
 </head>
 <body>
 	<header>
 		<div class="container">
 			<div class="row clearfix">
 				<div class="logo clearfix"><a href=""><img src="{{ url('/') }}/images/{{ $company->logo }}" id="logo" alt=""><p>{{ $job->name }}</p></a></div>
-				<div class="link"><a class="bt-join" href="">Ứng tuyển ngay</a></div>
+				<div class="link"><a class="bt-join" href="javascript:void(0)" data-id="{{ $job->id }}">Ứng tuyển ngay</a></div>
 			</div>
 		</div>
 	</header>
@@ -71,7 +75,7 @@
 					<p class="time-new-roman"><i></i>{{ $job->number }} người</p>
 					<p class="time-new-roman"><i></i><?php if($job->gender == 0) { echo "Nam"; }else{ echo "Nữ"; } ?></p>
 					<div class="bt clearfix">
-						<a class="bt-join time-new-roman" href="">Ứng tuyển ngay</a> 
+						<a class="bt-join time-new-roman" href="javascript:void(0)" data-id="{{ $job->id }}">Ứng tuyển ngay</a> 
 						<span style="padding:0;" id="share">
 							<a class="icon" href=""><i class="i1"></i></a>
 							<a class="icon" href=""> <i class="i2"></i></a>
@@ -91,7 +95,7 @@
 				<div class="item">
 					<div class="title">điều bạn mong muốn</div>
 				</div>
-				<p style="margin-top: 20px;text-align: center;"><a href="" class="bt-join">Ứng tuyển ngay</a></p>
+				<p style="margin-top: 20px;text-align: center;"><a href="javascript:void(0)" class="bt-join" data-id="{{ $job->id }}">Ứng tuyển ngay</a></p>
 			</div>
 		</div>
 		<div class="related-work row">
@@ -318,6 +322,8 @@
 	</footer>
 
 	<script>
+		var url_site = $('base').attr('href');
+
 		window.onload = function()
 		{
 			var x=$("#logo").outerHeight();
@@ -345,6 +351,33 @@
 			}
 			setTimeout(function(){onNext(false);});
 		};
+
+		$('.bt-join').click(function(){
+	        var _sefl = $(this);
+	        var job_id = $(this).attr('data-id');
+	        var request = $.ajax({
+	            headers: {
+	                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	            },
+	            url: url_site + "/job/join",
+	            method: "POST",
+	            data: {
+	                'job': job_id
+	            },
+	            dataType: "json"
+	        });
+
+	        request.done(function (msg) {
+	            if (msg.code == 200) {
+	            	$('.bt-join').off('click');
+	               	swal("Thông báo", "Bạn đã ứng tuyển thành công!", "success");
+	            }
+	        });
+
+	        request.fail(function (jqXHR, textStatus) {
+	            alert("Request failed: " + textStatus);
+	        });
+		});
 
 		var isR=false;
 		var action;
