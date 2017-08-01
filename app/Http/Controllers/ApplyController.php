@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Apply;
+namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -130,5 +130,19 @@ class ApplyController extends Controller
         Session::flash('flash_message', 'Apply deleted!');
 
         return redirect('apply');
+    }
+
+    public function admin()
+    {
+        $perPage = 10;
+
+        $apply = \DB::table('applies')
+            ->join('users', 'users.id', '=', 'applies.user')
+            ->join('jobs', 'jobs.id', '=', 'applies.job')
+            ->select('applies.id as id', 'users.name as user', 'jobs.name as job')
+            ->paginate($perPage);
+
+        var_dump($apply);die;
+        return view('apply.admin', compact('apply'));
     }
 }

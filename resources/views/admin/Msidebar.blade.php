@@ -16,6 +16,11 @@
                         District
                     </a>
                 </li>
+                <li role="presentation">
+                    <a href="{{ url('/') }}/apply/admin">
+                        Apply
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

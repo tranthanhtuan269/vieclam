@@ -261,10 +261,15 @@ class JobController extends Controller
     }
 
     public function join(Request $request){
+        $current_id = \Auth::user()->id;
         if(isset($request->job) && $request->job > 0){
+            $exitApply = Apply::where('user', $current_id)->where('job', $request->job)->first();
+            if($exitApply){
+                return \Response::json(array('code' => '200', 'message' => 'Apply is existed!'));
+            }
             $apply = new Apply;
 
-            $apply->user = \Auth::user()->id;
+            $apply->user = $current_id;
             $apply->job = $request->job;
 
             if($apply->save()){

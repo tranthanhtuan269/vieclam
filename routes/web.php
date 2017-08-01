@@ -84,5 +84,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => 'master'], function 
     Route::post('district/active', 'DistrictController@active');
     Route::post('district/unactive', 'DistrictController@unactive');
     Route::get('district/admin', 'DistrictController@admin');
+
+    Route::get('apply/admin', 'ApplyController@admin');
 });
 Route::resource('apply', 'Apply\\ApplyController');
