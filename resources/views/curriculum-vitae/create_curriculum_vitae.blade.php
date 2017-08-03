@@ -4,8 +4,8 @@
 <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
 <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
-<script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
+<script src="{{ url('/') }}/public/sweetalert/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/sweetalert/sweetalert.css">
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -25,7 +25,7 @@
                         <div class="col-md-2">
                             <div class="form-group {{ $errors->has('avatar') ? 'has-error' : ''}}">
                                 <div class="col-md-12">
-                                    <img src="{{ url('/') }}/images/anh_dai_dien.jpg" id="avatar-image" class="img" style="height: 150px; width: 150px; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
+                                    <img src="{{ url('/') }}/public/images/anh_dai_dien.jpg" id="avatar-image" class="img" style="height: 150px; width: 150px; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
                                     <input type="file" name="avatar-img" id="avatar-img" style="display: none;">
                                     {!! $errors->first('avatar', '<p class="help-block">:message</p>') !!}
                                 </div>
@@ -289,7 +289,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-2 col-sm-offset-1 image_company">
-                                            <img src="{{ url('/') }}/images/anh_cong_ty.jpg" id="company_image_0" class="img-company" style="height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
+                                            <img src="{{ url('/') }}/public/images/anh_cong_ty.jpg" id="company_image_0" class="img-company" style="height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;">
                                             <input type="file" class="company-img" id="company-img-0" style="display: none;">
                                         </div>
                                         <div class="col-md-8 col-sm-offset-1">
@@ -463,7 +463,7 @@
                                 <div class="col-md-12">
                                     <div id="images-plus"></div>
                                     <div class="clearfix"></div>
-                                    <img src="{{ url('/') }}/images/icons8-Add-Image-50.png" id="images" class="img" style="height: 50px; width: 50px;">
+                                    <img src="{{ url('/') }}/public/images/icons8-Add-Image-50.png" id="images" class="img" style="height: 50px; width: 50px;">
                                     <input type="file" name="images-img[]" id="images-img" style="display: none;" multiple>
                                     {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
                                 </div>
@@ -485,6 +485,6 @@
 <script src="//cdn.ckeditor.com/4.7.1/basic/ckeditor.js"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/js/bootstrap-select.min.js"></script>
-<script src="{{ url('/') }}/js/curriculum_vitae.js"></script>
+<script src="{{ url('/') }}/public/js/curriculum_vitae.js"></script>
 @endsection
 

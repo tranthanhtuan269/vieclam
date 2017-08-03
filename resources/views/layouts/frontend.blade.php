@@ -12,9 +12,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
-    <script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
-    <link rel="stylesheet" href="{{ url('/') }}/css/home.css">
+    <script src="{{ url('/') }}/public/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/sweetalert/sweetalert.css">
+    <link rel="stylesheet" href="{{ url('/') }}/public/css/home.css">
 </head>
 <body class="homepage">
     <header>
@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                                <img src="{{ url('/') }}/images/menu.png" alt="" width="25px">
+                                <img src="{{ url('/') }}/public/images/menu.png" alt="" width="25px">
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -42,7 +42,7 @@
                                     <div id="myModal" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
                                             <!-- Modal content-->
-                                            <button class="exit-login visible-xs" onclick="onCloseModalLogin()" style="margin-bottom: 5px;line-height: 0;background-color: transparent;border:1px solid #C9C9C9;padding: 5px"><img src="{{ url('/') }}/images/del.png" width="15px" alt=""></button>
+                                            <button class="exit-login visible-xs" onclick="onCloseModalLogin()" style="margin-bottom: 5px;line-height: 0;background-color: transparent;border:1px solid #C9C9C9;padding: 5px"><img src="{{ url('/') }}/public/images/del.png" width="15px" alt=""></button>
                                             <div class="modal-content">
                                                 <div class="modal-body">
                                                     <div style="margin:-15px -15px 0 -15px!important;">
@@ -141,6 +141,8 @@
                                             <ul class="dropdown-menu" role="menu">
                                                 @if(Auth::check() && Auth::user()->hasRole('admin'))
                                                     <li><a href="{{ url('/admin') }}">Administrator</a></li>
+                                                @elseif(Auth::check() && Auth::user()->hasRole('master'))
+                                                    <li><a href="{{ url('/city/admin') }}">Administrator</a></li>
                                                 @else 
                                                 @endif
                                                 <li>
@@ -169,7 +171,7 @@
             <div class="container" >
                 <div class="clearfix row" style="padding-bottom: 30px">
                     <div class="col-md-3">
-                        <a href="" class="logo row"><img src="{{ url('/') }}/images/home.png" alt=""></a>
+                        <a href="" class="logo row"><img src="{{ url('/') }}/public/images/home.png" alt=""></a>
                     </div>
                     <div class="col-md-9" style="margin-top: 30px">
                         <div class="">
@@ -240,24 +242,24 @@
             <div class="wrapper row" id="wrapper-logo">
                 <div class="contents clearfix" id="contents-logo">
                     <ul>
-                        <li class="item-logo"><a href=""><img src="{{ url('/') }}/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome1.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome4.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome6.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome7.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome8.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome10.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome11.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome12.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome.png" alt=""></a></li>
+                        <li class="item-logo"><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome1.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome4.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome6.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome7.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome8.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome10.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome11.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome12.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
                     </ul>
                 </div>
             </div>

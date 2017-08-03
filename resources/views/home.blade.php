@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <link rel="stylesheet" href="{{ url('/') }}/css/home.css">
+    <link rel="stylesheet" href="{{ url('/') }}/public/css/home.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                                <img src="{{ url('/') }}/images/menu.png" alt="" width="25px">
+                                <img src="{{ url('/') }}/public/images/menu.png" alt="" width="25px">
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -47,7 +47,9 @@
                                                 <ul class="dropdown-menu" role="menu">
                                                     @if(Auth::check() && Auth::user()->hasRole('admin'))
                                                         <li><a href="{{ url('/admin') }}">Administrator</a></li>
-                                                    @else 
+                                                    @elseif(Auth::check() && Auth::user()->hasRole('master'))
+                                                        <li><a href="{{ url('/city/admin') }}">Administrator</a></li>
+                                                    @else
                                                     @endif
                                                     <li>
                                                         <a href="{{ url('/logout') }}"
@@ -70,7 +72,7 @@
                                     <div id="myModal" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
                                             <!-- Modal content-->
-                                            <button class="exit-login visible-xs" onclick="onCloseModalLogin()" style="margin-bottom: 5px;line-height: 0;background-color: transparent;border:1px solid #C9C9C9;padding: 5px"><img src="{{ url('/') }}/images/del.png" width="15px" alt=""></button>
+                                            <button class="exit-login visible-xs" onclick="onCloseModalLogin()" style="margin-bottom: 5px;line-height: 0;background-color: transparent;border:1px solid #C9C9C9;padding: 5px"><img src="{{ url('/') }}/public/images/del.png" width="15px" alt=""></button>
                                             <div class="modal-content">
                                                 <div class="modal-body">
                                                     <div style="margin:-15px -15px 0 -15px!important;">
@@ -171,7 +173,7 @@
             <div class="container" >
                 <div class="clearfix row" style="padding-bottom: 30px">
                     <div class="col-md-3">
-                        <a href="" class="logo row"><img src="{{ url('/') }}/images/home.png" alt=""></a>
+                        <a href="" class="logo row"><img src="{{ url('/') }}/public/images/home.png" alt=""></a>
                     </div>
                     <div class="col-md-9" style="margin-top: 30px">
                         <div class="">
@@ -240,7 +242,7 @@
         <div class="row">
             <div class="col-md-9 col-xs-12">
                 <div class="banner row">
-                    <a href=""><img src="{{ url('/') }}/images/slide.png" alt="" width="100%" ;></a>
+                    <a href=""><img src="{{ url('/') }}/public/images/slide.png" alt="" width="100%" ;></a>
                 </div>
                 <div class="row news">
                     <div class="col-md-6" style="margin-right: -1px">
@@ -322,9 +324,9 @@
                 </div>
             </div>
             <div class="col-md-3 col-xs-12">
-                <div class="ads-top"><a href=""><img src="{{ url('/') }}/images/ads.png" alt=""></a></div>
+                <div class="ads-top"><a href=""><img src="{{ url('/') }}/public/images/ads.png" alt=""></a></div>
                 <div class="ads-bot">
-                    <a href=""><img src="{{ url('/') }}/images/zalo.png" alt=""></a>
+                    <a href=""><img src="{{ url('/') }}/public/images/zalo.png" alt=""></a>
                 </div>
             </div>
         </div>
@@ -336,24 +338,24 @@
             <div class="wrapper row" id="wrapper-logo">
                 <div class="contents clearfix" id="contents-logo">
                     <ul>
-                        <li class="item-logo"><a href=""><img src="{{ url('/') }}/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome1.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome4.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome6.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome7.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome8.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome10.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome11.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome12.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/images/logoHome.png" alt=""></a></li>
+                        <li class="item-logo"><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome1.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome4.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome6.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome7.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome8.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome10.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome11.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome12.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
                     </ul>
                 </div>
             </div>
@@ -365,12 +367,12 @@
             <div class="clearfix wrapper" id="wrapper-candidates">
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -383,12 +385,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -401,12 +403,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -419,12 +421,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -437,12 +439,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -455,12 +457,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -473,12 +475,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -491,12 +493,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -509,12 +511,12 @@
                 </div>
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -527,12 +529,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -545,12 +547,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -563,12 +565,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -581,12 +583,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -599,12 +601,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -617,12 +619,12 @@
                 </div>  
                 <div class="item-u" >
                     <a href="" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
-                        <div class="img"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div>
+                        <div class="img"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div>
                         <p class="name text-center">Đỗ Khánh Linh</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
                         <div class="view">
                             <div class="info">
-                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/images/khanhlinh.png" alt=""></div></div>
+                                <div class="sub-img"><div class="border"><img src="{{ url('/') }}/public/images/khanhlinh.png" alt=""></div></div>
                                 <p>Đỗ Khánh Linh</p>
                                 <p>22/06/1996</p>
                                 <p>CLB AIESEC Hà Nội</p>
@@ -643,7 +645,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -657,7 +659,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
                                         <div class="work-view">
@@ -671,7 +673,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -685,7 +687,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -699,7 +701,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
                                         <div class="work-view">
@@ -713,7 +715,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -727,7 +729,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
                                         <div class="work-view">
@@ -741,7 +743,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
                                         <div class="work-view">
@@ -755,7 +757,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
                                         <div class="work-view">
@@ -769,7 +771,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -783,7 +785,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -797,7 +799,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -811,7 +813,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -825,7 +827,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -839,7 +841,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -862,7 +864,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -876,7 +878,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
                                         <div class="work-view">
@@ -890,7 +892,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -904,7 +906,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
                                         <div class="work-view">
@@ -918,7 +920,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
                                         <div class="work-view">
@@ -932,7 +934,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
                                         <div class="work-view">
@@ -946,7 +948,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -960,7 +962,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -976,22 +978,22 @@
             </div>
             <div id="col-ads">
                 <a href="">
-                    <img src="{{ url('/') }}/images/ads2.png" alt="">
+                    <img src="{{ url('/') }}/public/images/ads2.png" alt="">
                 </a>
             </div>
         </div>
         <div class="new-jobs row">
             <div class="title clearfix"><span>Việc làm mới </span><i class="new"></i></div>
             <div class="wrapper" id="wrapper">
-                <div class="prev" id="btPrevNewJobs"><img src="{{ url('/') }}/images/prev.png" alt=""></div>
-                <div class="next"  id="btNextNewJobs"><img src="{{ url('/') }}/images/next.png" alt=""></div>
+                <div class="prev" id="btPrevNewJobs"><img src="{{ url('/') }}/public/images/prev.png" alt=""></div>
+                <div class="next"  id="btNextNewJobs"><img src="{{ url('/') }}/public/images/next.png" alt=""></div>
                 <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                     <div class="contents" id="contents-jobs">
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <span class="icon-new"><img src="{{ url('/') }}/images/icon-new.png" alt=""></span>
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <span class="icon-new"><img src="{{ url('/') }}/public/images/icon-new.png" alt=""></span>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1005,7 +1007,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
                                         <div class="work-view">
@@ -1019,7 +1021,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1033,7 +1035,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
                                         <div class="work-view">
@@ -1047,7 +1049,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
                                         <div class="work-view">
@@ -1061,7 +1063,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks </p></div>
                                         <div class="work-view">
@@ -1075,7 +1077,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1089,7 +1091,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1103,7 +1105,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1117,7 +1119,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1131,7 +1133,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1145,7 +1147,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1163,15 +1165,15 @@
         <div class="new-employer row">
             <div class="title clearfix"><span>Nhà tuyển dụng mới</span> <i class="new"></i></div>
             <div class="wrapper" id="wrapper2">
-                <div class="prev" id="btPrevNewEmployer"><img src="{{ url('/') }}/images/prev.png" alt=""></div>
-                <div class="next"  id="btNextNewEmployer"><img src="{{ url('/') }}/images/next.png" alt=""></div>
+                <div class="prev" id="btPrevNewEmployer"><img src="{{ url('/') }}/public/images/prev.png" alt=""></div>
+                <div class="next"  id="btNextNewEmployer"><img src="{{ url('/') }}/public/images/next.png" alt=""></div>
                 <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                     <div class="contents" id="contents-employer">
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <span class="icon-new"><img src="{{ url('/') }}/images/icon-new.png" alt=""></span>
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung2.png" alt=""></p>
+                                    <span class="icon-new"><img src="{{ url('/') }}/public/images/icon-new.png" alt=""></span>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung2.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1184,7 +1186,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1197,7 +1199,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1210,7 +1212,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1223,7 +1225,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1236,7 +1238,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1249,7 +1251,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1262,7 +1264,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1275,7 +1277,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">
@@ -1288,7 +1290,7 @@
                         <div class="item-work" >
                             <div class="border-item">
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>Starbucks Coffee</p></div>
                                         <div class="work-view">

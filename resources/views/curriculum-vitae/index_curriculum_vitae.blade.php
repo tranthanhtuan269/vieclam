@@ -14,7 +14,7 @@
                 <div class="cv-item">
                     <div class="img-cv">
                         <a href="{{ url('/') }}/curriculumvitae/view/{{ $curriculumvitae->id }}">
-                            <img src="{{ url('/') }}/images/{{ $curriculumvitae->avatar }}">
+                            <img src="{{ url('/') }}/public/images/{{ $curriculumvitae->avatar }}">
                         </a>
                     </div>
                     <div class="info-cv">
@@ -46,7 +46,7 @@
                         <div class="cv-item-2">
                             <div class="img-cv">
                                 <a href="{{ url('/') }}/curriculumvitae/view/{{ $curriculumvitae2->id }}">
-                                    <img src="{{ url('/') }}/images/{{ $curriculumvitae2->avatar }}">
+                                    <img src="{{ url('/') }}/public/images/{{ $curriculumvitae2->avatar }}">
                                 </a>
                             </div>
                             <div class="info-cv">

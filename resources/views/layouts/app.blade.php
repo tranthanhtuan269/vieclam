@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     @yield('css')
-    <link href="{{ url('/') }}/css/customize.css" rel="stylesheet">
+    <link href="{{ url('/') }}/public/css/customize.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -59,7 +59,9 @@
                                 <ul class="dropdown-menu" role="menu">
                                     @if(Auth::check() && Auth::user()->hasRole('admin'))
                                         <li><a href="{{ url('/admin') }}">Administrator</a></li>
-                                    @else 
+                                    @elseif(Auth::check() && Auth::user()->hasRole('master'))
+                                        <li><a href="{{ url('/city/admin') }}">Administrator</a></li>
+                                    @else
                                     @endif
                                     <li>
                                         <a href="{{ url('/logout') }}"
@@ -82,6 +84,6 @@
 
         @yield('content')
     </div>
-    <script src="{{ url('/') }}/js/master.js"></script>
+    <script src="{{ url('/') }}/public/js/master.js"></script>
 </body>
 </html>

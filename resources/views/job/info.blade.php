@@ -8,18 +8,18 @@
     <base href="{{ url('/') }}" target="_blank">
 	<title>Test</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
-	<link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
+	<script src="{{ url('/') }}/public/sweetalert/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/sweetalert/sweetalert.css">
+	<link rel="stylesheet" href="{{ url('/') }}/public/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
-	<script src="{{ url('/') }}/js/bootstrap.js" type="text/javascript" charset="utf-8" async defer></script>
-	<link rel="stylesheet" href="{{ url('/') }}/css/fptHomeCss.css">
+	<script src="{{ url('/') }}/public/js/bootstrap.js" type="text/javascript" charset="utf-8" async defer></script>
+	<link rel="stylesheet" href="{{ url('/') }}/public/css/fptHomeCss.css">
 </head>
 <body>
 	<header>
 		<div class="container">
 			<div class="row clearfix">
-				<div class="logo clearfix"><a href=""><img src="{{ url('/') }}/images/{{ $company->logo }}" id="logo" alt=""><p>{{ $job->name }}</p></a></div>
+				<div class="logo clearfix"><a href=""><img src="{{ url('/') }}/public/images/{{ $company->logo }}" id="logo" alt=""><p>{{ $job->name }}</p></a></div>
 				<div class="link"><a class="bt-join" href="javascript:void(0)" data-id="{{ $job->id }}">Ứng tuyển ngay</a></div>
 			</div>
 		</div>
@@ -33,7 +33,7 @@
 				for($i = 0; $i < count($images); $i++){ if($i == 3) break; ?>
 					
 					<div class="col-md-4 col-xs-12">
-						<div class="item-ads"><img src="{{ url('/') }}/images/{{ $images[$i] }}" alt=""></div>
+						<div class="item-ads"><img src="{{ url('/') }}/public/images/{{ $images[$i] }}" alt=""></div>
 					</div>
 
 				<?php } ?>
@@ -41,15 +41,15 @@
 		</div>
 		<div class="contents-job row">
 			<div class="col-md-4 info-company col-xs-12">
-				<div class="logo"><a href=""><img src="{{ url('/') }}/images/{{ $company->logo }}" alt=""></a></div>
+				<div class="logo"><a href=""><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></a></div>
 				<div class="info">
 					<p class="title">{{ $company->name }}</p>
 					<div class="star">
-						<img src="{{ url('/') }}/images/star.png" alt="">
-						<img src="{{ url('/') }}/images/star.png" alt="">
-						<img src="{{ url('/') }}/images/star.png" alt="">
-						<img src="{{ url('/') }}/images/star.png" alt="">
-						<img src="{{ url('/') }}/images/star.png" alt="">
+						<img src="{{ url('/') }}/public/images/star.png" alt="">
+						<img src="{{ url('/') }}/public/images/star.png" alt="">
+						<img src="{{ url('/') }}/public/images/star.png" alt="">
+						<img src="{{ url('/') }}/public/images/star.png" alt="">
+						<img src="{{ url('/') }}/public/images/star.png" alt="">
 					</div>
 					<p class="time-new-roman"><i></i>{{ $company->address }}, {{ $company->city }} </p>
 					<p class="time-new-roman"><i></i>{{ $company->city }}</p>
@@ -101,14 +101,14 @@
 		<div class="related-work row">
 			<p class="title"><i></i>Thêm cơ hội làm việc cho bạn</p>
 			<div class="wrapper" id="wrapper">
-				<div class="prev" id="btPrev"><img src="{{ url('/') }}/images/prev.png" alt=""></div>
-				<div class="next"  id="btNext"><img src="{{ url('/') }}/images/next.png" alt=""></div>
+				<div class="prev" id="btPrev"><img src="{{ url('/') }}/public/images/prev.png" alt=""></div>
+				<div class="next"  id="btNext"><img src="{{ url('/') }}/public/images/next.png" alt=""></div>
 				<div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
 					<div id="contents">
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">
@@ -122,7 +122,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
 										<div class="work-view">
@@ -136,7 +136,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">
@@ -150,7 +150,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
 										<div class="work-view">
@@ -164,7 +164,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks </p></div>
 										<div class="work-view">
@@ -178,7 +178,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks </p></div>
 										<div class="work-view">
@@ -192,7 +192,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">
@@ -206,7 +206,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">
@@ -220,7 +220,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">
@@ -234,7 +234,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">
@@ -248,7 +248,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">
@@ -262,7 +262,7 @@
 						<div class="item-work" >
 							<div class="border-item">
 								<a href="">
-									<p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
 										<div class="work-view">

@@ -1,8 +1,8 @@
 @extends('layouts.company')
 
 @section('content')
-<script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
-<link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
+<script src="{{ url('/') }}/public/sweetalert/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/sweetalert/sweetalert.css">
 <div class="container show-curriculum-vitae-page">
     <div class="row">
         <div class="col-md-7">            
@@ -10,7 +10,7 @@
                 <div class="col-md-12">
                     <div class="row main-top">
                         <div class="col-md-4">
-                            <img src="{{ url('/') }}/images/{{ $curriculumvitae->avatar }}" width="200" height="200" class="img-circle">
+                            <img src="{{ url('/') }}/public/images/{{ $curriculumvitae->avatar }}" width="200" height="200" class="img-circle">
                         </div>
                         <div class="col-md-8">
                             <div class="row">
@@ -260,7 +260,7 @@
                                                     $i++;
                                                     if($i%4 == 0) break;
                                         ?>
-                                        <div class="col-md-4"><img src="{{ url('/') }}/images/{{ $image }}" width="100%"></div>
+                                        <div class="col-md-4"><img src="{{ url('/') }}/public/images/{{ $image }}" width="100%"></div>
                                         <?php 
                                         }
                                         }
@@ -300,11 +300,11 @@
                     <div class="cv-rate-holder">
                         <div class="rate-holder-label">Đánh giá ứng viên</div>
                         <p class="star-vote text-center" id="star-vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                         </p>
                     </div>
                 </div>
@@ -316,11 +316,11 @@
                         <div class="content-rates">
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -328,11 +328,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -340,11 +340,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -352,11 +352,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -364,11 +364,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -376,11 +376,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -388,11 +388,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -400,11 +400,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -412,11 +412,11 @@
                             </div>
                             <div class="content-rate">
                                 <p class="star-vote" id="star-vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                    <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                    <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                 </p>
                                 <div class="rate-comment">
                                     Nhanh nhen hoat bat tieng anh giao tiep tot
@@ -445,11 +445,11 @@
             <div class="form-group">
                 <div class="col-sm-12 text-center">
                     <p class="star-vote" id="star-vote">
-                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                     </p>
                 </div>
             </div>

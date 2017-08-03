@@ -8,13 +8,13 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Gmon') }}</title>
-        <link rel="stylesheet" href="{{ url('/') }}/css/style.css"> 
-        <link rel="stylesheet" href="{{ url('/') }}/css/customize.css">
-        <link rel="stylesheet" href="{{ url('/') }}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url('/') }}/public/css/style.css"> 
+        <link rel="stylesheet" href="{{ url('/') }}/public/css/customize.css">
+        <link rel="stylesheet" href="{{ url('/') }}/public/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="{{ url('/') }}/js/bootstrap.js" type="text/javascript" charset="utf-8" async defer></script>
-        <script src="{{ url('/') }}/sweetalert/sweetalert.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/sweetalert/sweetalert.css">
+        <script src="{{ url('/') }}/public/js/bootstrap.js" type="text/javascript" charset="utf-8" async defer></script>
+        <script src="{{ url('/') }}/public/sweetalert/sweetalert.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url('/') }}/public/sweetalert/sweetalert.css">
     </head> 
     <body>
 
@@ -22,11 +22,11 @@
             <div class="container">
                 <div class="row">
                     <input type="hidden" name="company-id" value="{{ $company->id }}">
-                    <div class="logo"><a href="{{ url('/') }}/company/{{ $company->id }}/info"><img src="{{ url('/') }}/images/{{ $company->logo }}" alt="">{{ $company->name }}</a></div>
-                    <div class="hotline visible-xs" role="button" data-toggle="collapse" data-target="#hotline"><img src="{{ url('/') }}/images/{{ $company->logo }}" alt="" >
+                    <div class="logo"><a href="{{ url('/') }}/company/{{ $company->id }}/info"><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt="">{{ $company->name }}</a></div>
+                    <div class="hotline visible-xs" role="button" data-toggle="collapse" data-target="#hotline"><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt="" >
                         <span id="hotline" class="collapse">hotline: {{ $company->hotline }}</span>
                     </div>
-                    <div class="hotline hidden-xs"><img src="{{ url('/') }}/images/hotline.png" alt="">
+                    <div class="hotline hidden-xs"><img src="{{ url('/') }}/public/images/hotline.png" alt="">
                         <span class="">hotline: {{ $company->hotline }}</span>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="container">
             <div class="main-menu row">
-                <div class="slide"><img src="{{ url('/') }}/images/{{ $company->banner }}" width="100%" height="auto" alt=""><img class="logo" src="{{ url('/') }}/images/{{ $company->logo }}" alt=""></div>
+                <div class="slide"><img src="{{ url('/') }}/public/images/{{ $company->banner }}" width="100%" height="auto" alt=""><img class="logo" src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></div>
                 <p class="menu">
                     <a href="{{ url('/') }}/company/{{ $company->id }}/info">Thông Tin</a>
                     <a href="{{ url('/') }}/company/{{ $company->id }}/listjobs" class="active">Tuyển Dụng</a>
@@ -53,7 +53,7 @@
                     @foreach($jobs as $job)
                     <div class="row item-job">
                         <div class="job-image">
-                            <div style="padding: 10%;"><img src="{{ url('/') }}/images/{{ $company->logo }}" alt=""></div>
+                            <div style="padding: 10%;"><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></div>
                         </div>
                         <div class="job-content">
                             <div class="job-name"><a href="{{ url('/') }}/job/view/{{ $job->id }}"> {{ $job->name }} </a></div>
@@ -75,11 +75,11 @@
                     <div class="pn-rating pn-left row">
                         <h5>Đánh giá chung</h5>
                         <p class="star-vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" class="vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" @if($votes > 1) class="vote" @else class="no-vote" @endif>
-                                 <img src="{{ url('/') }}/images/star.png" alt="" @if($votes > 2) class="vote" @else class="no-vote" @endif>
-                                 <img src="{{ url('/') }}/images/star.png" alt="" @if($votes > 3) class="vote" @else class="no-vote" @endif>
-                                 <img src="{{ url('/') }}/images/star.png" alt="" @if($votes > 4) class="vote" @else class="no-vote" @endif>
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" class="vote">
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" @if($votes > 1) class="vote" @else class="no-vote" @endif>
+                                 <img src="{{ url('/') }}/public/images/star.png" alt="" @if($votes > 2) class="vote" @else class="no-vote" @endif>
+                                 <img src="{{ url('/') }}/public/images/star.png" alt="" @if($votes > 3) class="vote" @else class="no-vote" @endif>
+                                 <img src="{{ url('/') }}/public/images/star.png" alt="" @if($votes > 4) class="vote" @else class="no-vote" @endif>
                         </p>
                     </div>
                     <div class="pn-left pn-hightlight row">
@@ -87,11 +87,11 @@
                         @foreach($comments as $comment)
                         <p class="content">
                             <span>{{ $comment->title }}</span>
-                            <img src="{{ url('/') }}/images/star.png" alt="" class="vote">
-                            <img src="{{ url('/') }}/images/star.png" alt="" @if($comment->star > 1) class="vote" @else class="no-vote" @endif>
-                                 <img src="{{ url('/') }}/images/star.png" alt="" @if($comment->star > 2) class="vote" @else class="no-vote" @endif>
-                                 <img src="{{ url('/') }}/images/star.png" alt="" @if($comment->star > 3) class="vote" @else class="no-vote" @endif>
-                                 <img src="{{ url('/') }}/images/star.png" alt="" @if($comment->star > 4) class="vote" @else class="no-vote" @endif>
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" class="vote">
+                            <img src="{{ url('/') }}/public/images/star.png" alt="" @if($comment->star > 1) class="vote" @else class="no-vote" @endif>
+                                 <img src="{{ url('/') }}/public/images/star.png" alt="" @if($comment->star > 2) class="vote" @else class="no-vote" @endif>
+                                 <img src="{{ url('/') }}/public/images/star.png" alt="" @if($comment->star > 3) class="vote" @else class="no-vote" @endif>
+                                 <img src="{{ url('/') }}/public/images/star.png" alt="" @if($comment->star > 4) class="vote" @else class="no-vote" @endif>
                                  <span>{{ $comment->description }}</span>
                         </p>
                         @endforeach
@@ -107,13 +107,13 @@
             <div class="related-work row">
                 <p class="title"><i></i>Thêm cơ hội làm việc cho bạn</p>
                 <div class="wrapper" id="wrapper">
-                    <div class="prev" id="btPrev"><img src="{{ url('/') }}/images/prev.png" alt=""></div>
-                    <div class="next"  id="btNext"><img src="{{ url('/') }}/images/next.png" alt=""></div>
+                    <div class="prev" id="btPrev"><img src="{{ url('/') }}/public/images/prev.png" alt=""></div>
+                    <div class="next"  id="btNext"><img src="{{ url('/') }}/public/images/next.png" alt=""></div>
                     <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                         <div id="contents">
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -125,7 +125,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -137,7 +137,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -149,7 +149,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -161,7 +161,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -173,7 +173,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -185,7 +185,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -197,7 +197,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -209,7 +209,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -221,7 +221,7 @@
                             </div>
                             <div class="item-work" >
                                 <a href="">
-                                    <p class="work-img"><img  src="{{ url('/') }}/images/nhatuyendung.png" alt=""></p>
+                                    <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
                                         <div class="work-view">
@@ -306,11 +306,11 @@
                                 <label for="inputScore" class="col-sm-3 control-label">Đánh giá</label>
                                 <div class="col-sm-9">
                                     <p class="star-vote" id="star-vote">
-                                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-1" class="vote">
-                                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-2" class="vote">
-                                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-3" class="vote">
-                                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-4" class="vote">
-                                        <img src="{{ url('/') }}/images/star.png" alt="" id="star-vote-5" class="vote">
+                                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-1" class="vote">
+                                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-2" class="vote">
+                                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-3" class="vote">
+                                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-4" class="vote">
+                                        <img src="{{ url('/') }}/public/images/star.png" alt="" id="star-vote-5" class="vote">
                                     </p>
                                 </div>
                             </div>
