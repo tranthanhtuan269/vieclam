@@ -217,7 +217,7 @@ $(document).ready(function () {
         html += "</div>";
         html += "<div class='form-group'>";
         html += "<div class='col-md-2 col-sm-offset-1 image_company'>";
-        html += "<img src='" + site_link + "/img/anh_cong_ty.jpg' id='company_image_" + count_kinh_nghiem + "' class='img-company' style='height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;'>";
+        html += "<img src='" + site_link + "/images/anh_cong_ty.jpg' id='company_image_" + count_kinh_nghiem + "' class='img-company' style='height: 92px; width:100%; background-color: #fff; border: 2px solid gray; border-radius: 5px;'>";
         html += "<input type='file' class='company-img' id='company-img-" + count_kinh_nghiem + "' style='display: none;'>";
         html += "</div>";
         html += "<div class='col-md-8 col-sm-offset-1'>";
@@ -643,7 +643,7 @@ $(document).ready(function () {
                 dataType: 'json',
                 success: function (jsonData) {
                     if (jsonData.code == 200) {
-                        $('#company_image_' + id_obj).attr('src', site_link + '/images/' + jsonData.image_url);
+                        $('#company_image_' + id_obj).attr('src', site_link + '/public/images/' + jsonData.image_url);
                         $('#lam_viec_' + id_obj + '_image').val(jsonData.image_url);
                     }
                 }
@@ -734,7 +734,7 @@ $(document).ready(function () {
             return false;
         }
 
-        if ($('#avatar-image').attr('src') == (site_link + '/img/anh_dai_dien.jpg')) {
+        if ($('#avatar-image').attr('src') == (site_link + '/images/anh_dai_dien.jpg')) {
             swal("Ảnh đại diện chưa được upload!", "Xin hãy chọn 1 ảnh của bạn làm ảnh đại diện!");
             return false;
         }

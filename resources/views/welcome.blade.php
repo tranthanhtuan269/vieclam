@@ -348,6 +348,7 @@
         </div>
     </div>
     <div class="container list-info">
+        @if(count($cvs) > 0)
         <div class="vip-candidates row">
             <div class="title clearfix"><span>Ứng viên VIP <i class="hot"></i></span><a target="_self" href="">984 ứng viên VIP <i></i></a></div>
             <div class="clearfix wrapper" id="wrapper-candidates">
@@ -373,6 +374,8 @@
                 @endforeach
             </div>
         </div>
+        @endif
+        @if(count($jobsvip1) > 0)
         <div class="hot-jobs row">
             <div class="title clearfix"><span>Việc làm HOT <i class="hot"></i></span><a target="_self" href="">101 việc làm HOT <i></i></a></div>
             <div class="wrapper" id="wrapper4">
@@ -398,6 +401,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(count($jobsvip2) > 0)
         <div class="need-jobs row">
             <div class="title clearfix"><span>Đang tuyển GẤP <i></i></span><a target="_self" href="">101 việc làm GẤP <i></i></a></div>
             <div class="wrapper" id="wrapper3">
@@ -428,6 +433,8 @@
                 </a>
             </div>
         </div>
+        @endif
+        @if(count($jobs) > 0)
         <div class="new-jobs row">
             <div class="title clearfix"><span>Việc làm mới </span><i class="new"></i></div>
             <div class="wrapper" id="wrapper">
@@ -456,6 +463,8 @@
                 </div>
             </div>
         </div>
+        @endif
+        @if(count($companies) > 0)
         <div class="new-employer row">
             <div class="title clearfix"><span>Nhà tuyển dụng mới</span> <i class="new"></i></div>
             <div class="wrapper" id="wrapper2">
@@ -483,6 +492,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
     <div class="container list-number">
         <div class="row">

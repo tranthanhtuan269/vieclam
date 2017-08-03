@@ -46,6 +46,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        $city = 1;
         $district = 0;
         if(isset($_GET['district']) && is_numeric($_GET['district'])){
             $district = (int)$_GET['district'];
@@ -54,7 +55,7 @@ class HomeController extends Controller
         if($district > 0){
             // get district of city
             $district = \DB::table('districts')
-                        ->where('districts.id', '=', $districts)
+                        ->where('districts.id', '=', $district)
                         ->where('districts.active', '=', 1)
                         ->first();   
 
@@ -63,7 +64,9 @@ class HomeController extends Controller
                 $districts = \DB::table('districts')
                         ->where('districts.city', '=', $district->city)
                         ->where('districts.active', '=', 1)
-                        ->get();  
+                        ->get(); 
+
+                $city = $district->city;
 
                 // get job of vip
                 $jobsvip1 = \DB::table('jobs')
@@ -104,7 +107,6 @@ class HomeController extends Controller
                         ->get();
             }
         }else{
-            $city = 1; //hanoi // 2 = hochiminh // 3 =  danang
 
             if(isset($_GET['city']) && is_numeric($_GET['city'])){
                 $city = (int)$_GET['city'];
@@ -163,7 +165,6 @@ class HomeController extends Controller
             ->orderBy('curriculum_vitaes.created_at', 'desc')
             ->take(10)
             ->get();  
-
         // get cv of vip
         $companies = \DB::table('companies')
             ->select('id', 'name', 'logo')
