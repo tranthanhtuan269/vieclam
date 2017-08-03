@@ -7,17 +7,17 @@
         <div class="panel-body">
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/') }}/city/admin">
+                    <a target="_self" target="_self" href="{{ url('/') }}/city/admin">
                         City
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="{{ url('/') }}/district/admin">
+                    <a target="_self" target="_self" href="{{ url('/') }}/district/admin">
                         District
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="{{ url('/') }}/apply/admin">
+                    <a target="_self" target="_self" href="{{ url('/') }}/apply/admin">
                         Apply
                     </a>
                 </li>

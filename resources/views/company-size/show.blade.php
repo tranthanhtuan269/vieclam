@@ -10,8 +10,8 @@
                     <div class="panel-heading">CompanySize {{ $companysize->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/Admin/company-size') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/Admin/company-size/' . $companysize->id . '/edit') }}" title="Edit CompanySize"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a target="_self" href="{{ url('/Admin/company-size') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a target="_self" href="{{ url('/Admin/company-size/' . $companysize->id . '/edit') }}" title="Edit CompanySize"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['Admin/companysize', $companysize->id],

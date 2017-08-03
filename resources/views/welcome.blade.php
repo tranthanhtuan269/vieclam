@@ -30,14 +30,14 @@
                         <div class="collapse navbar-collapse" id="navbar-collapse">
                             <div class="row">
                                 <div class="link-left">
-                                    <a href="{{ url('/') }}"><i></i>Trang chủ</a>
-                                    <a href=""><i></i>Việc làm</a>
-                                    <a href=""><i></i>Nhà tuyển dụng</a>
+                                    <a target="_self" href="{{ url('/') }}"><i></i>Trang chủ</a>
+                                    <a target="_self" href=""><i></i>Việc làm</a>
+                                    <a target="_self" href=""><i></i>Nhà tuyển dụng</a>
                                 </div>
                                 <div class="login">
                                     @if (Auth::guest())
-                                    <a data-toggle="modal" data-target="#myModal" onclick="onOpenLogin()"><i></i>Đăng nhập</a>
-                                    <a data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()">Đăng ký</a>
+                                    <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenLogin()"><i></i>Đăng nhập</a>
+                                    <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()">Đăng ký</a>
                                         <!-- Modal -->
                                     <div id="myModal" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
@@ -47,8 +47,8 @@
                                                 <div class="modal-body">
                                                     <div style="margin:-15px -15px 0 -15px!important;">
                                                     <ul class="nav nav-justified header-tab-login">
-                                                        <li class=""><a data-toggle="tab" href="#login">Đăng nhập</a></li>
-                                                        <li class=""><a data-toggle="tab" href="#register">Đăng ký</a></li>
+                                                        <li class=""><a target="_self" data-toggle="tab" href="#login">Đăng nhập</a></li>
+                                                        <li class=""><a target="_self" data-toggle="tab" href="#register">Đăng ký</a></li>
                                                     </ul>
                                                     </div>
                                                     <div class="tab-content">
@@ -57,8 +57,8 @@
                                                             <form method="post">
                                                                 <!-- <div class="row text-center">
                                                                     <p>Tiếp tục với</p>
-                                                                    <a href="#" class="facebook"><i></i> Facebook</a>
-                                                                    <a href="#" class="google"><i></i> Google</a>
+                                                                    <a target="_self" href="#" class="facebook"><i></i> Facebook</a>
+                                                                    <a target="_self" href="#" class="google"><i></i> Google</a>
                                                                     <span class="col-md-12" style="display: inline-block;margin-bottom: 30px"><hr style="float: left;width: 40%;margin-top: 25px">Hoặc<hr style="float: right;width: 40%;margin-top: 25px"></span>
                                                                 </div> -->
                                                                 <div class="row">
@@ -119,8 +119,8 @@
                                                                 <hr>
                                                                 <p class="text-center">Hoặc đăng nhập nhanh bằng</p>
                                                                 <div class="row text-center">
-                                                                    <a href="{{ url('/auth/facebook') }}" class="facebook"><i></i> Facebook</a>
-                                                                    <a href="{{ url('/auth/google') }}" class="google"><i></i> Google</a>
+                                                                    <a target="_self" href="{{ url('/auth/facebook') }}" class="facebook"><i></i> Facebook</a>
+                                                                    <a target="_self" href="{{ url('/auth/google') }}" class="google"><i></i> Google</a>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -134,19 +134,19 @@
                                     @else
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            <a target="_self" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
 
                                             <ul class="dropdown-menu" role="menu">
                                                 @if(Auth::check() && Auth::user()->hasRole('admin'))
-                                                    <li><a href="{{ url('/admin') }}">Administrator</a></li>
+                                                    <li><a target="_self" href="{{ url('/admin') }}">Administrator</a></li>
                                                 @elseif(Auth::check() && Auth::user()->hasRole('master'))
-                                                    <li><a href="{{ url('/city/admin') }}">Administrator</a></li>
+                                                    <li><a target="_self" href="{{ url('/city/admin') }}">Administrator</a></li>
                                                 @else 
                                                 @endif
                                                 <li>
-                                                    <a href="{{ url('/logout') }}"
+                                                    <a target="_self" href="{{ url('/logout') }}"
                                                         onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
                                                         Đăng Xuất
@@ -171,7 +171,7 @@
             <div class="container" >
                 <div class="clearfix row" style="padding-bottom: 30px">
                     <div class="col-md-3">
-                        <a href="" class="logo row"><img src="{{ url('/') }}/public/images/home.png" alt=""></a>
+                        <a target="_self" href="" class="logo row"><img src="{{ url('/') }}/public/images/home.png" alt=""></a>
                     </div>
                     <div class="col-md-9" style="margin-top: 30px">
                         <div class="">
@@ -198,11 +198,11 @@
                                     <button type="submit" class="visible-xs" style="width: auto;border:1px solid #EBEAEA;padding:5px 7px;height: auto;margin:auto;margin-top: 10px;background-color: #F5F5F5;color:#A8A8A8;border-radius: 4px">Tìm kiếm</button>
                                 </form>
                                 <div class="city">
-                                    <a href="{{ url('/') }}/?city=1">Hà Nội</a>
-                                    <a href="{{ url('/') }}/?city=2">TP HCM</a>
-                                    <a href="{{ url('/') }}/?city=3">Đà Nẵng</a>
-                                    <a href="{{ url('/') }}/?city=4">Hải Phòng</a>
-                                    <a href="{{ url('/') }}/?city=14">Bình Dương</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=1">Hà Nội</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=2">TP HCM</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=3">Đà Nẵng</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=4">Hải Phòng</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=14">Bình Dương</a>
                                 </div>
                             </div>
                             <div class="col-md-3 clearfix">
@@ -220,15 +220,15 @@
             <div class="container clearfix">
                 <div class="row">
                     <div class="menu-left">
-                        <a href=""><i></i>Khách sạn</a>
-                        <a href=""><i></i>Nhà hàng</a>
-                        <a href=""><i></i>Cửa hàng</a>
-                        <a href=""><i></i>Doanh nghiệp</a>
-                        <a href=""><i></i>Nhân sự tài năng</a>
+                        <a target="_self" href=""><i></i>Khách sạn</a>
+                        <a target="_self" href=""><i></i>Nhà hàng</a>
+                        <a target="_self" href=""><i></i>Cửa hàng</a>
+                        <a target="_self" href=""><i></i>Doanh nghiệp</a>
+                        <a target="_self" href=""><i></i>Nhân sự tài năng</a>
                     </div>
                     <div class="menu-right">
-                        <a href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
-                        <a href=""><i></i>Trang tuyển dụng</a>
+                        <a target="_self" href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
+                        <a target="_self" href=""><i></i>Trang tuyển dụng</a>
                     </div>
                 </div>
                 
@@ -240,21 +240,21 @@
         <div class="row">
             <div class="col-md-9 col-xs-12">
                 <div class="banner row">
-                    <a href=""><img src="{{ url('/') }}/public/images/slide.png" alt="" width="100%" ;></a>
+                    <a target="_self" href=""><img src="{{ url('/') }}/public/images/slide.png" alt="" width="100%" ;></a>
                 </div>
                 <div class="row news">
                     <div class="col-md-6" style="margin-right: -1px">
                         <div class="top row">
-                            <div class="col-md-4 col-xs-4"><a href="{{ url('/') }}/?city=1" @if($city == 1) class="active" @endif>Hà Nội</a></div>
-                            <div class="col-md-4 col-xs-4"><a href="{{ url('/') }}/?city=3" @if($city == 3) class="active" @endif>Đà Nẵng</a></div>
-                            <div class="col-md-4 col-xs-4"><a href="{{ url('/') }}/?city=2" @if($city == 2) class="active" @endif>TP.HCM</a></div>
+                            <div class="col-md-4 col-xs-4"><a target="_self" href="{{ url('/') }}/?city=1" @if($city == 1) class="active" @endif>Hà Nội</a></div>
+                            <div class="col-md-4 col-xs-4"><a target="_self" href="{{ url('/') }}/?city=3" @if($city == 3) class="active" @endif>Đà Nẵng</a></div>
+                            <div class="col-md-4 col-xs-4"><a target="_self" href="{{ url('/') }}/?city=2" @if($city == 2) class="active" @endif>TP.HCM</a></div>
                         </div>
                         <div class="row title">
                             Tìm kiếm việc làm theo các quận
                         </div>
                         <div class="row contentsLeft" id="list-districts">
                             @foreach($districts as $district)
-                                <a href="{{ url('/') }}/?district={{ $district->id }}">{{ $district->name }}</a>
+                                <a target="_self" href="{{ url('/') }}/?district={{ $district->id }}">{{ $district->name }}</a>
                             @endforeach
                         </div>
                     </div>
@@ -279,16 +279,16 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-3 col-xs-3">
-                                    <div class="point"><a  class="active"></a><hr class="right"></div>
+                                    <div class="point"><a target="_self"  class="active"></a><hr class="right"></div>
                                 </div>
                                 <div class="col-md-3 col-xs-3">
-                                    <div class="point"><a  class=""></a><hr></div>
+                                    <div class="point"><a target="_self"  class=""></a><hr></div>
                                 </div>
                                 <div class="col-md-3 col-xs-3">
-                                    <div class="point"><a  class=""></a><hr></div>
+                                    <div class="point"><a target="_self"  class=""></a><hr></div>
                                 </div>
                                 <div class="col-md-3 col-xs-3">
-                                    <div class="point"><a class=""></a><hr class="left"></div>
+                                    <div class="point"><a target="_self" class=""></a><hr class="left"></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -310,9 +310,9 @@
                 </div>
             </div>
             <div class="col-md-3 col-xs-12">
-                <div class="ads-top"><a href=""><img src="{{ url('/') }}/public/images/ads.png" alt=""></a></div>
+                <div class="ads-top"><a target="_self" href=""><img src="{{ url('/') }}/public/images/ads.png" alt=""></a></div>
                 <div class="ads-bot">
-                    <a href=""><img src="{{ url('/') }}/public/images/zalo.png" alt=""></a>
+                    <a target="_self" href=""><img src="{{ url('/') }}/public/images/zalo.png" alt=""></a>
                 </div>
             </div>
         </div>
@@ -324,24 +324,24 @@
             <div class="wrapper row" id="wrapper-logo">
                 <div class="contents clearfix" id="contents-logo">
                     <ul>
-                        <li class="item-logo"><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome1.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome4.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome6.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome7.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome8.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome10.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome11.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome12.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li class="item-logo"><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome1.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome4.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome6.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome7.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome8.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome10.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome11.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome12.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
                     </ul>
                 </div>
             </div>
@@ -349,11 +349,11 @@
     </div>
     <div class="container list-info">
         <div class="vip-candidates row">
-            <div class="title clearfix"><span>Ứng viên VIP <i class="hot"></i></span><a href="">984 ứng viên VIP <i></i></a></div>
+            <div class="title clearfix"><span>Ứng viên VIP <i class="hot"></i></span><a target="_self" href="">984 ứng viên VIP <i></i></a></div>
             <div class="clearfix wrapper" id="wrapper-candidates">
                 @foreach($cvs as $cv)
                 <div class="item-u" >
-                    <a href="{{ url('/') }}/curriculumvitae/view/{{ $cv->id }}" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
+                    <a target="_self" href="{{ url('/') }}/curriculumvitae/view/{{ $cv->id }}" onmouseenter="onFocusCandidates(event)" onmouseleave ="onDisFocusCandidates(event)">
                         <div class="img"><img src="{{ url('/') }}/public/images/{{ $cv->avatar }}" alt=""></div>
                         <p class="name text-center">{{ $cv->username }}</p>
                         <p class="university text-center">Sinh viên ĐH Ngoại Giao</p>
@@ -374,14 +374,14 @@
             </div>
         </div>
         <div class="hot-jobs row">
-            <div class="title clearfix"><span>Việc làm HOT <i class="hot"></i></span><a href="">101 việc làm HOT <i></i></a></div>
+            <div class="title clearfix"><span>Việc làm HOT <i class="hot"></i></span><a target="_self" href="">101 việc làm HOT <i></i></a></div>
             <div class="wrapper" id="wrapper4">
                 <div style="width: 100%;overflow: visible;display: inline-block;position: relative;">
                     <div class="contents">
                         @foreach($jobsvip1 as $job)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="{{ url('/') }}/job/view/{{ $job->id }}">
+                                <a target="_self" href="{{ url('/') }}/job/view/{{ $job->id }}">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/{{ $job->logo }}" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>{{ $job->name }} tại {{ $job->companyname }}</p></div>
@@ -399,14 +399,14 @@
             </div>
         </div>
         <div class="need-jobs row">
-            <div class="title clearfix"><span>Đang tuyển GẤP <i></i></span><a href="">101 việc làm GẤP <i></i></a></div>
+            <div class="title clearfix"><span>Đang tuyển GẤP <i></i></span><a target="_self" href="">101 việc làm GẤP <i></i></a></div>
             <div class="wrapper" id="wrapper3">
                 <div style="width: 100%;overflow: visible;display: inline-block;position: relative;">
                     <div class="contents">
                     @foreach($jobsvip2 as $job)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="{{ url('/') }}/job/view/{{ $job->id }}">
+                                <a target="_self" href="{{ url('/') }}/job/view/{{ $job->id }}">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/{{ $job->logo }}" alt=""></p>
                                     <div class="details">
                                         <div class="single"><p>{{ $job->name }} tại {{ $job->companyname }}</p></div>
@@ -423,7 +423,7 @@
                 </div>
             </div>
             <div id="col-ads">
-                <a href="">
+                <a target="_self" href="">
                     <img src="{{ url('/') }}/public/images/ads2.png" alt="">
                 </a>
             </div>
@@ -438,7 +438,7 @@
                         @foreach($jobs as $job)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="{{ url('/') }}/job/view/{{ $job->id }}">
+                                <a target="_self" href="{{ url('/') }}/job/view/{{ $job->id }}">
                                     <span class="icon-new"><img src="{{ url('/') }}/public/images/icon-new.png" alt=""></span>
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/{{ $job->logo }}" alt=""></p>
                                     <div class="details">
@@ -466,7 +466,7 @@
                         @foreach($companies as $company)
                         <div class="item-work" >
                             <div class="border-item">
-                                <a href="{{ url('/') }}/company/{{ $company->id }}/info">
+                                <a target="_self" href="{{ url('/') }}/company/{{ $company->id }}/info">
                                     <span class="icon-new"><img src="{{ url('/') }}/public/images/icon-new.png" alt=""></span>
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></p>
                                     <div class="details">
@@ -493,7 +493,7 @@
                 <div class="col-md-7 col-xs-7">
                     <div class="row info">
                         <p class="text">Hồ sơ ứng viên</p>
-                        <p class="number">4626 <a href="">&rsaquo;</a></p>
+                        <p class="number">4626 <a target="_self" href="">&rsaquo;</a></p>
                     </div>
                 </div>
             </div>
@@ -504,7 +504,7 @@
                 <div class="col-md-7 col-xs-7">
                     <div class="row info">
                         <p class="text">Freelance</p>
-                        <p class="number">1126 <a href="">&rsaquo;</a></p>
+                        <p class="number">1126 <a target="_self" href="">&rsaquo;</a></p>
                     </div>
                 </div>
             </div>
@@ -515,7 +515,7 @@
                 <div class="col-md-7 col-xs-7">
                     <div class="row info">
                         <p class="text">Tài năng</p>
-                        <p class="number">1452 <a href="">&rsaquo;</a></p>
+                        <p class="number">1452 <a target="_self" href="">&rsaquo;</a></p>
                     </div>
                 </div>
             </div>
@@ -526,7 +526,7 @@
                 <div class="col-md-7 col-xs-7">
                     <div class="row info">
                         <p class="text">Tài năng đại học</p>
-                        <p class="number">2332 <a href="">&rsaquo;</a></p>
+                        <p class="number">2332 <a target="_self" href="">&rsaquo;</a></p>
                     </div>
                 </div>
             </div>
@@ -537,26 +537,26 @@
             <div class="footer-top row">
                 <div class="col-md-4 col-xs-6 footer-col">
                     <p class="title">về gmon</p>
-                    <p><a href="">Giới thiệu</a></p>
-                    <p><a href="">Việc làm</a></p>
-                    <p><a href="">Nhà tuyển dụng</a></p>
-                    <p><a href="">Hồ sơ ứng viên</a></p>
-                    <p><a href="">Nhà tuyển dụng</a></p>
+                    <p><a target="_self" href="">Giới thiệu</a></p>
+                    <p><a target="_self" href="">Việc làm</a></p>
+                    <p><a target="_self" href="">Nhà tuyển dụng</a></p>
+                    <p><a target="_self" href="">Hồ sơ ứng viên</a></p>
+                    <p><a target="_self" href="">Nhà tuyển dụng</a></p>
                 </div>
                 <div class="col-md-3 col-xs-6 footer-col">
                     <p class="title">công cụ</p>
-                    <p><a href="">Hồ sơ</a></p>
-                    <p><a href="">Việc làm của tôi</a></p>
-                    <p><a href="">Thông báo việc làm</a></p>
-                    <p><a href="">Phản hồi</a></p>
-                    <p><a href="">Tư vấn nghề nghiệp</a></p>
+                    <p><a target="_self" href="">Hồ sơ</a></p>
+                    <p><a target="_self" href="">Việc làm của tôi</a></p>
+                    <p><a target="_self" href="">Thông báo việc làm</a></p>
+                    <p><a target="_self" href="">Phản hồi</a></p>
+                    <p><a target="_self" href="">Tư vấn nghề nghiệp</a></p>
                 </div>
                 <div class="col-md-5 contact col-xs-12 footer-col">
                     <p class="title">kết nối với gmon</p>
                     <p class="mxh">
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
+                        <a target="_self" href=""></a>
+                        <a target="_self" href=""></a>
+                        <a target="_self" href=""></a>
                     </p>
                 </div>
             </div>

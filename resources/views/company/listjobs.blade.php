@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="row">
                     <input type="hidden" name="company-id" value="{{ $company->id }}">
-                    <div class="logo"><a href="{{ url('/') }}/company/{{ $company->id }}/info"><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt="">{{ $company->name }}</a></div>
+                    <div class="logo"><a target="_self" href="{{ url('/') }}/company/{{ $company->id }}/info"><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt="">{{ $company->name }}</a></div>
                     <div class="hotline visible-xs" role="button" data-toggle="collapse" data-target="#hotline"><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt="" >
                         <span id="hotline" class="collapse">hotline: {{ $company->hotline }}</span>
                     </div>
@@ -36,8 +36,8 @@
             <div class="main-menu row">
                 <div class="slide"><img src="{{ url('/') }}/public/images/{{ $company->banner }}" width="100%" height="auto" alt=""><img class="logo" src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></div>
                 <p class="menu">
-                    <a href="{{ url('/') }}/company/{{ $company->id }}/info">Thông Tin</a>
-                    <a href="{{ url('/') }}/company/{{ $company->id }}/listjobs" class="active">Tuyển Dụng</a>
+                    <a target="_self" href="{{ url('/') }}/company/{{ $company->id }}/info">Thông Tin</a>
+                    <a target="_self" href="{{ url('/') }}/company/{{ $company->id }}/listjobs" class="active">Tuyển Dụng</a>
                     <button type="button" class="btn btn-primary" id="follow-btn" @if($followed) style="display: none;" @else style="display: block;" @endif><i></i>Theo dõi</button>
                     <button type="button" class="btn btn-danger" id="unfollow-btn" @if($followed) style="display: block;" @else style="display: none;" @endif><i></i>Bỏ theo dõi</button>
                 </p>
@@ -45,7 +45,7 @@
             <div class="main-content row">
                 <div class="col-left col-md-9 col-xs-12">
                     <div class="row">
-                        <div class="hot-new"><span style="color:#f99f3c">Tin nóng: </span><a href="">Khai trương nhà hàng tại 156 Cầu Giấy
+                        <div class="hot-new"><span style="color:#f99f3c">Tin nóng: </span><a target="_self" href="">Khai trương nhà hàng tại 156 Cầu Giấy
                                 <span class="hot-new-img"></span></a>
                             <button  type="button" class="bt-rate btn btn-primary" data-toggle="modal" data-target="#add-comment"><i></i>Thêm đánh giá</button>
                         </div>
@@ -56,14 +56,14 @@
                             <div style="padding: 10%;"><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></div>
                         </div>
                         <div class="job-content">
-                            <div class="job-name"><a href="{{ url('/') }}/job/view/{{ $job->id }}"> {{ $job->name }} </a></div>
+                            <div class="job-name"><a target="_self" href="{{ url('/') }}/job/view/{{ $job->id }}"> {{ $job->name }} </a></div>
                             <div class="job-info">
                                 <span><i></i>Số lượng: {{ $job->number }}</span>
                                 <span><i></i>Cầu Giấy, Ba Đình</span>
                                 <span class="active"><i></i>Hạn nộp: {{ $job->expiration_date }}</span>
                             </div>
                             <span class="job-hot">HOT</span>
-                            <a href="{{ url('/') }}/job/view/{{ $job->id }}" class="job-view">Chi tiết </a>
+                            <a target="_self" href="{{ url('/') }}/job/view/{{ $job->id }}" class="job-view">Chi tiết </a>
                         </div>
                     </div>
                     @endforeach
@@ -112,7 +112,7 @@
                     <div style="width: 100%;overflow: hidden;display: inline-block;position: relative;">
                         <div id="contents">
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -124,7 +124,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p>
@@ -136,7 +136,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -148,7 +148,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -160,7 +160,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -172,7 +172,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -184,7 +184,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -196,7 +196,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -208,7 +208,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -220,7 +220,7 @@
                                 </a>
                             </div>
                             <div class="item-work" >
-                                <a href="">
+                                <a target="_self" href="">
                                     <p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
                                     <div class="details">
                                         <p class="single">Nhân viên pha chế Starbucks Coffee</p>
@@ -241,26 +241,26 @@
                 <div class="footer-top row">
                     <div class="col-md-4 col-xs-6 footer-col">
                         <p class="title">về gmon</p>
-                        <p><a href="">Giới thiệu</a></p>
-                        <p><a href="">Việc làm</a></p>
-                        <p><a href="">Nhà tuyển dụng</a></p>
-                        <p><a href="">Hồ sơ ứng viên</a></p>
-                        <p><a href="">Nhà tuyển dụng</a></p>
+                        <p><a target="_self" href="">Giới thiệu</a></p>
+                        <p><a target="_self" href="">Việc làm</a></p>
+                        <p><a target="_self" href="">Nhà tuyển dụng</a></p>
+                        <p><a target="_self" href="">Hồ sơ ứng viên</a></p>
+                        <p><a target="_self" href="">Nhà tuyển dụng</a></p>
                     </div>
                     <div class="col-md-3 col-xs-6 footer-col">
                         <p class="title">công cụ</p>
-                        <p><a href="">Hồ sơ</a></p>
-                        <p><a href="">Việc làm của tôi</a></p>
-                        <p><a href="">Thông báo việc làm</a></p>
-                        <p><a href="">Phản hồi</a></p>
-                        <p><a href="">Tư vấn nghề nghiệp</a></p>
+                        <p><a target="_self" href="">Hồ sơ</a></p>
+                        <p><a target="_self" href="">Việc làm của tôi</a></p>
+                        <p><a target="_self" href="">Thông báo việc làm</a></p>
+                        <p><a target="_self" href="">Phản hồi</a></p>
+                        <p><a target="_self" href="">Tư vấn nghề nghiệp</a></p>
                     </div>
                     <div class="col-md-5 contact col-xs-12 footer-col">
                         <p class="title">kết nối với gmon</p>
                         <p class="mxh">
-                            <a href=""></a>
-                            <a href=""></a>
-                            <a href=""></a>
+                            <a target="_self" href=""></a>
+                            <a target="_self" href=""></a>
+                            <a target="_self" href=""></a>
                         </p>
                     </div>
                 </div>

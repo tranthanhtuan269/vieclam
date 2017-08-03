@@ -54,15 +54,15 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-primary" href="{{ url('/auth/facebook') }}">
+                                <a target="_self" class="btn btn-primary" href="{{ url('/auth/facebook') }}">
                                     Facebook
                                 </a>
 
-                                <a class="btn btn-danger" href="{{ url('/auth/google') }}">
+                                <a target="_self" class="btn btn-danger" href="{{ url('/auth/google') }}">
                                     Google+
                                 </a>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a target="_self" class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>

@@ -248,7 +248,7 @@
                             <div class="form-group">
                                 <div class="col-md-12 pull-right">
                                     <button class="btn btn-primary" id="submit-btn">Tạo mới</button>
-                                    <a href="{{ url('/home') }}" class="btn btn-primary">Trở về trang chủ</a>
+                                    <a target="_self" href="{{ url('/home') }}" class="btn btn-primary">Trở về trang chủ</a>
                                 </div>
                             </div>
                         </div>

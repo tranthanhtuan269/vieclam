@@ -70,10 +70,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Trang Chủ</a>
+                        <a target="_self" href="{{ url('/home') }}">Trang Chủ</a>
                     @else
-                        <a href="{{ url('/login') }}">Đăng Nhập</a>
-                        <a href="{{ url('/register') }}">Đăng Ký</a>
+                        <a target="_self" href="{{ url('/login') }}">Đăng Nhập</a>
+                        <a target="_self" href="{{ url('/register') }}">Đăng Ký</a>
                     @endif
                 </div>
             @endif

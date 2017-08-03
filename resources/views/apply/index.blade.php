@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Apply</div>
                     <div class="panel-body">
-                        <a href="{{ url('/apply/create') }}" class="btn btn-success btn-sm" title="Add New Apply">
+                        <a target="_self" href="{{ url('/apply/create') }}" class="btn btn-success btn-sm" title="Add New Apply">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -39,8 +39,8 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->user }}</td><td>{{ $item->job }}</td>
                                         <td>
-                                            <a href="{{ url('/apply/' . $item->id) }}" title="View Apply"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/apply/' . $item->id . '/edit') }}" title="Edit Apply"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a target="_self" href="{{ url('/apply/' . $item->id) }}" title="View Apply"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a target="_self" href="{{ url('/apply/' . $item->id . '/edit') }}" title="Edit Apply"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/apply', $item->id],

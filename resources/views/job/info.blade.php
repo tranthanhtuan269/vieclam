@@ -19,14 +19,14 @@
 	<header>
 		<div class="container">
 			<div class="row clearfix">
-				<div class="logo clearfix"><a href=""><img src="{{ url('/') }}/public/images/{{ $company->logo }}" id="logo" alt=""><p>{{ $job->name }}</p></a></div>
-				<div class="link"><a class="bt-join" href="javascript:void(0)" data-id="{{ $job->id }}">Ứng tuyển ngay</a></div>
+				<div class="logo clearfix"><a target="_self" href=""><img src="{{ url('/') }}/public/images/{{ $company->logo }}" id="logo" alt=""><p>{{ $job->name }}</p></a></div>
+				<div class="link"><a target="_self" class="bt-join" href="javascript:void(0)" data-id="{{ $job->id }}">Ứng tuyển ngay</a></div>
 			</div>
 		</div>
 	</header>
 	<div class="container">
 		<div class="row ads clearfix">
-			@if(isset($company->images))
+			@if(isset($company->images) && strlen($company->images) > 0)
 			<?php 
 				$company->images=rtrim($company->images,";");
 				$images = explode(";",$company->images);
@@ -41,7 +41,7 @@
 		</div>
 		<div class="contents-job row">
 			<div class="col-md-4 info-company col-xs-12">
-				<div class="logo"><a href=""><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></a></div>
+				<div class="logo"><a target="_self" href=""><img src="{{ url('/') }}/public/images/{{ $company->logo }}" alt=""></a></div>
 				<div class="info">
 					<p class="title">{{ $company->name }}</p>
 					<div class="star">
@@ -54,13 +54,17 @@
 					<p class="time-new-roman"><i></i>{{ $company->address }}, {{ $company->city }} </p>
 					<p class="time-new-roman"><i></i>{{ $company->city }}</p>
 					<p class="time-new-roman"><i></i>{{ $company->district }}, {{ $company->city }}</p>
-					<p class="time-new-roman"><i></i>{{ $company->jobs }}</p>
+					@if(strlen($company->jobs) > 0 )
+					<p class="time-new-roman">
+						<i></i>
+					</p>
+					@endif
 					<p class="time-new-roman" style="display: inline-block;margin-right: 50px"><i></i>{{ $company->size }} người</p>
 					<p class="time-new-roman"><i></i>Thứ 2 - Thứ 6</p>
 					@if(strlen($company->sologan) > 0)
 					<p class="time-new-roman"><i></i>{{ $company->sologan }}</p>
 					@endif
-					<div class="link time-new-roman" ><a href="{{ url('/') }}/company/{{ $company->id }}/listjobs" class="underline">Trang tuyển dụng <i class="muiten"></i></a></div>
+					<div class="link time-new-roman" ><a target="_self" href="{{ url('/') }}/company/{{ $company->id }}/listjobs" class="underline">Trang tuyển dụng <i class="muiten"></i></a></div>
 				</div>
 			</div>
 			<div class="col-md-8  col-xs-12">
@@ -69,19 +73,19 @@
 					<p class="time-new-roman"><i></i><span style="margin-right: 35px">
 					{{ $company->district }}, {{ $company->city }}
 					</span>
-					<a href="" style="color:#2a70b8;display: inline-block;" class="underline">Xem bản đồ <i class="muiten"></i></a></p>
+					<a target="_self" href="" style="color:#2a70b8;display: inline-block;" class="underline">Xem bản đồ <i class="muiten"></i></a></p>
 					<p class="time-new-roman"><i></i>{{ $job->salary }}</p>
 					<p class="time-new-roman"><i></i>{{ $job->expiration_date }} (còn 3 ngày)</p>
 					<p class="time-new-roman"><i></i>{{ $job->number }} người</p>
 					<p class="time-new-roman"><i></i><?php if($job->gender == 0) { echo "Nam"; }else{ echo "Nữ"; } ?></p>
 					<div class="bt clearfix">
-						<a class="bt-join time-new-roman" href="javascript:void(0)" data-id="{{ $job->id }}">Ứng tuyển ngay</a> 
+						<a target="_self" class="bt-join time-new-roman" href="javascript:void(0)" data-id="{{ $job->id }}">Ứng tuyển ngay</a> 
 						<span style="padding:0;" id="share">
-							<a class="icon" href=""><i class="i1"></i></a>
-							<a class="icon" href=""> <i class="i2"></i></a>
-							<a class="icon" href=""><i class="i3"></i></a>
-							<a class="icon" href=""><i class="i4"></i></a>
-							<a class="icon" href=""><i class="i5"></i></a>
+							<a target="_self" class="icon" href=""><i class="i1"></i></a>
+							<a target="_self" class="icon" href=""> <i class="i2"></i></a>
+							<a target="_self" class="icon" href=""><i class="i3"></i></a>
+							<a target="_self" class="icon" href=""><i class="i4"></i></a>
+							<a target="_self" class="icon" href=""><i class="i5"></i></a>
 							<span>Chia sẻ qua</span>
 						</span>
 					</div>
@@ -95,7 +99,7 @@
 				<div class="item">
 					<div class="title">điều bạn mong muốn</div>
 				</div>
-				<p style="margin-top: 20px;text-align: center;"><a href="javascript:void(0)" class="bt-join" data-id="{{ $job->id }}">Ứng tuyển ngay</a></p>
+				<p style="margin-top: 20px;text-align: center;"><a target="_self" href="javascript:void(0)" class="bt-join" data-id="{{ $job->id }}">Ứng tuyển ngay</a></p>
 			</div>
 		</div>
 		<div class="related-work row">
@@ -107,7 +111,7 @@
 					<div id="contents">
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -121,7 +125,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
@@ -135,7 +139,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -149,7 +153,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee </p></div>
@@ -163,7 +167,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks </p></div>
@@ -177,7 +181,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks </p></div>
@@ -191,7 +195,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -205,7 +209,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -219,7 +223,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -233,7 +237,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -247,7 +251,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -261,7 +265,7 @@
 						</div>
 						<div class="item-work" >
 							<div class="border-item">
-								<a href="">
+								<a target="_self" href="">
 									<p class="work-img"><img  src="{{ url('/') }}/public/images/nhatuyendung.png" alt=""></p>
 									<div class="details">
 										<div class="single"><p>Nhân viên pha chế Starbucks Coffee Nhân viên pha chế Starbucks Coffee</p></div>
@@ -283,26 +287,26 @@
 			<div class="footer-top row">
 				<div class="col-md-4 col-xs-6 footer-col">
 					<p class="title">về gmon</p>
-					<p><a href="">Giới thiệu</a></p>
-					<p><a href="">Việc làm</a></p>
-					<p><a href="">Nhà tuyển dụng</a></p>
-					<p><a href="">Hồ sơ ứng viên</a></p>
-					<p><a href="">Nhà tuyển dụng</a></p>
+					<p><a target="_self" href="">Giới thiệu</a></p>
+					<p><a target="_self" href="">Việc làm</a></p>
+					<p><a target="_self" href="">Nhà tuyển dụng</a></p>
+					<p><a target="_self" href="">Hồ sơ ứng viên</a></p>
+					<p><a target="_self" href="">Nhà tuyển dụng</a></p>
 				</div>
 				<div class="col-md-3 col-xs-6 footer-col">
 					<p class="title">công cụ</p>
-					<p><a href="">Hồ sơ</a></p>
-					<p><a href="">Việc làm của tôi</a></p>
-					<p><a href="">Thông báo việc làm</a></p>
-					<p><a href="">Phản hồi</a></p>
-					<p><a href="">Tư vấn nghề nghiệp</a></p>
+					<p><a target="_self" href="">Hồ sơ</a></p>
+					<p><a target="_self" href="">Việc làm của tôi</a></p>
+					<p><a target="_self" href="">Thông báo việc làm</a></p>
+					<p><a target="_self" href="">Phản hồi</a></p>
+					<p><a target="_self" href="">Tư vấn nghề nghiệp</a></p>
 				</div>
 				<div class="col-md-5 contact col-xs-12 footer-col">
 					<p class="title">kết nối với gmon</p>
 					<p class="mxh">
-						<a href=""></a>
-						<a href=""></a>
-						<a href=""></a>
+						<a target="_self" href=""></a>
+						<a target="_self" href=""></a>
+						<a target="_self" href=""></a>
 					</p>
 				</div>
 			</div>

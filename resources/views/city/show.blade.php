@@ -10,8 +10,8 @@
                     <div class="panel-heading">City {{ $city->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/admin/city') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/admin/city/' . $city->id . '/edit') }}" title="Edit City"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a target="_self" href="{{ url('/admin/city') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a target="_self" href="{{ url('/admin/city/' . $city->id . '/edit') }}" title="Edit City"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['admin/city', $city->id],

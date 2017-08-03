@@ -10,8 +10,8 @@
                     <div class="panel-heading">Follow {{ $follow->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/Follow/follow') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/Follow/follow/' . $follow->id . '/edit') }}" title="Edit Follow"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a target="_self" href="{{ url('/Follow/follow') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a target="_self" href="{{ url('/Follow/follow/' . $follow->id . '/edit') }}" title="Edit Follow"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['Follow/follow', $follow->id],

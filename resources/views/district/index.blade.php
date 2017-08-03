@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">District</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/district/create') }}" class="btn btn-success btn-sm" title="Add New District">
+                        <a target="_self" href="{{ url('/admin/district/create') }}" class="btn btn-success btn-sm" title="Add New District">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -40,8 +40,8 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->city }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/district/' . $item->id) }}" title="View District"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/district/' . $item->id . '/edit') }}" title="Edit District"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a target="_self" href="{{ url('/admin/district/' . $item->id) }}" title="View District"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a target="_self" href="{{ url('/admin/district/' . $item->id . '/edit') }}" title="Edit District"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/district', $item->id],

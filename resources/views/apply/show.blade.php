@@ -10,8 +10,8 @@
                     <div class="panel-heading">Apply {{ $apply->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/apply') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/apply/' . $apply->id . '/edit') }}" title="Edit Apply"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a target="_self" href="{{ url('/apply') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a target="_self" href="{{ url('/apply/' . $apply->id . '/edit') }}" title="Edit Apply"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['apply', $apply->id],

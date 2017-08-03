@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Job</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/job/create') }}" class="btn btn-success btn-sm" title="Add New Job">
+                        <a target="_self" href="{{ url('/admin/job/create') }}" class="btn btn-success btn-sm" title="Add New Job">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -39,8 +39,8 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td><td>{{ $item->number }}</td><td>{{ $item->expiration_date }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/job/' . $item->id) }}" title="View Job"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/job/' . $item->id . '/edit') }}" title="Edit Job"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a target="_self" href="{{ url('/admin/job/' . $item->id) }}" title="View Job"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a target="_self" href="{{ url('/admin/job/' . $item->id . '/edit') }}" title="Edit Job"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/admin/job', $item->id],

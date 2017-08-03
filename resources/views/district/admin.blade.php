@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">District</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/district/create') }}" class="btn btn-success btn-sm" title="Add New District">
+                        <a target="_self" href="{{ url('/admin/district/create') }}" class="btn btn-success btn-sm" title="Add New District">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 

@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">City</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/city/create') }}" class="btn btn-success btn-sm" title="Add New City">
+                        <a target="_self" href="{{ url('/admin/city/create') }}" class="btn btn-success btn-sm" title="Add New City">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 

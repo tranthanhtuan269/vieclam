@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Comment</div>
                     <div class="panel-body">
-                        <a href="{{ url('/comment/comment/create') }}" class="btn btn-success btn-sm" title="Add New Comment">
+                        <a target="_self" href="{{ url('/comment/comment/create') }}" class="btn btn-success btn-sm" title="Add New Comment">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -39,8 +39,8 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td><td>{{ $item->description }}</td><td>{{ $item->star }}</td>
                                         <td>
-                                            <a href="{{ url('/comment/comment/' . $item->id) }}" title="View Comment"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/comment/comment/' . $item->id . '/edit') }}" title="Edit Comment"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a target="_self" href="{{ url('/comment/comment/' . $item->id) }}" title="View Comment"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a target="_self" href="{{ url('/comment/comment/' . $item->id . '/edit') }}" title="Edit Comment"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
                                                 'url' => ['/comment/comment', $item->id],

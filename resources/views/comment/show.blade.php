@@ -10,8 +10,8 @@
                     <div class="panel-heading">Comment {{ $comment->id }}</div>
                     <div class="panel-body">
 
-                        <a href="{{ url('/comment/comment') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/comment/comment/' . $comment->id . '/edit') }}" title="Edit Comment"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                        <a target="_self" href="{{ url('/comment/comment') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a target="_self" href="{{ url('/comment/comment/' . $comment->id . '/edit') }}" title="Edit Comment"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['comment/comment', $comment->id],

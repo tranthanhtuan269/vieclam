@@ -30,14 +30,14 @@
                         <div class="collapse navbar-collapse" id="navbar-collapse">
                             <div class="row">
                                 <div class="link-left">
-                                    <a href="{{ url('/') }}"><i></i>Trang chủ</a>
-                                    <a href=""><i></i>Việc làm</a>
-                                    <a href=""><i></i>Nhà tuyển dụng</a>
+                                    <a target="_self" href="{{ url('/') }}"><i></i>Trang chủ</a>
+                                    <a target="_self" href=""><i></i>Việc làm</a>
+                                    <a target="_self" href=""><i></i>Nhà tuyển dụng</a>
                                 </div>
                                 <div class="login">
                                     @if (Auth::guest())
-                                    <a data-toggle="modal" data-target="#myModal" onclick="onOpenLogin()"><i></i>Đăng nhập</a>
-                                    <a data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()">Đăng ký</a>
+                                    <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenLogin()"><i></i>Đăng nhập</a>
+                                    <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()">Đăng ký</a>
                                         <!-- Modal -->
                                     <div id="myModal" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
@@ -47,8 +47,8 @@
                                                 <div class="modal-body">
                                                     <div style="margin:-15px -15px 0 -15px!important;">
                                                     <ul class="nav nav-justified header-tab-login">
-                                                        <li class=""><a data-toggle="tab" href="#login">Đăng nhập</a></li>
-                                                        <li class=""><a data-toggle="tab" href="#register">Đăng ký</a></li>
+                                                        <li class=""><a target="_self" data-toggle="tab" href="#login">Đăng nhập</a></li>
+                                                        <li class=""><a target="_self" data-toggle="tab" href="#register">Đăng ký</a></li>
                                                     </ul>
                                                     </div>
                                                     <div class="tab-content">
@@ -57,8 +57,8 @@
                                                             <form method="post">
                                                                 <!-- <div class="row text-center">
                                                                     <p>Tiếp tục với</p>
-                                                                    <a href="#" class="facebook"><i></i> Facebook</a>
-                                                                    <a href="#" class="google"><i></i> Google</a>
+                                                                    <a target="_self" href="#" class="facebook"><i></i> Facebook</a>
+                                                                    <a target="_self" href="#" class="google"><i></i> Google</a>
                                                                     <span class="col-md-12" style="display: inline-block;margin-bottom: 30px"><hr style="float: left;width: 40%;margin-top: 25px">Hoặc<hr style="float: right;width: 40%;margin-top: 25px"></span>
                                                                 </div> -->
                                                                 <div class="row">
@@ -119,8 +119,8 @@
                                                                 <hr>
                                                                 <p class="text-center">Hoặc đăng nhập nhanh bằng</p>
                                                                 <div class="row text-center">
-                                                                    <a href="{{ url('/auth/facebook') }}" class="facebook"><i></i> Facebook</a>
-                                                                    <a href="{{ url('/auth/google') }}" class="google"><i></i> Google</a>
+                                                                    <a target="_self" href="{{ url('/auth/facebook') }}" class="facebook"><i></i> Facebook</a>
+                                                                    <a target="_self" href="{{ url('/auth/google') }}" class="google"><i></i> Google</a>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -134,19 +134,19 @@
                                     @else
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            <a target="_self" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
 
                                             <ul class="dropdown-menu" role="menu">
                                                 @if(Auth::check() && Auth::user()->hasRole('admin'))
-                                                    <li><a href="{{ url('/admin') }}">Administrator</a></li>
+                                                    <li><a target="_self" href="{{ url('/admin') }}">Administrator</a></li>
                                                 @elseif(Auth::check() && Auth::user()->hasRole('master'))
-                                                    <li><a href="{{ url('/city/admin') }}">Administrator</a></li>
+                                                    <li><a target="_self" href="{{ url('/city/admin') }}">Administrator</a></li>
                                                 @else 
                                                 @endif
                                                 <li>
-                                                    <a href="{{ url('/logout') }}"
+                                                    <a target="_self" href="{{ url('/logout') }}"
                                                         onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
                                                         Đăng Xuất
@@ -171,7 +171,7 @@
             <div class="container" >
                 <div class="clearfix row" style="padding-bottom: 30px">
                     <div class="col-md-3">
-                        <a href="" class="logo row"><img src="{{ url('/') }}/public/images/home.png" alt=""></a>
+                        <a target="_self" href="" class="logo row"><img src="{{ url('/') }}/public/images/home.png" alt=""></a>
                     </div>
                     <div class="col-md-9" style="margin-top: 30px">
                         <div class="">
@@ -198,11 +198,11 @@
                                     <button type="submit" class="visible-xs" style="width: auto;border:1px solid #EBEAEA;padding:5px 7px;height: auto;margin:auto;margin-top: 10px;background-color: #F5F5F5;color:#A8A8A8;border-radius: 4px">Tìm kiếm</button>
                                 </form>
                                 <div class="city">
-                                    <a href="{{ url('/') }}/?city=1">Hà Nội</a>
-                                    <a href="{{ url('/') }}/?city=2">TP HCM</a>
-                                    <a href="{{ url('/') }}/?city=3">Đà Nẵng</a>
-                                    <a href="{{ url('/') }}/?city=4">Hải Phòng</a>
-                                    <a href="{{ url('/') }}/?city=14">Bình Dương</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=1">Hà Nội</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=2">TP HCM</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=3">Đà Nẵng</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=4">Hải Phòng</a>
+                                    <a target="_self" href="{{ url('/') }}/?city=14">Bình Dương</a>
                                 </div>
                             </div>
                             <div class="col-md-3 clearfix">
@@ -220,15 +220,15 @@
             <div class="container clearfix">
                 <div class="row">
                     <div class="menu-left">
-                        <a href=""><i></i>Khách sạn</a>
-                        <a href=""><i></i>Nhà hàng</a>
-                        <a href=""><i></i>Cửa hàng</a>
-                        <a href=""><i></i>Doanh nghiệp</a>
-                        <a href=""><i></i>Nhân sự tài năng</a>
+                        <a target="_self" href=""><i></i>Khách sạn</a>
+                        <a target="_self" href=""><i></i>Nhà hàng</a>
+                        <a target="_self" href=""><i></i>Cửa hàng</a>
+                        <a target="_self" href=""><i></i>Doanh nghiệp</a>
+                        <a target="_self" href=""><i></i>Nhân sự tài năng</a>
                     </div>
                     <div class="menu-right">
-                        <a href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
-                        <a href=""><i></i>Trang tuyển dụng</a>
+                        <a target="_self" href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
+                        <a target="_self" href=""><i></i>Trang tuyển dụng</a>
                     </div>
                 </div>
             </div>
@@ -242,24 +242,24 @@
             <div class="wrapper row" id="wrapper-logo">
                 <div class="contents clearfix" id="contents-logo">
                     <ul>
-                        <li class="item-logo"><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome1.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome4.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome6.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome7.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome8.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome10.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome11.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome12.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
-                        <li><a href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li class="item-logo"><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome1.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome4.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome6.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome7.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome8.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome10.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome11.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome12.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome2.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome3.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome5.png" alt=""></a></li>
+                        <li><a target="_self" href=""><img src="{{ url('/') }}/public/images/logoHome.png" alt=""></a></li>
                     </ul>
                 </div>
             </div>
@@ -270,26 +270,26 @@
             <div class="footer-top row">
                 <div class="col-md-4 col-xs-6 footer-col">
                     <p class="title">về gmon</p>
-                    <p><a href="">Giới thiệu</a></p>
-                    <p><a href="">Việc làm</a></p>
-                    <p><a href="">Nhà tuyển dụng</a></p>
-                    <p><a href="">Hồ sơ ứng viên</a></p>
-                    <p><a href="">Nhà tuyển dụng</a></p>
+                    <p><a target="_self" href="">Giới thiệu</a></p>
+                    <p><a target="_self" href="">Việc làm</a></p>
+                    <p><a target="_self" href="">Nhà tuyển dụng</a></p>
+                    <p><a target="_self" href="">Hồ sơ ứng viên</a></p>
+                    <p><a target="_self" href="">Nhà tuyển dụng</a></p>
                 </div>
                 <div class="col-md-3 col-xs-6 footer-col">
                     <p class="title">công cụ</p>
-                    <p><a href="">Hồ sơ</a></p>
-                    <p><a href="">Việc làm của tôi</a></p>
-                    <p><a href="">Thông báo việc làm</a></p>
-                    <p><a href="">Phản hồi</a></p>
-                    <p><a href="">Tư vấn nghề nghiệp</a></p>
+                    <p><a target="_self" href="">Hồ sơ</a></p>
+                    <p><a target="_self" href="">Việc làm của tôi</a></p>
+                    <p><a target="_self" href="">Thông báo việc làm</a></p>
+                    <p><a target="_self" href="">Phản hồi</a></p>
+                    <p><a target="_self" href="">Tư vấn nghề nghiệp</a></p>
                 </div>
                 <div class="col-md-5 contact col-xs-12 footer-col">
                     <p class="title">kết nối với gmon</p>
                     <p class="mxh">
-                        <a href=""></a>
-                        <a href=""></a>
-                        <a href=""></a>
+                        <a target="_self" href=""></a>
+                        <a target="_self" href=""></a>
+                        <a target="_self" href=""></a>
                     </p>
                 </div>
             </div>

@@ -13,7 +13,7 @@
                 @foreach($curriculumvitaes as $curriculumvitae)
                 <div class="cv-item">
                     <div class="img-cv">
-                        <a href="{{ url('/') }}/curriculumvitae/view/{{ $curriculumvitae->id }}">
+                        <a target="_self" href="{{ url('/') }}/curriculumvitae/view/{{ $curriculumvitae->id }}">
                             <img src="{{ url('/') }}/public/images/{{ $curriculumvitae->avatar }}">
                         </a>
                     </div>
@@ -45,7 +45,7 @@
                     <div class="row ung-vien-tai-nang">
                         <div class="cv-item-2">
                             <div class="img-cv">
-                                <a href="{{ url('/') }}/curriculumvitae/view/{{ $curriculumvitae2->id }}">
+                                <a target="_self" href="{{ url('/') }}/curriculumvitae/view/{{ $curriculumvitae2->id }}">
                                     <img src="{{ url('/') }}/public/images/{{ $curriculumvitae2->avatar }}">
                                 </a>
                             </div>

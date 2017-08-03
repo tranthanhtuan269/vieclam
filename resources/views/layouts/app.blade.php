@@ -33,7 +33,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a target="_self" class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -48,23 +48,23 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Đăng Nhập</a></li>
-                            <li><a href="{{ url('/register') }}">Đăng Ký</a></li>
+                            <li><a target="_self" href="{{ url('/login') }}">Đăng Nhập</a></li>
+                            <li><a target="_self" href="{{ url('/register') }}">Đăng Ký</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a target="_self" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     @if(Auth::check() && Auth::user()->hasRole('admin'))
-                                        <li><a href="{{ url('/admin') }}">Administrator</a></li>
+                                        <li><a target="_self" href="{{ url('/admin') }}">Administrator</a></li>
                                     @elseif(Auth::check() && Auth::user()->hasRole('master'))
-                                        <li><a href="{{ url('/city/admin') }}">Administrator</a></li>
+                                        <li><a target="_self" href="{{ url('/city/admin') }}">Administrator</a></li>
                                     @else
                                     @endif
                                     <li>
-                                        <a href="{{ url('/logout') }}"
+                                        <a target="_self" href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Đăng Xuất

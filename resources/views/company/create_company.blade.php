@@ -221,7 +221,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-4 col-md-4">
                             <button class="btn btn-primary" id="submit-btn">Tạo mới</button>
-                            <a href="{{ url('/home') }}" class="btn btn-primary">Trở về trang chủ</a>
+                            <a target="_self" href="{{ url('/home') }}" class="btn btn-primary">Trở về trang chủ</a>
                         </div>
                     </div>
                     {!! Form::close() !!}
