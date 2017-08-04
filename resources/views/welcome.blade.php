@@ -227,8 +227,13 @@
                         <a target="_self" href=""><i></i>Nhân sự tài năng</a>
                     </div>
                     <div class="menu-right">
-                        <a target="_self" href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
-                        <a target="_self" href=""><i></i>Trang tuyển dụng</a>
+                        @if (Auth::guest())
+                            <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()"><i></i>Tạo hồ sơ</a>
+                            <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()"><i></i>Trang tuyển dụng</a>
+                        @else
+                            <a target="_self" href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
+                            <a target="_self" href=""><i></i>Trang tuyển dụng</a>
+                        @endif
                     </div>
                 </div>
                 

@@ -49,9 +49,14 @@
                             <span style="color:#f99f3c">Tin nóng: </span>
                             <a target="_self" href="">Khai trương nhà hàng tại 156 Cầu Giấy
                                 <span class="hot-new-img"></span></a>
-                            @if($company->user != Auth::user()->id)<button type="button" class="bt-rate btn btn-primary" data-toggle="modal" data-target="#add-comment"><i></i>Thêm đánh giá</button>
+                            @if(Auth::user())
+                            @if($company->user != Auth::user()->id)
+                                <button type="button" class="bt-rate btn btn-primary" data-toggle="modal" data-target="#add-comment"><i></i>Thêm đánh giá</button>
                             @else
-                            <button id="create_job_btn" class="bt-rate btn btn-primary"><i></i>Tạo tuyển dụng</button>
+                                <button id="create_job_btn" class="bt-rate btn btn-primary"><i></i>Tạo tuyển dụng</button>
+                            @endif
+                            @else  
+                                
                             @endif
                         </div>
                     </div>
@@ -625,7 +630,7 @@
                         // thong bao khi follow thanh cong
                         $('#follow-btn').hide();
                         $('#unfollow-btn').show();
-                    } else {
+                    } else if(msg.code == 200) {
                         swal("Cảnh báo", "Đã có lỗi khi thêm đánh giá!", "error");
                     }
                 });

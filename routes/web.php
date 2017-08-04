@@ -23,15 +23,17 @@ Route::post('auth/login', 'SiteController@loginApi');
 Route::post('auth/register', 'SiteController@registerApi');
 Route::get('curriculumvitae', 'CurriculumVitaeController@indexCurriculumVitae');
 Route::get('curriculumvitae/view/{id}', 'CurriculumVitaeController@showCurriculumVitae');
+Route::get('/job/view/{id}', 'JobController@info');
+Route::post('/job/join', 'JobController@join');
+Route::get('company/{id}/info', 'CompanyController@info');
+Route::get('company/{id}/listjobs', 'CompanyController@listjobs');
 
 Route::group(['middleware' => 'auth'], function(){
 
     Route::post('send-comment', 'CompanyController@sendcomment');
     Route::post('follow-company', 'CompanyController@follow');
     Route::post('unfollow-company', 'CompanyController@unfollow');
-    Route::get('company/{id}/info', 'CompanyController@info');
-    Route::get('company/{id}/listjobs', 'CompanyController@listjobs');
-
+    
     Route::get('/getDistrict/{id}', 'HomeController@getDistrict');
     Route::get('/getTown/{id}', 'HomeController@getTown');
 
@@ -40,9 +42,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('curriculumvitae/store', 'CurriculumVitaeController@storeCurriculumVitae');
     Route::post('/postImage', 'HomeController@postImage');
     Route::post('/curriculumvitae/send-comment', 'CurriculumVitaeController@sendcomment');
-    Route::get('/job/view/{id}', 'JobController@info');
-    Route::post('/job/join', 'JobController@join');
-
 });
 
 // Check role in route middleware

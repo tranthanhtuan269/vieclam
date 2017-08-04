@@ -231,7 +231,6 @@ class CompanyController extends Controller {
         }else {
             $followed = 0;
         }
-
         // $company = Company::find($id);
         $company = \DB::table('companies')
                 ->join('cities', 'cities.id', '=', 'companies.city')
