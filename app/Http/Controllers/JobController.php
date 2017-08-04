@@ -10,6 +10,7 @@ use App\Company;
 use App\Apply;
 use Illuminate\Http\Request;
 use Session;
+use Auth;
 
 class JobController extends Controller
 {
@@ -261,7 +262,10 @@ class JobController extends Controller
     }
 
     public function join(Request $request){
-        $current_id = \Auth::user()->id;
+        if(!Auth::check()){
+            return \Response::json(array('code' => '401', 'message' => 'Unauthorized!'));
+        }
+        $current_id = Auth::user()->id;
         if(isset($request->job) && $request->job > 0){
             $exitApply = Apply::where('user', $current_id)->where('job', $request->job)->first();
             if($exitApply){

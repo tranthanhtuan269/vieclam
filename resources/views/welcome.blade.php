@@ -90,9 +90,9 @@
                                                                 </div>
                                                                 <div style="margin-top: -5px;margin-bottom: 20px">
                                                                     <label for="">Bạn là:</label>
-                                                                    <select name="" id="">
-                                                                        <option value="ung_vien">Ứng viên</option>
-                                                                        <option value="ntd">Nhà tuyển dụng</option>
+                                                                    <select name="areyou" id="areyou">
+                                                                        <option value="1">Ứng viên</option>
+                                                                        <option value="2">Nhà tuyển dụng</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="text-center">
@@ -231,8 +231,12 @@
                             <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()"><i></i>Tạo hồ sơ</a>
                             <a target="_self" data-toggle="modal" data-target="#myModal" onclick="onOpenRegister()"><i></i>Trang tuyển dụng</a>
                         @else
+                            @if(Auth::user()->hasRole('user'))
                             <a target="_self" href="{{ url('/') }}/curriculumvitae/create"><i></i>Tạo hồ sơ</a>
+                            @endif
+                            @if(Auth::user()->hasRole('poster'))
                             <a target="_self" href=""><i></i>Trang tuyển dụng</a>
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -768,6 +772,7 @@
                 var registerEmail = $('#register-email').val();
                 var registerPassword = $('#register-password').val();
                 var rPassword = $('#r_password').val();
+                var role = $('#areyou').val();
                 if(registerPassword != rPassword){
                     return false;
                 }
@@ -782,7 +787,8 @@
                         'username': username,
                         'password': registerPassword,
                         'email': registerEmail,
-                        'phone': registersdt
+                        'phone': registersdt,
+                        'role': role
                     },
                     dataType: "json"
                 });

@@ -10,7 +10,13 @@
                 <div class="col-md-12">
                     <div class="row main-top">
                         <div class="col-md-4">
-                            <img src="{{ url('/') }}/public/images/{{ $curriculumvitae->avatar }}" width="200" height="200" class="img-circle">
+                            @if(strlen($curriculumvitae->avatar) > 0)
+                            <img src="{{ url('/') }}/public/images/{{ $curriculumvitae->avatar }}" width="200" height="200" class="img-circle
+                            ">
+                            @else
+                            <img src="{{ url('/') }}/public/images/avatar.png" width="200" height="200" class="img-circle
+                            ">
+                            @endif
                         </div>
                         <div class="col-md-8">
                             <div class="row">
@@ -254,6 +260,7 @@
                                     <div class="row">
                                         <?php 
                                             if(strlen($curriculumvitae->images) > 0){
+                                                $curriculumvitae->images = rtrim($curriculumvitae->images,";");
                                                 $images = explode(";",$curriculumvitae->images);
                                                 $i = 0;
                                                 foreach ($images as $image) {

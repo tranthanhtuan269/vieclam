@@ -8,10 +8,7 @@ use App\User;
 class SiteController extends Controller
 {
     public function loginApi(Request $request){
-        // dd($request->all());
-
         $credentials = array('email' => $request->input('email'), 'password' => $request->input('password'));
-        // dd(\Auth::attempt($credentials, false));
         if(\Auth::attempt($credentials, false)){
             return \Response::json(array('code' => '200', 'message' => 'success'));
         }
@@ -19,8 +16,6 @@ class SiteController extends Controller
     }
 
     public function registerApi(Request $request){
-        // dd($request->input('email'));
-
         $user = User::Where('email', $request->input('email'))->first();
         if(!$user){
             $user_register = User::create([
@@ -29,6 +24,12 @@ class SiteController extends Controller
                 'phone' => $request->input('phone'),
                 'password' => bcrypt($request->input('password')),
             ]);
+
+            if($request->input('role') == 2){
+                $user_register->assignRole('poster');
+            }else{
+                $user_register->assignRole('user');
+            }
 
             $credentials = array('email' => $request->input('email'), 'password' => $request->input('password'));
             if(\Auth::attempt($credentials, false)){

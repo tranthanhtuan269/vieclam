@@ -375,6 +375,8 @@
 	            if (msg.code == 200) {
 	            	$('.bt-join').off('click');
 	               	swal("Thông báo", "Bạn đã ứng tuyển thành công!", "success");
+	            }else if(msg.code == 401){
+	            	swal("Thông báo", "Bạn phải đăng nhập trước khi ứng tuyển!", "error");
 	            }
 	        });
 
